@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roadmap 2027 · PMO</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy: #1B355D;
@@ -18,7 +18,7 @@
       --shadow: 0 4px 16px rgba(27, 42, 74, 0.08);
       --radius: 14px;
       
-      /* Colores Especificados */
+      /* Colores Solicitados */
       --timeline-bar: #B1CDEE;
       --timeline-bg: #F6F7F9;
       --tag-bg: #EFF4FA;
@@ -37,10 +37,10 @@
       margin-bottom: 28px;
     }
     .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
-    .brand-top { font-size: 11px; text-transform: uppercase; font-weight: 700; color: #7DACE2; letter-spacing: .5px; }
+    .brand-top { font-size: 11px; text-transform: uppercase; font-weight: 700; color: #7DACE2; letter-spacing: .5px; margin-bottom: 4px; }
     .brand h1 { font-family: 'Merriweather', serif; font-size: 22px; font-weight: 900; display: flex; align-items: center; gap: 16px; }
     
-    /* BOTÓN ESTILO OVALADO BLANCO */
+    /* BOTÓN ESTILO OVALADO BLANCO (Alineado a la izquierda del título según captura) */
     .btn-back {
       background: var(--white);
       color: var(--navy);
@@ -54,6 +54,7 @@
       gap: 6px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       transition: background 0.2s, transform 0.1s;
+      font-family: 'Inter', sans-serif;
     }
     .btn-back:hover { 
       background: #F1F5F9;
@@ -81,7 +82,7 @@
       display: grid;
       grid-template-columns: 180px 1fr 180px 400px;
       gap: 16px;
-      padding: 16px 24px;
+      padding: 14px 24px;
       font-size: 13px;
       font-weight: 700;
       color: var(--white);
@@ -93,9 +94,9 @@
     }
 
     .timeline-quarters { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; }
+    .roadmap-container { display: flex; flex-direction: column; gap: 8px; }
 
-    .roadmap-container { display: flex; flex-direction: column; gap: 12px; }
-
+    /* TARJETA BLANCA MENOS ANCHA (Más delgada verticalmente / Menos Padding) */
     .roadmap-card {
       background: var(--white);
       border-radius: var(--radius);
@@ -103,7 +104,7 @@
       display: grid;
       grid-template-columns: 180px 1fr 180px 400px;
       gap: 16px;
-      padding: 16px 24px;
+      padding: 10px 24px; /* Ajustado de 16px a 10px para reducir el grosor blanco arriba/abajo */
       align-items: center;
       transition: transform 0.15s, background 0.15s;
       border: 1px solid transparent;
@@ -126,14 +127,14 @@
       white-space: nowrap;
     }
 
-    .col-project { font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.4; }
-    .col-responsible { font-size: 13px; font-weight: 500; color: #4A5568; }
+    .col-project { font-size: 13.5px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+    .col-responsible { font-size: 12.5px; font-weight: 500; color: #4A5568; }
     .col-responsible.tbd { color: #E85301; font-weight: 600; }
 
-    /* CONTENEDOR TIMELINE AMPLIO Y HOLGADO */
+    /* CONTENEDOR TIMELINE AJUSTADO AL NUEVO ANCHO DE TARJETA */
     .col-timeline {
       background: var(--timeline-bg);
-      height: 44px;
+      height: 38px; /* Ajustado de 44px a 38px para acoplarse proporcionalmente al diseño más delgado */
       border-radius: 10px;
       position: relative;
       overflow: hidden;
@@ -152,16 +153,12 @@
     .timeline-grid-line { border-right: 1px dashed rgba(0, 0, 0, 0.04); }
     .timeline-grid-line:last-child { border-right: none; }
 
-    .timeline-bar-wrapper {
-      position: relative;
-      width: 100%;
-      height: 16px;
-    }
+    .timeline-bar-wrapper { position: relative; width: 100%; height: 14px; }
 
-    /* BARRA DE PROGRESO REDONDEADA */
+    /* BARRA DE PROGRESO DE PROYECTO REDONDEADA */
     .timeline-bar {
       position: absolute;
-      height: 16px;
+      height: 14px;
       background: var(--timeline-bar);
       border-radius: 20px;
       transition: all 0.3s ease;
@@ -182,8 +179,9 @@
   <header class="masthead">
     <div class="wrap header-inner">
       <div class="brand">
-        <span class="brand-top">Portafolio de Proyectos 2027 · PMO</span>
+        <div class="brand-top">Portafolio de Proyectos 2027 · PMO</div>
         <h1>
+          <!-- Botón colocado al lado izquierdo del título principal según tu captura -->
           <a href="index.html" class="btn-back">⬅️ Regresar al Tablero</a>
           Roadmap 2027
         </h1>
@@ -206,7 +204,6 @@
         <div>4Q</div>
       </div>
     </div>
-
     <div class="roadmap-container" id="roadmap-container"></div>
   </main>
 
@@ -232,69 +229,3 @@
       { clasificacion: "Banca Minorista", proyecto: "Copiloto MVP 1", responsable: "S. Olivero", inicio: "2027-01-01", fin: "2027-06-30" },
       { clasificacion: "Nuevos proyectos", proyecto: "CRM Objetivo", responsable: "M. Matus", inicio: "2027-01-01", fin: "2027-12-31" },
       { clasificacion: "Nuevos proyectos", proyecto: "Content Manager Objetivo (Filenet)", responsable: "M. Matus", inicio: "2027-01-01", fin: "2027-01-31" },
-      { clasificacion: "Nuevos proyectos", proyecto: "Implementación Middleware (Greenfield)", responsable: "M. Matus", inicio: "2027-01-01", fin: "2027-01-31" },
-      { clasificacion: "Carryover 2026", proyecto: "Robustecimiento BKAYA 2026", responsable: "M. Matus", inicio: "2027-01-01", fin: "2027-01-31" }
-    ];
-
-    function calculateTimelinePosition(startStr, endStr) {
-      const yearStart = new Date("2027-01-01").getTime();
-      const yearEnd = new Date("2027-12-31").getTime();
-      const totalDuration = yearEnd - yearStart;
-
-      const currentStart = new Date(startStr).getTime();
-      const currentEnd = new Date(endStr).getTime();
-
-      const startClamped = Math.max(yearStart, Math.min(yearEnd, currentStart));
-      const endClamped = Math.max(yearStart, Math.min(yearEnd, currentEnd));
-
-      const leftPercent = ((startClamped - yearStart) / totalDuration) * 100;
-      const widthPercent = ((endClamped - startClamped) / totalDuration) * 100;
-
-      return {
-        left: leftPercent.toFixed(2) + "%",
-        width: Math.max(widthPercent, 3).toFixed(2) + "%"
-      };
-    }
-
-    function renderRoadmap() {
-      const container = document.getElementById("roadmap-container");
-      const searchTerm = document.getElementById("search-input").value.toLowerCase().trim();
-      container.innerHTML = "";
-
-      excelData.forEach(item => {
-        const matchesCls = item.clasificacion.toLowerCase().includes(searchTerm);
-        const matchesProj = item.proyecto.toLowerCase().includes(searchTerm);
-        const matchesResp = item.responsable.toLowerCase().includes(searchTerm);
-
-        if (matchesCls || matchesProj || matchesResp || searchTerm === "") {
-          const isTbd = !item.responsable || item.responsable === "--" || item.responsable === "TBD";
-          const pos = calculateTimelinePosition(item.inicio, item.fin);
-
-          const cardHtml = `
-            <div class="roadmap-card">
-              <div><span class="col-classification">${item.clasificacion}</span></div>
-              <div class="col-project">${item.proyecto}</div>
-              <div class="col-responsible ${isTbd ? 'tbd' : ''}">${item.responsable}</div>
-              <div class="col-timeline">
-                <div class="timeline-grid-lines">
-                  <div class="timeline-grid-line"></div>
-                  <div class="timeline-grid-line"></div>
-                  <div class="timeline-grid-line"></div>
-                  <div class="timeline-grid-line"></div>
-                </div>
-                <div class="timeline-bar-wrapper">
-                  <div class="timeline-bar" style="left: ${pos.left}; width: ${pos.width};"></div>
-                </div>
-              </div>
-            </div>
-          `;
-          container.insertAdjacentHTML("beforeend", cardHtml);
-        }
-      });
-    }
-
-    document.getElementById("search-input").addEventListener("input", renderRoadmap);
-    window.addEventListener("DOMContentLoaded", renderRoadmap);
-  </script>
-</body>
-</html>
