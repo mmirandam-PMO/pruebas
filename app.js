@@ -12,6 +12,7 @@ function getProgEmoji(name) {
   if (name.includes('Regulatorios')) return '⚖️';
   if (name.includes('Mayorista')) return '🔶';
   if (name.includes('Hub')) return '🔘';
+  if (name.includes('Habilitadores')) return '📂';
   return '📂';
 }
 
@@ -20,8 +21,8 @@ function buildProjectRows(proyectos, term) {
   let matches = 0;
 
   proyectos.forEach(q => {
-    const nameMatch = q.nombre.toLowerCase().includes(term);
-    const ownerMatch = q.responsable.toLowerCase().includes(term);
+    const nameMatch = q.nombre ? q.nombre.toLowerCase().includes(term) : false;
+    const ownerMatch = q.responsable ? q.responsable.toLowerCase().includes(term) : false;
 
     if (nameMatch || ownerMatch) {
       matches++;
@@ -109,8 +110,8 @@ function render() {
     col2.appendChild(document.createRange().createContextualFragment(cardHtml));
   }
 
-  // 5. Carry-over 2026 -> Columna 3
-  const co = findProg('Carry-over 2026');
+  // 5. Habilitadores -> Columna 3
+  const co = findProg('Habilitadores');
   if (co) {
     let cardHtml = `<div class="card header-carryover"><div class="card-head"><h2>${getProgEmoji(co.nombre)} ${co.nombre}</h2><span class="badge">${co.total_proyectos}</span></div>`;
     co.categorias.forEach(c => {
