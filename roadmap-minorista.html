@@ -4,36 +4,275 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roadmap Banca Minorista</title>
-  <!-- Fuentes e Identidad del Proyecto -->
   <link rel="preconnect" href="https://googleapis.com">
   <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
-  <!-- Mismo archivo de estilos del index -->
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --navy: #1B355D;
+      --blue-brand: #2980B9;
+      --blue-light: #4A90E2;
+      --bg-main: #F7F8FA;
+      --white: #ffffff;
+      --border: #E1E4E8;
+      --text-dark: #24292F;
+      --text-muted: #6B7280;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); padding-bottom: 60px; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+
+    /* Cabecera Limpia Corregida */
+    header.masthead {
+      background: linear-gradient(90deg, var(--navy) 0%, #1B4E5A 100%);
+      color: var(--white);
+      padding: 20px 0;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 14px rgba(27,42,74,.15);
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
+    .brand h1 { font-family: 'Merriweather', serif; font-size: 24px; font-weight: 900; }
+    
+    .btn-back {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      background: rgba(255,255,255,0.15);
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .btn-back:hover { background: rgba(255,255,255,0.25); }
+
+    /* Contenedor del Roadmap */
+    .roadmap-container {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 16px rgba(27, 42, 74, 0.05);
+      border: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    /* Estructura del Diagrama Gantt */
+    .gantt-grid {
+      display: grid;
+      grid-template-columns: 380px repeat(12, minmax(65px, 1fr));
+      min-width: 1100px;
+    }
+
+    /* Cabecera de la Gráfica (Meses) */
+    .gantt-header-cell {
+      background: #FAFBFC;
+      padding: 14px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
+      border-bottom: 2px solid var(--border);
+      border-right: 1px solid #EAECEF;
+    }
+    .gantt-header-cell.title-side { text-align: left; font-size: 12px; color: var(--navy); }
+
+    /* Filas de Niveles */
+    .gantt-row {
+      display: contents;
+    }
+
+    .gantt-cell {
+      padding: 10px 16px;
+      border-bottom: 1px solid #EAECEF;
+      border-right: 1px solid #F0F2F5;
+      display: flex;
+      align-items: center;
+      background: var(--white);
+      position: relative;
+    }
+
+    /* Líneas de cuadrícula visuales de fondo */
+    .gantt-timeline-cell {
+      padding: 0;
+      border-bottom: 1px solid #EAECEF;
+      border-right: 1px solid #F0F2F5;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Nivel 1: Programa Principal */
+    .row-program .gantt-cell {
+      background: #F4F7FA;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--navy);
+      border-bottom: 2px solid var(--border);
+    }
+    .row-program .gantt-timeline-cell { background: #F4F7FA; border-bottom: 2px solid var(--border); }
+
+    /* Nivel 2: Subprograma / Categoría */
+    .row-category .gantt-cell {
+      background: #FAFBFC;
+      font-weight: 600;
+      font-size: 13.5px;
+      color: var(--blue-brand);
+      padding-left: 28px;
+    }
+    .row-category .gantt-timeline-cell { background: #FAFBFC; }
+
+    /* Nivel 3: Proyectos Individuales */
+    .row-project .gantt-cell {
+      padding-left: 42px;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 2px;
+    }
+    .proj-title { font-size: 13px; font-weight: 500; color: var(--text-dark); }
+    .proj-meta { font-size: 11px; color: var(--text-muted); font-weight: 400; }
+    .proj-owner { font-weight: 600; color: #4A5568; }
+
+    /* Barras del Cronograma (Cascada Efectiva) */
+    .bar {
+      height: 12px;
+      border-radius: 20px;
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    
+    /* Colores por Niveles */
+    .bar-program { background: var(--navy); height: 16px; }
+    .bar-category { background: var(--blue-brand); height: 14px; }
+    .bar-project { background: var(--blue-light); }
+    .bar-project.offset-q2 { background: #5DADE2; }
+    .bar-project.offset-q3 { background: #85C1E9; }
+
+    /* Línea de día actual vertical (Simulada a principio de año) */
+    .today-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 15px;
+      width: 2px;
+      background: #E85301;
+      border-dashed: 1px #E85301;
+      z-index: 20;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Cabecera idéntica a la del Tablero Principal (Sin Buscador) -->
+  <!-- Cabecera Estratégica Modificada -->
   <header class="masthead">
     <div class="wrap header-inner">
       <div class="brand">
-        <div class="brand-top">PMO · Tablero de Control Operativo</div>
         <h1>Roadmap Banca Minorista</h1>
+      </div>
+      <div>
+        <a href="index.html" class="btn-back">← Volver al Tablero</a>
       </div>
     </div>
   </header>
 
-  <!-- Contenedor Principal con el diseño de tarjeta del portafolio -->
+  <!-- Contenedor Principal del Diagrama -->
   <main class="wrap">
-    <div class="card" style="padding: 28px; background: var(--white); min-height: 300px;">
-      <h2 style="font-family: 'Merriweather', serif; color: var(--navy); margin-bottom: 14px;">🔷 Plan de Trabajo e Hitos Estratégicos</h2>
-      <p style="color: var(--text-dark); font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
-        Este espacio está reservado para desplegar la planeación, fechas clave y entregables organizados de los proyectos correspondientes a Banca Minorista.
-      </p>
-      
-      <!-- Aquí se añadirán las filas tácticas de la línea de tiempo más adelante -->
-    </div>
-  </main>
+    <div class="roadmap-container">
+      <div class="gantt-grid">
+        
+        <!-- Fila de Encabezados -->
+        <div class="gantt-header-cell title-side">Estructura Operativa / Proyecto</div>
+        <div class="gantt-header-cell">Ene 27</div>
+        <div class="gantt-header-cell">Feb 27</div>
+        <div class="gantt-header-cell">Mar 27</div>
+        <div class="gantt-header-cell">Abr 27</div>
+        <div class="gantt-header-cell">May 27</div>
+        <div class="gantt-header-cell">Jun 27</div>
+        <div class="gantt-header-cell">Jul 27</div>
+        <div class="gantt-header-cell">Ago 27</div>
+        <div class="gantt-header-cell">Sep 27</div>
+        <div class="gantt-header-cell">Oct 27</div>
+        <div class="gantt-header-cell">Nov 27</div>
+        <div class="gantt-header-cell">Dic 27</div>
 
-</body>
-</html>
+        <!-- ================= NIVEL 1: PROGRAMA ================= -->
+        <div class="gantt-row row-program">
+          <div class="gantt-cell">🔷 Banca Minorista</div>
+          <!-- Barra Completa de Ene a Dic -->
+          <div class="gantt-timeline-cell" style="grid-column: 2 / span 12;">
+            <div class="bar bar-program"></div>
+            <div class="today-line"></div> <!-- Línea de avance actual -->
+          </div>
+        </div>
+
+        <!-- ================= NIVEL 2: CATEGORÍA ================= -->
+        <div class="gantt-row row-category">
+          <div class="gantt-cell">Nuevos proyectos · 8</div>
+          <!-- Barra resumida de la categoría ocupando todo el año -->
+          <div class="gantt-timeline-cell" style="grid-column: 2 / span 12;">
+            <div class="bar bar-category"></div>
+          </div>
+        </div>
+
+        <!-- ================= NIVEL 3: PROYECTOS EN CASCADA ================= -->
+        <!-- Proyecto 1 -->
+        <div class="gantt-row row-project">
+          <div class="gantt-cell">
+            <span class="proj-title">App de Inversiones MVP 2</span>
+            <span class="proj-meta"><span class="proj-owner">S. Olivero</span> | 01/01/27 - 30/04/27</span>
+          </div>
+          <div class="gantt-timeline-cell" style="grid-column: 2 / span 4;">
+            <div class="bar bar-project"></div>
+          </div>
+          <div class="gantt-timeline-cell" style="grid-column: 6 / span 8;"></div>
+        </div>
+
+        <!-- Proyecto 2 -->
+        <div class="gantt-row row-project">
+          <div class="gantt-cell">
+            <span class="proj-title">Rediseño Proceso de Originación MVP 2</span>
+            <span class="proj-meta"><span class="proj-owner">S. Olivero</span> | 15/01/27 - 31/05/27</span>
+          </div>
+          <div class="gantt-timeline-cell" style="grid-column: 2 / span 1;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 4;">
+            <div class="bar bar-project"></div>
+          </div>
+          <div class="gantt-timeline-cell" style="grid-column: 7 / span 7;"></div>
+        </div>
+
+        <!-- Proyecto 3 -->
+        <div class="gantt-row row-project">
+          <div class="gantt-cell">
+            <span class="proj-title">Copiloto MVP 2</span>
+            <span class="proj-meta"><span class="proj-owner">S. Olivero</span> | 01/03/27 - 31/07/27</span>
+          </div>
+          <div class="gantt-timeline-cell" style="grid-column: 2 / span 2;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 4 / span 5;">
+            <div class="bar bar-project offset-q2"></div>
+          </div>
+          <div class="gantt-timeline-cell" style="grid-column: 9 / span 5;"></div>
+        </div>
+
+        <!-- Proyecto 4 -->
+        <div class="gantt-row row-project">
+          <div class="gantt-cell">
+            <span class="proj-title">Seguros RANMA</span>
+            <span class="proj-meta"><span class="proj-owner">S. Olivero</span> | 01/04/27 - 31/08/27</span>
+          </div>
+          <div class="gantt-timeline-cell" style="grid-column: 2 / span 3;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 5 / span 5;">
+            <div class="bar bar-project offset-q2"></div>
+          </div>
+          <div class="gantt-timeline-cell" style="grid-column: 10 / span 4;"></div>
+        </div>
+
+        <!-- Proyecto 5 -->
+        <div class="gantt-row row-project">
+          <div class="gantt-cell">
+            <span class="proj-title">Créditos Asociados a Nómina (CAN)</span>
+            <span class="proj-meta"><span class="proj-owner">S. Olivero</span> | 01/06/27 - 31/10/27</span>
+          </div>
