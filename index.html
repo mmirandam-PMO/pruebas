@@ -20,7 +20,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); min-height: 100vh; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); min-height: 100vh; padding-bottom: 40px; }
     .wrap { max-width: 1440px; margin: 0 auto; padding: 0 34px; }
 
     header.masthead {
@@ -35,7 +35,6 @@
     }
     .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
     
-    /* CABECERA CORREGIDA: TEXTO BLANCO GRANDE Y SUBTÍTULO ACTUALIZADO */
     .brand-top { font-size: 11px; text-transform: uppercase; font-weight: 700; color: #7DACE2; letter-spacing: .5px; }
     .brand h1 { font-family: 'Merriweather', serif; font-size: 22px; font-weight: 900; display: flex; align-items: center; gap: 16px; }
 
@@ -52,20 +51,35 @@
     .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; z-index: 10; }
     
     .header-minorista::before { background: linear-gradient(90deg, #4A90E2 0%, #2980B9 100%); }
+    .header-mayorista::before { background: linear-gradient(90deg, #F1DFD7 0%, #E2C2B3 100%); }
     .header-regulatorios::before { background: linear-gradient(90deg, #923D1F 0%, #D35400 100%); }
+    .header-hub::before { background: linear-gradient(90deg, #B0B3B8 0%, #7F8C8D 100%); }
     .header-habilitadores::before { background: linear-gradient(90deg, #1F3A60 0%, #34495E 100%); }
 
     .card-head { padding: 18px 20px 14px; background: #FAFBFC; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
     .card-head h2 { font-family: 'Merriweather', serif; font-size: 20px; font-weight: 800; color: var(--navy); }
     .badge { background: rgba(27,42,74,0.08); color: var(--navy); padding: 4px 10px; border-radius: 20px; font-size: 13px; font-weight: 700; }
     
-    .subsection-header { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; padding: 10px 18px 4px; letter-spacing: 0.5px; }
+    .subsection-header { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; padding: 14px 18px 4px; letter-spacing: 0.5px; }
     .section-area { padding: 4px 18px 14px; }
+    
+    /* Soporte para visualización en dos columnas internas en Minorista y Mayorista */
+    .dual-list-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 4px 18px 14px; }
+    @media (max-width: 1200px) { .dual-list-grid { grid-template-columns: 1fr; } }
+    
     .proj-list { display: flex; flex-direction: column; gap: 6px; }
     
-    .proj-row { background: #F5F7FA; padding: 10px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
-    .proj-name { font-weight: 500; color: var(--text-dark); }
-    .proj-owner { font-size: 11px; font-weight: 700; background: #E2E8F0; color: #4A5568; padding: 2px 6px; border-radius: 4px; }
+    .proj-row { background: #F5F7FA; padding: 10px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; min-height: 40px; }
+    .proj-name { font-weight: 500; color: var(--text-dark); line-height: 1.4; padding-right: 8px; }
+    .proj-owner { font-size: 11px; font-weight: 700; background: #E2E8F0; color: #4A5568; padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
+
+    /* Estilos para subprogramas anidados de empresas y gobierno */
+    .subprogram-box { border: 1px solid var(--border); background: #FAFBFC; border-radius: 8px; padding: 12px; margin-bottom: 10px; }
+    .subprogram-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+    .subprogram-leads { font-size: 11px; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; }
+    .bullet-container { display: flex; flex-direction: column; gap: 5px; padding-left: 12px; margin-top: 6px; border-top: 1px dashed var(--border); padding-top: 6px; }
+    .bullet-item { font-size: 12px; color: #4A5568; position: relative; padding-left: 10px; }
+    .bullet-item::before { content: "•"; position: absolute; left: 0; color: #A0AEC0; }
   </style>
 </head>
 <body>
@@ -73,47 +87,102 @@
   <header class="masthead">
     <div class="wrap header-inner">
       <div class="brand">
-        <!-- 1. CAMBIO DE NOMBRE EN SUBTÍTULO -->
         <span class="brand-top">3 Programas  ·  38 Proyectos</span>
-        <!-- 2. CAMBIO DE NOMBRE EN TÍTULO PRINCIPAL (SIN BOTÓN DEL ROADMAP) -->
         <h1>Portafolio de Proyectos 2027</h1>
       </div>
-      <div class="search-area"><input type="text" id="search-input" placeholder="Buscar..."></div>
+      <div class="search-area"><input type="text" id="search-input" placeholder="Buscar proyecto o responsable..."></div>
     </div>
   </header>
 
   <main class="wrap">
     <div class="dashboard-grid">
       
-      <!-- COLUMNA 1: MINORISTA -->
+      <!-- COLUMNA 1: MINORISTA Y MAYORISTA -->
       <div class="column">
+        <!-- Banca Minorista -->
         <div class="card header-minorista">
           <div class="card-head">
             <h2>🔷 Banca Minorista</h2>
             <span class="badge">8</span>
           </div>
           <div class="subsection-header">Nuevos proyectos · 8</div>
-          <div class="section-area">
-            <div class="proj-list" id="col-minorista"></div>
+          <div class="dual-list-grid">
+            <div class="proj-list" id="minorista-izq"></div>
+            <div class="proj-list" id="minorista-der"></div>
+          </div>
+        </div>
+
+        <!-- Banca Mayorista -->
+        <div class="card header-mayorista">
+          <div class="card-head">
+            <h2>🔶 Banca Mayorista</h2>
+            <span class="badge">8</span>
+          </div>
+          <div class="dual-list-grid" style="align-items: start;">
+            <div class="proj-list">
+              <div class="subprogram-box">
+                <div class="subprogram-title">Banca de Empresas · Programa</div>
+                <div class="subprogram-leads">R. Galindo / B. Flores</div>
+                <div class="proj-row" style="background:none; padding:0; min-height:auto;">
+                  <span class="proj-name" style="color:#2B6CB0; font-weight:600;">Plataforma Banca Empresarial Fase 1 (PyME, Empresa Mediana y Gpos Corporativos)</span>
+                </div>
+                <div class="bullet-container">
+                  <div class="bullet-item">Proyectos Crédito <span style="color:var(--text-muted); font-size:11px;">(TBD)</span></div>
+                  <div class="bullet-item">Proyectos Captación <span style="color:var(--text-muted); font-size:11px;">(TBD)</span></div>
+                  <div class="bullet-item">Proyectos Servicios <span style="color:var(--text-muted); font-size:11px;">(TBD)</span></div>
+                </div>
+              </div>
+              <div class="subsection-header" style="padding:4px 0;">Transversales · 4</div>
+              <div class="proj-list" id="mayorista-transversales"></div>
+            </div>
+            
+            <div class="proj-list">
+              <div class="subprogram-box">
+                <div class="subprogram-title">Banca de Gobierno · Programa</div>
+                <div class="subprogram-leads">R. Vázquez</div>
+                <div class="proj-row" style="background:none; padding:0; min-height:auto;">
+                  <span class="proj-name" style="color:#2B6CB0; font-weight:600;">Plataforma Banca Gobierno Fase 1 (TBD)</span>
+                </div>
+                <div class="bullet-container">
+                  <div class="bullet-item">Proyectos Crédito <span style="color:var(--text-muted); font-size:11px;">(TBD)</span></div>
+                  <div class="bullet-item">Proyectos Captación <span style="color:var(--text-muted); font-size:11px;">(TBD)</span></div>
+                  <div class="bullet-item">Proyectos Servicios <span style="color:var(--text-muted); font-size:11px;">(TBD)</span></div>
+                </div>
+              </div>
+              <div class="subsection-header" style="padding:4px 0;">Líneas de Negocio</div>
+              <div class="proj-list" id="mayorista-lineas"></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- COLUMNA 2: REGULATORIOS -->
+      <!-- COLUMNA 2: REGULATORIOS Y HUB DE INNOVACIÓN -->
       <div class="column">
+        <!-- Regulatorios -->
         <div class="card header-regulatorios">
           <div class="card-head">
-            <h2>🔶 Regulatorios</h2>
+            <h2>🟥 Regulatorios</h2>
             <span class="badge">7</span>
           </div>
-          <!-- 3. CAMBIO DE TEXTO INTERNO A CARRY-OVER 2026 -->
           <div class="subsection-header">Carry-over 2026 · 4</div>
           <div class="section-area">
-            <div class="proj-list" id="col-regulatorios-carry"></div>
+            <div class="proj-list" id="regulatorios-carry"></div>
           </div>
           <div class="subsection-header">Nuevos proyectos · 3</div>
           <div class="section-area">
-            <div class="proj-list" id="col-regulatorios-nuevos"></div>
+            <div class="proj-list" id="regulatorios-nuevos"></div>
+          </div>
+        </div>
+
+        <!-- Hub de Innovación -->
+        <div class="card header-hub">
+          <div class="card-head">
+            <h2>⚪ Hub de Innovación</h2>
+            <span class="badge">5</span>
+          </div>
+          <div class="subsection-header">Por autorizar · 5</div>
+          <div class="section-area">
+            <div class="proj-list" id="hub-autorizar"></div>
           </div>
         </div>
       </div>
@@ -121,67 +190,3 @@
       <!-- COLUMNA 3: HABILITADORES -->
       <div class="column">
         <div class="card header-habilitadores">
-          <div class="card-head">
-            <h2>⚙️ Habilitadores</h2>
-            <span class="badge">13</span>
-          </div>
-          <div class="subsection-header">Enfoque al Cliente · 3</div>
-          <div class="section-area">
-            <div class="proj-list" id="col-habilitadores-cliente"></div>
-          </div>
-          <div class="subsection-header">Operaciones · 4</div>
-          <div class="section-area">
-            <div class="proj-list" id="col-habilitadores-ops"></div>
-          </div>
-          <div class="subsection-header">Modernización Tecnológica · 6</div>
-          <div class="section-area">
-            <div class="proj-list" id="col-habilitadores-tech"></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <script>
-    // DATA EXACTA ORIGINAL
-    const pmoData = [
-      { programa: "minorista", sub: "nuevos", nombre: "App de Inversiones MVP 2", responsable: "S. Olivero" },
-      { programa: "minorista", sub: "nuevos", nombre: "Rediseño Proceso de Originación MVP 2", responsable: "S. Olivero" },
-      { programa: "minorista", sub: "nuevos", nombre: "Copiloto MVP 2", responsable: "S. Olivero" },
-      { programa: "minorista", sub: "nuevos", nombre: "Seguros RANMA", responsable: "S. Olivero" },
-      { programa: "minorista", sub: "nuevos", nombre: "Créditos Asociados a Nómina (CAN)", responsable: "S. Olivero" },
-      { programa: "minorista", sub: "nuevos", nombre: "Cash Loans", responsable: "S. Olivero" },
-      { programa: "minorista", sub: "nuevos", nombre: "Personalización de Ofertas", responsable: "S. Olivero" },
-      { programa: "minorista", sub: "nuevos", nombre: "Cuenta Rocket", responsable: "S. Olivero" },
-
-      { programa: "regulatorios", sub: "carry", nombre: "PCI DSS", responsable: "C. Carreón" },
-      { programa: "regulatorios", sub: "carry", nombre: "Segundo factor de autenticación (Trxs no presenciales)", responsable: "C. Carreón" },
-      { programa: "regulatorios", sub: "carry", nombre: "Formulario FATCA / CRS", responsable: "C. Budar" },
-      { programa: "regulatorios", sub: "carry", nombre: "Identificador Cliente Derechos ARCO", responsable: "C. Carreón" },
-      { programa: "regulatorios", sub: "nuevos", nombre: "Nueva Plataforma PLD", responsable: "C. Carreón" },
-      { programa: "regulatorios", sub: "nuevos", nombre: "Plataforma Reportes Regulatorios", responsable: "C. Budar" },
-      { programa: "regulatorios", sub: "nuevos", nombre: "Herramientas Ciberseguridad", responsable: "C. Carreón" },
-
-      { programa: "habilitadores", sub: "cliente", nombre: "Programa Lazos", responsable: "A. Nava" },
-      { programa: "habilitadores", sub: "cliente", nombre: "Reingeniería IVR", responsable: "A. Nava" },
-      { programa: "habilitadores", sub: "cliente", nombre: "Automatización de procesos ATC (3 SOWs)", responsable: "A. Nava" },
-      { programa: "habilitadores", sub: "ops", nombre: "Automatización proceso trxs POS", responsable: "A. Nava" },
-      { programa: "habilitadores", sub: "ops", nombre: "Implementación de TEF", responsable: "A. Nava" },
-      { programa: "habilitadores", sub: "ops", nombre: "Tokenización", responsable: "A. Nava" },
-      { programa: "habilitadores", sub: "ops", nombre: "Migración Campo c63 al c57", responsable: "A. Nava" },
-      { programa: "habilitadores", sub: "tech", nombre: "CRM Objetivo", responsable: "M. Matus" },
-      { programa: "habilitadores", sub: "tech", nombre: "Content Manager Objetivo (Filenet)", responsable: "M. Matus" },
-      { Hyde: "habilitadores", sub: "tech", nombre: "Upgrade S4 HANNA (E R P)", responsable: "C. Budar" },
-      { programa: "habilitadores", sub: "tech", nombre: "Herramientas IA", responsable: "M. Matus" },
-      { programa: "habilitadores", sub: "tech", nombre: "Implementación Middleware (Greenfield)", responsable: "M. Matus" },
-      { programa: "habilitadores", sub: "tech", nombre: "Nuevo Core Bancario & Bca Empresarial", responsable: "M. Matus" }
-    ];
-
-    function render() {
-      const term = document.getElementById('search-input').value.toLowerCase().trim();
-      
-      const containers = {
-        'minorista-nuevos': document.getElementById('col-minorista'),
-        'regulatorios-carry': document.getElementById('col-regulatorios-carry'),
-        'regulatorios-nuevos': document.getElementById('col-regulatorios-nuevos'),
