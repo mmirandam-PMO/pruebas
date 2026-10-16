@@ -16,7 +16,7 @@ function getProgEmoji(name) {
   return '📂';
 }
 
-// Icono de gráfica de barras por defecto (Código simplificado con color neutro)
+// Icono de gráfica de barras corporativo por defecto
 const barChartIconSvg = `
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;">
     <line x1="18" y1="20" x2="18" y2="10"></line>
@@ -59,10 +59,21 @@ function render() {
   const term = document.getElementById('search-input').value.toLowerCase().trim();
   const findProg = name => pmoData.programas.find(p => p.nombre === name);
 
-  // 1. Banca Minorista -> Columna 1
+  // 1. Banca Minorista -> VÍNCULO CORREGIDO PARA ABRIR EN NUEVA PESTAÑA
   const minor = findProg('Banca Minorista');
   if (minor) {
-    let cardHtml = `<div class="card header-minorista"><div class="card-head"><h2>${getProgEmoji(minor.nombre)} ${minor.nombre}</h2><div style="display:flex; align-items:center; gap:6px;">${barChartIconSvg} <span class="badge">${minor.total_proyectos}</span></div></div>`;
+    let cardHtml = `
+      <div class="card header-minorista">
+        <div class="card-head">
+          <h2>${getProgEmoji(minor.nombre)} ${minor.nombre}</h2>
+          <div style="display:flex; align-items:center; gap:6px;">
+            <a href="roadmap-minorista.html" target="_blank" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">
+              ${barChartIconSvg}
+            </a> 
+            <span class="badge">${minor.total_proyectos}</span>
+          </div>
+        </div>
+    `;
     minor.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
       if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
@@ -71,7 +82,7 @@ function render() {
     col1.appendChild(document.createRange().createContextualFragment(cardHtml));
   }
 
-  // 2. Regulatorios -> Columna 2
+  // 2. Regulatorios
   const reg = findProg('Regulatorios');
   if (reg) {
     let cardHtml = `<div class="card header-regulatorios"><div class="card-head"><h2>${getProgEmoji(reg.nombre)} ${reg.nombre}</h2><div style="display:flex; align-items:center; gap:6px;">${barChartIconSvg} <span class="badge">${reg.total_proyectos}</span></div></div>`;
@@ -83,7 +94,7 @@ function render() {
     col2.appendChild(document.createRange().createContextualFragment(cardHtml));
   }
 
-  // 3. Banca Mayorista -> Columna 1
+  // 3. Banca Mayorista
   const may = findProg('Banca Mayorista');
   if (may) {
     let cardHtml = `<div class="card header-mayorista"><div class="card-head"><h2>${getProgEmoji(may.nombre)} ${may.nombre}</h2><div style="display:flex; align-items:center; gap:6px;">${barChartIconSvg} <span class="badge">8</span></div></div><div class="section-area">`;
@@ -107,7 +118,7 @@ function render() {
     col1.appendChild(document.createRange().createContextualFragment(cardHtml));
   }
 
-  // 4. Hub de Innovación -> Columna 2
+  // 4. Hub de Innovación
   const hub = findProg('Hub de Innovación');
   if (hub) {
     let cardHtml = `<div class="card header-hub"><div class="card-head"><h2>${getProgEmoji(hub.nombre)} ${hub.nombre}</h2><div style="display:flex; align-items:center; gap:6px;">${barChartIconSvg} <span class="badge">${hub.total_proyectos}</span></div></div>`;
@@ -119,7 +130,7 @@ function render() {
     col2.appendChild(document.createRange().createContextualFragment(cardHtml));
   }
 
-  // 5. Habilitadores -> Columna 3
+  // 5. Habilitadores
   const co = findProg('Habilitadores');
   if (co) {
     let cardHtml = `<div class="card header-carryover"><div class="card-head"><h2>${getProgEmoji(co.nombre)} ${co.nombre}</h2><div style="display:flex; align-items:center; gap:6px;">${barChartIconSvg} <span class="badge">${co.total_proyectos}</span></div></div>`;
