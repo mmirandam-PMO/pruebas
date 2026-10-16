@@ -3,66 +3,242 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio de Proyectos 2027 · PMO</title>
-  <link href="https://googleapis.com" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <title>Portafolio de Proyectos 2027</title>
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    .brand-flex-layout {
+    :root {
+      --navy: #1B355D;
+      --bg-main: #F4F6F9;
+      --white: #ffffff;
+      --border: #E2E8F0;
+      --text-dark: #1A202C;
+      --text-muted: #718096;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); min-height: 100vh; padding-bottom: 60px; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+
+    /* CABECERA PRINCIPAL CON LETRAS BLANCAS Y GRANDES */
+    header.masthead {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 24px 0 20px 0;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; }
+    
+    .brand-area { display: flex; flex-direction: column-reverse; }
+    .brand-area h1 { font-size: 28px; font-weight: 700; color: var(--white); line-height: 1.2; }
+    .brand-top { font-size: 14px; font-weight: 600; color: #A0AEC0; margin-bottom: 6px; letter-spacing: 0.3px; }
+
+    .search-area input { 
+      background: rgba(255,255,255,0.1); 
+      color: var(--white); 
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px; 
+      padding: 10px 16px; 
+      width: 300px; 
+      font-size: 13px; 
+      outline: none;
+      transition: all 0.2s;
+    }
+    .search-area input::placeholder { color: rgba(255,255,255,0.4); }
+    .search-area input:focus { background: var(--white); color: var(--text-dark); border-color: var(--white); }
+
+    /* ESTRUCTURA DE 3 COLUMNAS CORREGIDA */
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    @media (max-width: 1150px) { .dashboard-layout { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) { .dashboard-layout { grid-template-columns: 1fr; } }
+
+    .column { display: flex; flex-direction: column; gap: 20px; }
+
+    /* CONTENEDOR DE PROGRAMAS (BLOQUES PRINCIPALES) */
+    .program-card { background: transparent; display: flex; flex-direction: column; gap: 10px; }
+    
+    .prog-header {
       display: flex;
-      align-items: flex-end;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-    .btn-executive-roadmap {
-      display: inline-flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.15);
-      color: #ffffff;
-      padding: 5px 14px;
-      border-radius: 20px;
-      font-size: 12px;
+      padding: 14px 20px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .prog-header .counter { font-size: 20px; font-weight: 700; }
+
+    /* Colores exactos de las cabeceras basados en tu imagen */
+    .bg-minorista { background-color: #D3E4F4; color: #1B355D; }
+    .bg-regulatorios { background-color: #923D1F; color: var(--white); }
+    .bg-habilitadores { background-color: #1F3A60; color: var(--white); }
+    .bg-mayorista { background-color: #F1DFD7; color: #5C3A21; }
+    .bg-hub { background-color: #B0B3B8; color: var(--white); }
+
+    .subsection-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-top: 6px;
+      padding-bottom: 2px;
+    }
+
+    /* FILAS DOBLES HORIZONTALES PARA MINORISTA Y MAYORISTA */
+    .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 650px) { .dual-grid { grid-template-columns: 1fr; } }
+
+    .proj-list { display: flex; flex-direction: column; gap: 8px; }
+
+    /* CONTENEDOR BLANCO COMPACTO DE PROYECTO */
+    .proj-row {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12.5px;
+      box-shadow: var(--shadow);
+    }
+    .proj-name { font-weight: 500; color: #2D3748; padding-right: 8px; line-height: 1.4; }
+    .proj-lead {
+      font-size: 11px;
       font-weight: 600;
-      text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      margin-bottom: 2px;
-      transition: all 0.2s ease;
+      background: #EFF4FA;
+      color: #2B6CB0;
+      padding: 3px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
     }
-    .btn-executive-roadmap:hover {
-      background: #ffffff;
-      color: #1B355D;
+    .proj-lead.empty {
+      background: #F7FAFC;
+      color: #A0AEC0;
     }
+
+    /* Bloques específicos de subprogramas internos de Mayorista */
+    .subprogram-box {
+      border: 1px solid var(--border);
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+    .subprogram-header { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+    .subprogram-leads { font-size: 11px; color: var(--text-muted); margin-bottom: 10px; font-weight: 600; }
+    
+    .bullet-container { display: flex; flex-direction: column; gap: 4px; padding-top: 6px; border-top: 1px dashed var(--border); }
+    .bullet-item { font-size: 12px; color: #4A5568; padding-left: 14px; position: relative; }
+    .bullet-item::before { content: "•"; position: absolute; left: 2px; color: #A0AEC0; font-size: 14px; }
+    .bullet-tbd { color: var(--text-muted); font-size: 11px; font-weight: 500; margin-left: 4px; }
   </style>
 </head>
 <body>
 
+  <!-- CABECERA ACTUALIZADA CON TEXTO GRANDE BLANCO -->
   <header class="masthead">
     <div class="wrap header-inner">
-      <div class="brand">
-        <span class="brand-top">PORTAFOLIO DE PROYECTOS 2027 · PMO</span>
-        <div class="brand-flex-layout">
-          <h1>Tablero de Control Operativo</h1>
-          <!-- Enlace directo al nuevo Roadmap -->
-          <a href="roadmap.html" class="btn-executive-roadmap">
-            📊 Ver Roadmap
-          </a>
-        </div>
+      <div class="brand-area">
+        <h1>Portafolio de Proyectos 2027</h1>
+        <div class="brand-top">3 Programas &nbsp;•&nbsp; 38 Proyectos</div>
       </div>
       <div class="search-area">
-        <input type="text" id="search-input" placeholder="🔍 Buscar proyecto o responsable...">
+        <input type="text" id="search-input" placeholder="Buscar proyecto o responsable...">
       </div>
     </div>
   </header>
 
   <main class="wrap">
-    <div class="dashboard-grid">
-      <div class="column" id="col-1"></div>
-      <div class="column" id="col-2"></div>
-      <div class="column" id="col-3"></div>
-    </div>
-  </main>
+    <div class="dashboard-layout">
+      
+      <!-- COLUMNA I: BANCA MINORISTA Y BANCA MAYORISTA -->
+      <div class="column">
+        
+        <!-- Bloque 1: Banca Minorista -->
+        <div class="program-card">
+          <div class="prog-header bg-minorista">
+            <span>Banca Minorista</span>
+            <span class="counter">8</span>
+          </div>
+          <div class="subsection-title">Nuevos proyectos • 8</div>
+          <div class="dual-grid">
+            <div class="proj-list" id="minorista-col-1"></div>
+            <div class="proj-list" id="minorista-col-2"></div>
+          </div>
+        </div>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+        <!-- Bloque 2: Banca Mayorista -->
+        <div class="program-card">
+          <div class="prog-header bg-mayorista">
+            <span>Banca Mayorista</span>
+            <span class="counter">...</span>
+          </div>
+          
+          <div class="dual-grid" style="align-items: start;">
+            <!-- Subprograma Izquierdo -->
+            <div class="proj-list">
+              <div class="subprogram-box">
+                <div class="subprogram-header">Banca de Empresas · Programa</div>
+                <div class="subprogram-leads">R. Galindo / B. Flores</div>
+                <div class="proj-row" style="box-shadow:none; padding:0; border:none; margin-bottom:8px;">
+                  <span class="proj-name" style="color:#2B6CB0; font-weight:600; font-size:12.5px;">Plataforma Banca Empresarial Fase 1 <br><span style="font-size:10.5px; color:var(--text-muted);">(PyME, Empresa Mediana y Gpos Corporativos)</span></span>
+                </div>
+                <div class="bullet-container">
+                  <div class="bullet-item">Proyectos Crédito <span class="bullet-tbd">(TBD)</span></div>
+                  <div class="bullet-item">Proyectos Captación <span class="bullet-tbd">(TBD)</span></div>
+                  <div class="bullet-item">Proyectos Servicios <span class="bullet-tbd">(TBD)</span></div>
+                </div>
+              </div>
+              <div class="subsection-title">Transversales • 4</div>
+              <div id="may-transversales" class="proj-list"></div>
+            </div>
+
+            <!-- Subprograma Derecho -->
+            <div class="proj-list">
+              <div class="subprogram-box">
+                <div class="subprogram-header">Banca de Gobierno · Programa</div>
+                <div class="subprogram-leads">R. Vázquez</div>
+                <div class="proj-row" style="box-shadow:none; padding:0; border:none; margin-bottom:8px;">
+                  <span class="proj-name" style="color:#2B6CB0; font-weight:600; font-size:12.5px;">Plataforma Banca Gobierno Fase 1 <br><span style="font-size:10.5px; color:var(--text-muted);">(TBD)</span></span>
+                </div>
+                <div class="bullet-container">
+                  <div class="bullet-item">Proyectos Crédito <span class="bullet-tbd">(TBD)</span></div>
+                  <div class="bullet-item">Proyectos Captación <span class="bullet-tbd">(TBD)</span></div>
+                  <div class="bullet-item">Proyectos Servicios <span class="bullet-tbd">(TBD)</span></div>
+                </div>
+              </div>
+              <div id="may-lineas-negocio" class="proj-list" style="margin-top:4px;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- COLUMNA II: REGULATORIOS Y HUB DE INNOVACIÓN -->
+      <div class="column">
+        <!-- Bloque 3: Regulatorios -->
+        <div class="program-card">
+          <div class="prog-header bg-regulatorios">
+            <span>Regulatorios</span>
+            <span class="counter">7</span>
+          </div>
+          <div class="subsection-title">Carry-over 2026 • 4</div>
+          <div class="proj-list" id="reg-carryover"></div>
+          
+          <div class="subsection-title">Nuevos proyectos • 3</div>
+          <div class="proj-list" id="reg-nuevos"></div>
+        </div>
+
+        <!-- Bloque 4: Hub de Innovación -->
+        <div class="program-card">
+          <div class="prog-header bg-hub">
