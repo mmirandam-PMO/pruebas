@@ -16,14 +16,19 @@ function getProgEmoji(name) {
   return '📂';
 }
 
-// Icono SVG exacto de la ruta con pin y bandera
+// Icono SVG modificado para calcar exactamente la imagen proporcionada
 const routeIconSvg = `
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7F8C8D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.85;">
-    <path d="M4 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
-    <path d="M4 15V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3H5"/>
-    <path d="M12 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
-    <path d="M14 17h4a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-4"/>
-    <path d="M12 15V8a2 2 0 0 0-2-2H4"/>
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Pin de ubicación en la parte inferior izquierda -->
+    <path d="M10 16.5c0 0-4.5-3.5-4.5-6.5a4.5 4.5 0 1 1 9 0c0 3-4.5 6.5-4.5 6.5Z"/>
+    <circle cx="10" cy="10" r="1.5"/>
+    
+    <!-- Línea curva en S que conecta el pin con la bandera -->
+    <path d="M10 16.5c2 2.5 7 2.5 7 0s-5-3-5-5.5 5-2.5 5 0"/>
+    
+    <!-- Mástil y bandera en la parte superior derecha -->
+    <line x1="17" y1="11" x2="17" y2="4"/>
+    <path d="M17 4h5l-1.5 2 1.5 2h-5"/>
   </svg>
 `;
 
