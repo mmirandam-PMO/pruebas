@@ -14,7 +14,7 @@ const pmoData = {
             { nombre: "Créditos Asociados a Nómina (CAN)", responsable: "S. Olivero" },
             { nombre: "Cash Loans", responsable: "S. Olivero" },
             { nombre: "Personalización de Ofertas", responsable: "S. Olivero" },
-            { nombre: "Cuenta Rocket", responsable: "S. Olivero", destacado: "orange" }
+            { nombre: "Cuenta Rocket", responsable: "S. Olivero" }
           ]
         }
       ]
@@ -28,7 +28,7 @@ const pmoData = {
           proyectos: [
             { nombre: "PCI DSS", responsable: "C. Carreón" },
             { nombre: "Segundo factor de autenticación (Trxs no presenciales)", responsable: "C. Carreón" },
-            { nombre: "Formulario FATCA / CRS", responsable: "C. Budar" }, // CAMBIO 2: Eliminado color naranja/rosa para volver a texto normal
+            { nombre: "Formulario FATCA / CRS", responsable: "C. Budar" },
             { nombre: "Identificador Cliente Derechos ARCO", responsable: "C. Carreón" }
           ]
         },
@@ -53,7 +53,7 @@ const pmoData = {
             { nombre: "Plataforma Banca Empresarial Fase 1 (PyME, Empresa Mediana y Gpos Corporativos)", responsable: "R. Galindo / B. Flores", destacado: "blue" }, 
             { nombre: "• Proyectos Crédito", responsable: "TBD", destacado: "muted" },
             { nombre: "• Proyectos Captación", responsable: "TBD", destacado: "muted" },
-            { nombre: "• Proyectos Servicios", responsable: "TBD", destacado: "muted" }
+            { fontname: "sans-serif", nombre: "• Proyectos Servicios", responsable: "TBD", destacado: "muted" }
           ] 
         },
         { 
@@ -71,12 +71,12 @@ const pmoData = {
         {
           tipo: "Transversales · 4",
           proyectos: [
-            { nombre: "Banca Electrónica y Móvil", responsable: "--" }, // CAMBIO 2: Eliminado destacado "red"
-            { nombre: "Hub de pagos", responsable: "--" },              // CAMBIO 2: Eliminado destacado "red"
+            { nombre: "Banca Electrónica y Móvil", responsable: "--" },
+            { nombre: "Hub de pagos", responsable: "--" },
             { nombre: "Dispersión de Nóminas", responsable: "--" },
-            { nombre: "Banco Recaudador", responsable: "R. Vázquez" }     // CAMBIO 2: Eliminado destacado "red"
+            { nombre: "Banco Recaudador", responsable: "R. Vázquez" }
           ]
-        } // CAMBIO 1: Se eliminó el bloque intermedio "Líneas de Negocio" y se unificaron los 4 proyectos aquí
+        }
       ]
     },
     {
@@ -101,9 +101,9 @@ const pmoData = {
         {
           tipo: "Enfoque al Cliente · 3",
           proyectos: [
-            { nombre: "Programa Lazos", responsable: "A. Nava" },                 // CAMBIO 2: Eliminado destacado "orange"
-            { nombre: "Reingeniería IVR", responsable: "A. Nava" },               // CAMBIO 2: Eliminado destacado "orange"
-            { nombre: "Automatización de procesos ATC (3 SOWs)", responsable: "A. Nava" } // CAMBIO 2: Eliminado destacado "orange"
+            { nombre: "Programa Lazos", responsable: "A. Nava" },
+            { nombre: "Reingeniería IVR", responsable: "A. Nava" },
+            { nombre: "Automatización de procesos ATC (3 SOWs)", responsable: "A. Nava" }
           ]
         },
         {
