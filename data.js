@@ -28,7 +28,7 @@ const pmoData = {
           proyectos: [
             { nombre: "PCI DSS", responsable: "C. Carreón" },
             { nombre: "Segundo factor de autenticación (Trxs no presenciales)", responsable: "C. Carreón" },
-            { nombre: "Formulario FATCA / CRS", responsable: "C. Budar", destacado: "pink" },
+            { nombre: "Formulario FATCA / CRS", responsable: "C. Budar" }, // CAMBIO 2: Eliminado color naranja/rosa para volver a texto normal
             { nombre: "Identificador Cliente Derechos ARCO", responsable: "C. Carreón" }
           ]
         },
@@ -71,17 +71,12 @@ const pmoData = {
         {
           tipo: "Transversales · 4",
           proyectos: [
-            { nombre: "Banca Electrónica y Móvil", responsable: "--", destacado: "red" }, 
-            { nombre: "Hub de pagos", responsable: "--", destacado: "red" }
+            { nombre: "Banca Electrónica y Móvil", responsable: "--" }, // CAMBIO 2: Eliminado destacado "red"
+            { nombre: "Hub de pagos", responsable: "--" },              // CAMBIO 2: Eliminado destacado "red"
+            { nombre: "Dispersión de Nóminas", responsable: "--" },
+            { nombre: "Banco Recaudador", responsable: "R. Vázquez" }     // CAMBIO 2: Eliminado destacado "red"
           ]
-        },
-        {
-          tipo: "Líneas de Negocio",
-          proyectos: [
-            { nombre: "Dispersión de Nóminas", responsable: "--" }, 
-            { nombre: "Banco Recaudador", responsable: "R. Vázquez", destacado: "red" }
-          ]
-        }
+        } // CAMBIO 1: Se eliminó el bloque intermedio "Líneas de Negocio" y se unificaron los 4 proyectos aquí
       ]
     },
     {
@@ -106,9 +101,9 @@ const pmoData = {
         {
           tipo: "Enfoque al Cliente · 3",
           proyectos: [
-            { nombre: "Programa Lazos", responsable: "A. Nava", destacado: "orange" },
-            { nombre: "Reingeniería IVR", responsable: "A. Nava", destacado: "orange" },
-            { nombre: "Automatización de procesos ATC (3 SOWs)", responsable: "A. Nava", destacado: "orange" }
+            { nombre: "Programa Lazos", responsable: "A. Nava" },                 // CAMBIO 2: Eliminado destacado "orange"
+            { nombre: "Reingeniería IVR", responsable: "A. Nava" },               // CAMBIO 2: Eliminado destacado "orange"
+            { nombre: "Automatización de procesos ATC (3 SOWs)", responsable: "A. Nava" } // CAMBIO 2: Eliminado destacado "orange"
           ]
         },
         {
