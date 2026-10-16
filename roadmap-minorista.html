@@ -57,14 +57,14 @@
       overflow-x: auto;
     }
 
-    /* Nueva Estructura del Grid (Añadida la columna del líder: 160px) */
+    /* Estructura del Grid */
     .gantt-grid {
       display: grid;
       grid-template-columns: 280px 160px repeat(12, minmax(65px, 1fr));
       min-width: 1200px;
     }
 
-    /* Cabecera de la Gráfica (Meses) */
+    /* Cabecera de la Gráfica */
     .gantt-header-cell {
       background: #FAFBFC;
       padding: 14px 12px;
@@ -121,11 +121,10 @@
       color: var(--blue-brand);
     }
     .row-category .gantt-cell.leader-header {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--navy);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
     }
     .row-category .gantt-timeline-cell { background: #FAFBFC; }
 
@@ -186,8 +185,8 @@
       <div class="gantt-grid">
         
         <!-- Fila de Encabezados -->
-        <div class="gantt-header-cell title-side"></div> <!-- Celda vacía sin el texto amarillo -->
-        <div class="gantt-header-cell title-side"></div> <!-- Celda vacía para la cabecera del líder -->
+        <div class="gantt-header-cell title-side"></div>
+        <div class="gantt-header-cell title-side"></div>
         <div class="gantt-header-cell">Ene 27</div>
         <div class="gantt-header-cell">Feb 27</div>
         <div class="gantt-header-cell">Mar 27</div>
@@ -214,7 +213,7 @@
         <!-- ================= NIVEL 2: CATEGORÍA ================= -->
         <div class="gantt-row row-category">
           <div class="gantt-cell">Nuevos proyectos · 8</div>
-          <div class="gantt-cell leader-header">Líder de proyecto</div>
+          <div class="gantt-cell leader-header">Líder de Proyecto</div>
           <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;">
             <div class="bar bar-category"></div>
           </div>
@@ -277,3 +276,5 @@
 
         <!-- Proyecto 6 -->
         <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Cash Loans</span></div>
+          <div class="gantt-cell"><span class="proj-owner">S. Olivero</span></div>
