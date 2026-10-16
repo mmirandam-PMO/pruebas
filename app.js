@@ -16,7 +16,7 @@ function getProgEmoji(name) {
   return '📂';
 }
 
-// Estilo de etiqueta "Roadmap" basado en el badge gris redondeado de la imagen 2
+// Estilo de etiqueta "Roadmap" basado en el badge gris redondeado
 const roadmapBadgeHtml = `
   <span style="
     background: rgba(27, 42, 74, 0.06); 
@@ -68,7 +68,7 @@ function render() {
   const term = document.getElementById('search-input').value.toLowerCase().trim();
   const findProg = name => pmoData.programas.find(p => p.nombre === name);
 
-  // 1. Banca Minorista -> Abre en la misma pestaña
+  // 1. Banca Minorista
   const minor = findProg('Banca Minorista');
   if (minor) {
     let cardHtml = `
