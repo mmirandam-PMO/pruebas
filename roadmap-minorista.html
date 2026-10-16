@@ -25,7 +25,7 @@
     body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); padding-bottom: 60px; }
     .wrap { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
 
-    /* Cabecera Limpia Corregida */
+    /* Cabecera */
     header.masthead {
       background: linear-gradient(90deg, var(--navy) 0%, #1B4E5A 100%);
       color: var(--white);
@@ -57,11 +57,11 @@
       overflow-x: auto;
     }
 
-    /* Estructura del Diagrama Gantt */
+    /* Nueva Estructura del Grid (Añadida la columna del líder: 160px) */
     .gantt-grid {
       display: grid;
-      grid-template-columns: 380px repeat(12, minmax(65px, 1fr));
-      min-width: 1100px;
+      grid-template-columns: 280px 160px repeat(12, minmax(65px, 1fr));
+      min-width: 1200px;
     }
 
     /* Cabecera de la Gráfica (Meses) */
@@ -75,15 +75,15 @@
       border-bottom: 2px solid var(--border);
       border-right: 1px solid #EAECEF;
     }
-    .gantt-header-cell.title-side { text-align: left; font-size: 12px; color: var(--navy); }
+    .gantt-header-cell.title-side { text-align: left; font-size: 12px; color: var(--navy); background: #FAFBFC; }
 
-    /* Filas de Niveles */
+    /* Filas del Diagrama */
     .gantt-row {
       display: contents;
     }
 
     .gantt-cell {
-      padding: 10px 16px;
+      padding: 12px 16px;
       border-bottom: 1px solid #EAECEF;
       border-right: 1px solid #F0F2F5;
       display: flex;
@@ -92,7 +92,7 @@
       position: relative;
     }
 
-    /* Líneas de cuadrícula visuales de fondo */
+    /* Celdas del Cronograma */
     .gantt-timeline-cell {
       padding: 0;
       border-bottom: 1px solid #EAECEF;
@@ -103,7 +103,7 @@
       position: relative;
     }
 
-    /* Nivel 1: Programa Principal */
+    /* Nivel 1: Programa */
     .row-program .gantt-cell {
       background: #F4F7FA;
       font-weight: 700;
@@ -113,29 +113,31 @@
     }
     .row-program .gantt-timeline-cell { background: #F4F7FA; border-bottom: 2px solid var(--border); }
 
-    /* Nivel 2: Subprograma / Categoría */
+    /* Nivel 2: Categoría */
     .row-category .gantt-cell {
       background: #FAFBFC;
       font-weight: 600;
       font-size: 13.5px;
       color: var(--blue-brand);
-      padding-left: 28px;
+    }
+    .row-category .gantt-cell.leader-header {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     .row-category .gantt-timeline-cell { background: #FAFBFC; }
 
-    /* Nivel 3: Proyectos Individuales */
+    /* Nivel 3: Proyectos */
     .row-project .gantt-cell {
-      padding-left: 42px;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 2px;
+      font-size: 13px;
+      color: var(--text-dark);
     }
-    .proj-title { font-size: 13px; font-weight: 500; color: var(--text-dark); }
-    .proj-meta { font-size: 11px; color: var(--text-muted); font-weight: 400; }
+    .proj-title { font-weight: 500; }
     .proj-owner { font-weight: 600; color: #4A5568; }
 
-    /* Barras del Cronograma (Cascada Efectiva) */
+    /* Barras del Cronograma */
     .bar {
       height: 12px;
       border-radius: 20px;
@@ -145,14 +147,13 @@
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
     
-    /* Colores por Niveles */
     .bar-program { background: var(--navy); height: 16px; }
     .bar-category { background: var(--blue-brand); height: 14px; }
     .bar-project { background: var(--blue-light); }
     .bar-project.offset-q2 { background: #5DADE2; }
     .bar-project.offset-q3 { background: #85C1E9; }
 
-    /* Línea de día actual vertical (Simulada a principio de año) */
+    /* Indicador de Línea de Hoy */
     .today-line {
       position: absolute;
       top: 0;
@@ -167,7 +168,7 @@
 </head>
 <body>
 
-  <!-- Cabecera Estratégica Modificada -->
+  <!-- Cabecera -->
   <header class="masthead">
     <div class="wrap header-inner">
       <div class="brand">
@@ -179,13 +180,14 @@
     </div>
   </header>
 
-  <!-- Contenedor Principal del Diagrama -->
+  <!-- Contenedor del Diagrama -->
   <main class="wrap">
     <div class="roadmap-container">
       <div class="gantt-grid">
         
         <!-- Fila de Encabezados -->
-        <div class="gantt-header-cell title-side">Estructura Operativa / Proyecto</div>
+        <div class="gantt-header-cell title-side"></div> <!-- Celda vacía sin el texto amarillo -->
+        <div class="gantt-header-cell title-side"></div> <!-- Celda vacía para la cabecera del líder -->
         <div class="gantt-header-cell">Ene 27</div>
         <div class="gantt-header-cell">Feb 27</div>
         <div class="gantt-header-cell">Mar 27</div>
@@ -202,77 +204,76 @@
         <!-- ================= NIVEL 1: PROGRAMA ================= -->
         <div class="gantt-row row-program">
           <div class="gantt-cell">🔷 Banca Minorista</div>
-          <!-- Barra Completa de Ene a Dic -->
-          <div class="gantt-timeline-cell" style="grid-column: 2 / span 12;">
+          <div class="gantt-cell"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;">
             <div class="bar bar-program"></div>
-            <div class="today-line"></div> <!-- Línea de avance actual -->
+            <div class="today-line"></div>
           </div>
         </div>
 
         <!-- ================= NIVEL 2: CATEGORÍA ================= -->
         <div class="gantt-row row-category">
           <div class="gantt-cell">Nuevos proyectos · 8</div>
-          <!-- Barra resumida de la categoría ocupando todo el año -->
-          <div class="gantt-timeline-cell" style="grid-column: 2 / span 12;">
+          <div class="gantt-cell leader-header">Líder de proyecto</div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;">
             <div class="bar bar-category"></div>
           </div>
         </div>
 
-        <!-- ================= NIVEL 3: PROYECTOS EN CASCADA ================= -->
+        <!-- ================= NIVEL 3: PROYECTOS ================= -->
         <!-- Proyecto 1 -->
         <div class="gantt-row row-project">
-          <div class="gantt-cell">
-            <span class="proj-title">App de Inversiones MVP 2</span>
-            <span class="proj-meta"><span class="proj-owner">S. Olivero</span> | 01/01/27 - 30/04/27</span>
-          </div>
-          <div class="gantt-timeline-cell" style="grid-column: 2 / span 4;">
+          <div class="gantt-cell"><span class="proj-title">App de Inversiones MVP 2</span></div>
+          <div class="gantt-cell"><span class="proj-owner">S. Olivero</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 4;">
             <div class="bar bar-project"></div>
           </div>
-          <div class="gantt-timeline-cell" style="grid-column: 6 / span 8;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 7 / span 8;"></div>
         </div>
 
         <!-- Proyecto 2 -->
         <div class="gantt-row row-project">
-          <div class="gantt-cell">
-            <span class="proj-title">Rediseño Proceso de Originación MVP 2</span>
-            <span class="proj-meta"><span class="proj-owner">S. Olivero</span> | 15/01/27 - 31/05/27</span>
-          </div>
-          <div class="gantt-timeline-cell" style="grid-column: 2 / span 1;"></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 4;">
+          <div class="gantt-cell"><span class="proj-title">Rediseño Proceso de Originación MVP 2</span></div>
+          <div class="gantt-cell"><span class="proj-owner">S. Olivero</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 1;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 4 / span 4;">
             <div class="bar bar-project"></div>
           </div>
-          <div class="gantt-timeline-cell" style="grid-column: 7 / span 7;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 8 / span 7;"></div>
         </div>
 
         <!-- Proyecto 3 -->
         <div class="gantt-row row-project">
-          <div class="gantt-cell">
-            <span class="proj-title">Copiloto MVP 2</span>
-            <span class="proj-meta"><span class="proj-owner">S. Olivero</span> | 01/03/27 - 31/07/27</span>
-          </div>
-          <div class="gantt-timeline-cell" style="grid-column: 2 / span 2;"></div>
-          <div class="gantt-timeline-cell" style="grid-column: 4 / span 5;">
+          <div class="gantt-cell"><span class="proj-title">Copiloto MVP 2</span></div>
+          <div class="gantt-cell"><span class="proj-owner">S. Olivero</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 2;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 5 / span 5;">
             <div class="bar bar-project offset-q2"></div>
           </div>
-          <div class="gantt-timeline-cell" style="grid-column: 9 / span 5;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 10 / span 5;"></div>
         </div>
 
         <!-- Proyecto 4 -->
         <div class="gantt-row row-project">
-          <div class="gantt-cell">
-            <span class="proj-title">Seguros RANMA</span>
-            <span class="proj-meta"><span class="proj-owner">S. Olivero</span> | 01/04/27 - 31/08/27</span>
-          </div>
-          <div class="gantt-timeline-cell" style="grid-column: 2 / span 3;"></div>
-          <div class="gantt-timeline-cell" style="grid-column: 5 / span 5;">
+          <div class="gantt-cell"><span class="proj-title">Seguros RANMA</span></div>
+          <div class="gantt-cell"><span class="proj-owner">S. Olivero</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 3;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 6 / span 5;">
             <div class="bar bar-project offset-q2"></div>
           </div>
-          <div class="gantt-timeline-cell" style="grid-column: 10 / span 4;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 11 / span 4;"></div>
         </div>
 
         <!-- Proyecto 5 -->
         <div class="gantt-row row-project">
-          <div class="gantt-cell">
-            <span class="proj-title">Créditos Asociados a Nómina (CAN)</span>
-            <span class="proj-meta"><span class="proj-owner">S. Olivero</span> | 01/06/27 - 31/10/27</span>
+          <div class="gantt-cell"><span class="proj-title">Créditos Asociados a Nómina (CAN)</span></div>
+          <div class="gantt-cell"><span class="proj-owner">S. Olivero</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 5;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 8 / span 5;">
+            <div class="bar bar-project offset-q3"></div>
           </div>
+          <div class="gantt-timeline-cell" style="grid-column: 13 / span 2;"></div>
+        </div>
+
+        <!-- Proyecto 6 -->
+        <div class="gantt-row row-project">
