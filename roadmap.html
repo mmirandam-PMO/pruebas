@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roadmap 2027 · PMO</title>
+  <link href="https://googleapis.com" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .brand-flex-layout {
+      display: flex;
+      align-items: flex-end;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .btn-executive-roadmap {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      margin-bottom: 2px;
+      transition: all 0.2s ease;
+    }
+    .btn-executive-roadmap:hover {
+      background: #ffffff;
+      color: #1B355D;
+    }
+
+    /* Contenedor principal Gantt */
+    .gantt-box { 
+      background: var(--white); 
+      border-radius: var(--radius); 
+      box-shadow: var(--shadow); 
+      overflow: hidden; 
+      border: 1px solid var(--border); 
+      margin-top: 20px; 
+    }
+    .gantt-title-row { 
+      display: grid; 
+      grid-template-columns: 2.5fr 1fr repeat(4, 1fr); 
+      background: var(--navy); 
+      color: var(--white); 
+      font-size: 13px; 
+      font-weight: 700; 
+      text-align: center; 
+    }
+    .gantt-title-row div { 
+      padding: 14px; 
+      border-right: 1px solid rgba(255, 255, 255, 0.1); 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+    }
+    .gantt-title-row .align-left { 
+      justify-content: flex-start; 
+      padding-left: 20px; 
+    }
+    .gantt-row { 
+      display: grid; 
+      grid-template-columns: 2.5fr 1fr 4fr; 
+      border-bottom: 1px solid var(--border); 
+      align-items: center; 
+      background: var(--white); 
+    }
+    .gantt-row:last-child { border-bottom: none; }
+    .cell-info { padding: 14px 20px; font-size: 13.5px; }
+    .cell-info small { display: block; font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; margin-bottom: 2px; }
+    .cell-info span { font-weight: 500; color: var(--text-dark); }
+    .cell-lead { padding: 14px; font-size: 12px; color: #4A5568; font-weight: 700; }
+    
+    /* Espacio del timeline track */
+    .timeline-track { 
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      height: 48px; 
+      position: relative; 
+      align-items: center; 
+      border-left: 1px solid var(--border); 
+    }
+    .q-divider { height: 100%; border-right: 1px solid #EDF2F7; }
+    .q-divider:last-child { border-right: none; }
+    
+    /* Barras azules ejecutivas */
+    .gantt-bar-fill { 
+      position: absolute; 
+      height: 12px; 
+      background: #4A90E2; 
+      border-radius: 20px; 
+      z-index: 5; 
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <span class="brand-top">PORTAFOLIO DE PROYECTOS 2027 · PMO</span>
+        <div class="brand-flex-layout">
+          <h1>Roadmap 2027</h1>
+          <a href="index.html" class="btn-executive-roadmap">
+            ⬅️ Regresar al Tablero
+          </a>
+        </div>
+      </div>
+      <div class="search-area">
+        <input type="text" id="gantt-search" placeholder="🔍 Buscar proyecto o responsable...">
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="gantt-box">
+      <div class="gantt-title-row">
+        <div class="align-left">Proyecto</div>
+        <div class="align-left">Responsable</div>
+        <div>Q1 2027</div>
+        <div>Q2 2027</div>
+        <div>Q3 2027</div>
+        <div>Q4 2027</div>
+      </div>
+      <div id="gantt-content"></div>
+    </div>
+  </main>
+
+  <!-- Cargamos tu nuevo archivo JavaScript estructurado -->
+  <script src="roadmap-data.js"></script>
+  <script>
+    // Parsea las fechas de forma segura previniendo desajustes de zona horaria
+    function getYearPercentage(dateString) {
+      const parts = dateString.trim().split('-');
+      if(parts.length !== 3) return 0;
+      
+      const current = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+      const start = new Date(2027, 0, 1);
+      const end = new Date(2027, 11, 31);
+      
+      const percentage = ((current - start) / (end - start)) * 100;
+      return Math.min(Math.max(percentage, 0), 100);
+    }
+
+    function renderGantt() {
+      const container = document.getElementById('gantt-content');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const term = document.getElementById('gantt-search').value.toLowerCase().trim();
+
+      // "excelData" viene directo de roadmap-data.js
+      excelData.forEach(row => {
+        const clasi = row.clasificacion || "";
+        const proy = row.proyecto || "";
+        const resp = row.responsable || "";
+        const inicio = row.inicio || "";
+        const fin = row.fin || "";
+
+        if (!inicio || !fin) return;
+
+        if (proy.toLowerCase().includes(term) || resp.toLowerCase().includes(term) || clasi.toLowerCase().includes(term)) {
+          const leftPercent = getYearPercentage(inicio);
+          const rightPercent = getYearPercentage(fin);
+          const barWidth = Math.max(rightPercent - leftPercent, 2); // Ancho mínimo estético
+
+          const divRow = document.createElement('div');
+          divRow.className = 'gantt-row';
+          divRow.innerHTML = `
+            <div class="cell-info"><small>${clasi}</small><span>${proy}</span></div>
+            <div class="cell-lead">${resp || '--'}</div>
+            <div class="timeline-track">
+              <div class="q-divider"></div><div class="q-divider"></div><div class="q-divider"></div><div class="q-divider"></div>
+              <div class="gantt-bar-fill" style="left: ${leftPercent}%; width: ${barWidth}%;"></div>
+            </div>
+          `;
+          container.appendChild(divRow);
+        }
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', renderGantt);
+    document.getElementById('gantt-search').addEventListener('input', renderGantt);
+  </script>
+</body>
+</html>

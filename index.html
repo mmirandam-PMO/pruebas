@@ -3,22 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio de Proyectos 2026</title>
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+  <title>Portafolio de Proyectos 2027 · PMO</title>
+  <link href="https://googleapis.com" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .brand-flex-layout {
+      display: flex;
+      align-items: flex-end;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .btn-executive-roadmap {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      margin-bottom: 2px;
+      transition: all 0.2s ease;
+    }
+    .btn-executive-roadmap:hover {
+      background: #ffffff;
+      color: #1B355D;
+    }
+  </style>
 </head>
 <body>
 
   <header class="masthead">
     <div class="wrap header-inner">
       <div class="brand">
-        <div class="brand-top">Portafolio Estratégico Corporativo</div>
-        <h1>Portafolio de Proyectos 2026</h1>
+        <span class="brand-top">PORTAFOLIO DE PROYECTOS 2027 · PMO</span>
+        <div class="brand-flex-layout">
+          <h1>Tablero de Control Operativo</h1>
+          <!-- Enlace directo al nuevo Roadmap -->
+          <a href="roadmap.html" class="btn-executive-roadmap">
+            📊 Ver Roadmap
+          </a>
+        </div>
       </div>
       <div class="search-area">
-        <input type="text" id="search-input" placeholder="🔍 Buscar proyecto, responsable o estatus..." autocomplete="off">
+        <input type="text" id="search-input" placeholder="🔍 Buscar proyecto o responsable...">
       </div>
     </div>
   </header>

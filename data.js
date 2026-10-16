@@ -1,105 +1,134 @@
 const pmoData = {
   programas: [
     {
-      nombre: "Actualización Tecnológica",
-      total_proyectos: 9,
+      nombre: "Banca Minorista",
+      total_proyectos: 8,
       categorias: [
         {
+          tipo: "Nuevos proyectos · 8",
           proyectos: [
-            { nombre: "Upgrade S4 HANNA (E R P)", responsable: "C. Budar", estatus: "En proceso" },
-            { nombre: "Herramientas IA", responsable: "M. Matus", estatus: "En proceso" },
-            { nombre: "Implementación Middleware (Greenfield)", responsable: "M. Matus", estatus: "En proceso" },
-            { nombre: "Robustecimiento BKAYA 2026", responsable: "M. Matus", estatus: "En proceso" },
-            { nombre: "CRM Objetivo", responsable: "M. Matus", estatus: "En proceso" },
-            { nombre: "Content Manager Objetivo (Filenet)", responsable: "M. Matus", estatus: "En proceso" },
-            { nombre: "Migración a BAW en Contenedores", responsable: "M. Matus", estatus: "En proceso" },
-            { nombre: "DR API CONNECT", responsable: "M. Matus", estatus: "En proceso" },
-            { nombre: "Nuevo Core Bancario & Bca Empresarial", responsable: "M. Matus", estatus: "En proceso" }
+            { nombre: "App de Inversiones MVP 2", responsable: "S. Olivero" },
+            { nombre: "Rediseño Proceso de Originación MVP 2", responsable: "S. Olivero" },
+            { nombre: "Copiloto MVP 2", responsable: "S. Olivero" },
+            { nombre: "Seguros RANMA", responsable: "S. Olivero" },
+            { nombre: "Créditos Asociados a Nómina (CAN)", responsable: "S. Olivero" },
+            { nombre: "Cash Loans", responsable: "S. Olivero" },
+            { nombre: "Personalización de Ofertas", responsable: "S. Olivero" },
+            { nombre: "Cuenta Rocket", responsable: "S. Olivero", destacado: "orange" }
           ]
         }
       ]
     },
     {
-      nombre: "Control Interno y Riesgos",
-      total_proyectos: 12,
+      nombre: "Regulatorios",
+      total_proyectos: 7,
       categorias: [
         {
+          tipo: "Carryover 2026 · 4",
           proyectos: [
-            { nombre: "Control de Cambios Proceso de Seguimiento Artículo 61", responsable: "A. Nava", estatus: "En proceso" },
-            { nombre: "Consultoría en PCI DSS", responsable: "G. Hernández", estatus: "En proceso" },
-            { nombre: "Reportes Regulatorios Reportware", responsable: "C. Budar", estatus: "En proceso" },
-            { nombre: "Migración Campo c63 al c57", responsable: "A. Nava", estatus: "No planeado", destacado: "orange" },
-            { nombre: "Nuevos requerimientos regulatorios", responsable: "--", estatus: "En proceso" },
-            { nombre: "Monitor Plus", responsable: "C. Carreón", estatus: "En proceso" },
-            { nombre: "Controles de Integridad de Software Core Bancario", responsable: "C. Carreón", estatus: "En proceso" },
-            { nombre: "Actualización", responsable: "C. Carreón", estatus: "Planeado", destacado: "blue" },
-            { nombre: "-3D Secure 2.0", responsable: "C. Carreón", estatus: "Planeado", destacado: "blue" },
-            { nombre: "Implementación: PUI - Protocolo de Alerta Nacional de Búsqueda de Personas Desaparecidas", responsable: "C. Carreón", estatus: "En proceso" },
-            { nombre: "DIMO", responsable: "C. Carreón", estatus: "En proceso" },
-            { nombre: "CODI", responsable: "C. Carreón", estatus: "Planeado", destacado: "blue" }
+            { nombre: "PCI DSS", responsable: "C. Carreón" },
+            { nombre: "2o Factor Autentic. trx TDD no presenc.", responsable: "C. Carreón" },
+            { nombre: "Formulario FATCA / CRS", responsable: "C. Budar", destacado: "pink" },
+            { nombre: "Identificador Cliente Derechos ARCO", responsable: "C. Carreón" }
+          ]
+        },
+        {
+          tipo: "Nuevos proyectos · 3",
+          proyectos: [
+            { nombre: "Nueva Plataforma PLD", responsable: "C. Carreón" },
+            { nombre: "Plataforma Reportes Regulatorios", responsable: "C. Budar", destacado: "blue" },
+            { nombre: "Herramientas Ciberseguridad", responsable: "C. Carreón" }
           ]
         }
       ]
     },
     {
-      nombre: "Enfoque al Cliente",
-      total_proyectos: 14,
-      categorias: [
-        {
+      nombre: "Banca Mayorista",
+      total_proyectos: 8,
+      subprogramas: [
+        { 
+          nombre: "Banca de Empresas · Programa", 
+          responsables: ["R. Galindo", "B. Flores"], 
           proyectos: [
-            { nombre: "Resolución de incidencias SPEI", responsable: "S. Olivero", estatus: "Planeado", destacado: "blue" },
-            { nombre: "Excepción biométrica y biométrico dactilar - 2026", responsable: "S. Olivero", estatus: "Planeado", destacado: "blue" },
-            { nombre: "Reingeniería IVR", responsable: "A. Nava", estatus: "En proceso" },
-            { nombre: "Automatización proceso trxs POS", responsable: "A. Nava", estatus: "En proceso" },
-            { nombre: "Reportes Control Central de Cuentas - Mesa de Control", responsable: "A. Nava", estatus: "En proceso" },
-            { nombre: "Identificación de tipo de solicitudes de Control Central de Cuentas", responsable: "A. Nava", estatus: "En proceso" },
-            { nombre: "Generación de tablero de resultados de Banca patrimonial", responsable: "C. Budar", estatus: "No planeado", destacado: "orange" },
-            { nombre: "Optimización Apertura Cuenta Personas Físicas", responsable: "C. Budar", estatus: "En proceso" },
-            { nombre: "Actualización y consulta de comprobantes de inversión", responsable: "C. Budar", estatus: "En proceso" },
-            { nombre: "Estudios de mercado", responsable: "R. Flores", estatus: "En proceso" },
-            { nombre: "Automatización de procesos (3 saws)", responsable: "A. Nava", estatus: "En proceso" },
-            { nombre: "Vista Integral 360", responsable: "A. Nava", estatus: "En proceso" },
-            { nombre: "Canal de soporte a Backoffice con Agente Numia", responsable: "A. Nava", estatus: "En proceso" },
-            { nombre: "NPS", responsable: "A. Nava", estatus: "Planeado", destacado: "blue" }
+            { nombre: "Plataforma Banca Empresarial Fase 1 (PyME, Empresa Mediana y Gpos Corporativos)", responsable: "R. Galindo / B. Flores", destacado: "blue" }, 
+            { nombre: "• Proyectos Crédito", responsable: "TBD", destacado: "muted" },
+            { nombre: "• Proyectos Captación", responsable: "TBD", destacado: "muted" },
+            { nombre: "• Proyectos Servicios", responsable: "TBD", destacado: "muted" }
+          ] 
+        },
+        { 
+          nombre: "Banca de Gobierno · Programa", 
+          responsables: ["R. Vázquez"], 
+          proyectos: [
+            { nombre: "Plataforma Banca Gobierno Fase 1 (TBD)", responsable: "R. Vázquez", destacado: "blue" },
+            { nombre: "• Proyectos Crédito", responsable: "TBD", destacado: "muted" },
+            { nombre: "• Proyectos Captación", responsable: "TBD", destacado: "muted" },
+            { nombre: "• Proyectos Servicios", responsable: "TBD", destacado: "muted" }
+          ] 
+        }
+      ],
+      transversales: [
+        {
+          tipo: "Transversales · 4",
+          proyectos: [
+            { nombre: "Banca Electrónica y Móvil", responsable: "--", destacado: "red" }, 
+            { nombre: "Hub de pagos", responsable: "--", destacado: "red" }
+          ]
+        },
+        {
+          tipo: "Líneas de Negocio",
+          proyectos: [
+            { nombre: "Dispersión de Nóminas", responsable: "--" }, 
+            { nombre: "Banco Recaudador", responsable: "R. Vázquez", destacado: "red" }
           ]
         }
       ]
     },
     {
-      nombre: "Estrategias de Negocio",
-      total_proyectos: 3,
+      nombre: "Hub de Innovación",
+      total_proyectos: 5,
       categorias: [
         {
+          tipo: "Por autorizar · 5",
           proyectos: [
-            { nombre: "Cuenta Rocket", responsable: "C. Budar", estatus: "En proceso" },
-            { nombre: "CRÉDITOS PYMES", responsable: "C. Budar", estatus: "No planeado", destacado: "orange" },
-            { nombre: "Cash Loans", responsable: "S. Olivero", estatus: "No planeado", destacado: "orange" }
+            { nombre: "Comunidad Lazos", responsable: "R. Flores" },
+            { nombre: "MVNO", responsable: "--" },
+            { nombre: "Productos de crédito (3) ...", responsable: "--" },
+            { nombre: "Producto de crédito", responsable: "--" }
           ]
         }
       ]
     },
     {
-      nombre: "Nueva Generación de",
-      total_proyectos: 3,
+      nombre: "Carry-over 2026",
+      total_proyectos: 13,
       categorias: [
         {
+          tipo: "Enfoque al Cliente · 3",
           proyectos: [
-            { nombre: "Oferta Dinámica 2.0", responsable: "S. Olivero", estatus: "En proceso" },
-            { nombre: "Definición nvo stack tecnol para nueva generación de aplicaciones", responsable: "M. Matus", estatus: "En proceso" },
-            { nombre: "Aplicación de Inversiones", responsable: "S. Olivero", estatus: "En proceso" }
+            { nombre: "Programa Lazos", responsable: "A. Nava", destacado: "orange" },
+            { nombre: "Reingeniería IVR", responsable: "A. Nava", destacado: "orange" },
+            { nombre: "Automatización de procesos ATC (3 saws)", responsable: "A. Nava", destacado: "orange" }
           ]
-        }
-      ]
-    },
-    {
-      nombre: "Programa Lazos",
-      total_proyectos: 3,
-      categorias: [
+        },
         {
+          tipo: "Operaciones · 4",
           proyectos: [
-            { nombre: "Campaña Perimetral: Trazabilidad WhatsApp creación de lead en Salesforce", responsable: "A. Nava", estatus: "En proceso" },
-            { nombre: "Automatización Programa Lazos", responsable: "A. Nava", estatus: "En proceso" },
-            { nombre: "Apertura de cuenta + Crédito", responsable: "R. Cohen", estatus: "En proceso" }
+            { nombre: "Automatización proceso trxs POS", responsable: "A. Nava" },
+            { nombre: "Implementación de TEF", responsable: "A. Nava" },
+            { nombre: "Tokenización", responsable: "A. Nava" },
+            { nombre: "Migración Campo c53 al c57", responsable: "A. Nava" }
+          ]
+        },
+        {
+          tipo: "Modernización Tecnológica · 6",
+          proyectos: [
+            { nombre: "CRM Objetivo", responsable: "M. Matus" },
+            { fontname: "sans-serif", nombre: "Content Manager Objetivo (Filenet)", responsable: "M. Matus" },
+            { nombre: "Upgrade S4 HANNA (E R P)", responsable: "C. Budar" },
+            { nombre: "Herramientas IA", responsable: "M. Matus" },
+            { nombre: "Implementación Middleware (Greenfield)", responsable: "M. Matus" },
+            { nombre: "Nuevo Core Bancario & Bca Empresarial", responsable: "M. Matus" }
           ]
         }
       ]
