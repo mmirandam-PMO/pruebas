@@ -16,7 +16,6 @@ function getProgEmoji(name) {
   return '📂';
 }
 
-// Estilo de etiqueta "Roadmap" basado en el badge gris redondeado de la imagen 2
 const roadmapBadgeHtml = `
   <span style="
     background: rgba(27, 42, 74, 0.06); 
@@ -58,98 +57,95 @@ function buildProjectRows(proyectos, term) {
 }
 
 function render() {
-  const col1 = document.getElementById('col-1');
-  const col2 = document.getElementById('col-2');
-  const col3 = document.getElementById('col-3');
+  const container = document.getElementById('dashboard-container');
+  if (!container) return;
   
-  if (!col1 || !col2 || !col3) return;
-  
-  col1.innerHTML = ''; col2.innerHTML = ''; col3.innerHTML = '';
+  container.innerHTML = '';
   const term = document.getElementById('search-input').value.toLowerCase().trim();
   const findProg = name => pmoData.programas.find(p => p.nombre === name);
 
-  // 1. Banca Minorista -> Abre en la misma pestaña
+  // 1. Obtener los datos de los programas
   const minor = findProg('Banca Minorista');
+  const reg = findProg('Regulatorios');
+  const may = findProg('Banca Mayorista');
+  const hub = findProg('Hub de Innovación');
+  const co = findProg('Habilitadores');
+
+  // Generar HTML individuales
+  let minorHtml = '';
   if (minor) {
-    let cardHtml = `
-      <div class="card header-minorista">
-        <div class="card-head">
-          <h2>${getProgEmoji(minor.nombre)} ${minor.nombre}</h2>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <a href="roadmap-minorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">
-              ${roadmapBadgeHtml}
-            </a> 
-            <span class="badge">${minor.total_proyectos}</span>
-          </div>
-        </div>
-    `;
+    minorHtml = `<div class="card header-minorista"><div class="card-head"><h2>${getProgEmoji(minor.nombre)} ${minor.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-minorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${minor.total_proyectos}</span></div></div>`;
     minor.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
+      if (res.matches > 0 || term === '') minorHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
     });
-    cardHtml += `</div>`;
-    col1.appendChild(document.createRange().createContextualFragment(cardHtml));
+    minorHtml += `</div>`;
   }
 
-  // 2. Regulatorios
-  const reg = findProg('Regulatorios');
+  let regHtml = '';
   if (reg) {
-    let cardHtml = `<div class="card header-regulatorios"><div class="card-head"><h2>${getProgEmoji(reg.nombre)} ${reg.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-regulatorios.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${reg.total_proyectos}</span></div></div>`;
+    regHtml = `<div class="card header-regulatorios"><div class="card-head"><h2>${getProgEmoji(reg.nombre)} ${reg.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-regulatorios.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${reg.total_proyectos}</span></div></div>`;
     reg.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
+      if (res.matches > 0 || term === '') regHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
     });
-    cardHtml += `</div>`;
-    col2.appendChild(document.createRange().createContextualFragment(cardHtml));
+    regHtml += `</div>`;
   }
 
-  // 3. Banca Mayorista
-  const may = findProg('Banca Mayorista');
+  let mayHtml = '';
   if (may) {
-    let cardHtml = `<div class="card header-mayorista"><div class="card-head"><h2>${getProgEmoji(may.nombre)} ${may.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-mayorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">8</span></div></div><div class="section-area">`;
-    
-    cardHtml += `<div class="subprogram-block-grid">`;
+    mayHtml = `<div class="card header-mayorista"><div class="card-head"><h2>${getProgEmoji(may.nombre)} ${may.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-mayorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">8</span></div></div><div class="section-area">`;
     may.subprogramas.forEach(sp => {
       const res = buildProjectRows(sp.proyectos, term);
       if (res.matches > 0 || term === '') {
         const leads = sp.responsables ? `<div class="subprogram-leads">${sp.responsables.join(' / ')}</div>` : '';
-        cardHtml += `<div class="subprogram-card"><div class="subprogram-title">${sp.nombre}</div>${leads}<div class="proj-list">${res.html}</div></div>`;
+        mayHtml += `<div class="subprogram-card"><div class="subprogram-title">${sp.nombre}</div>${leads}<div class="proj-list">${res.html}</div></div>`;
       }
     });
-    cardHtml += `</div>`;
-
+    mayHtml += `</div>`;
     may.transversales.forEach(t => {
       const res = buildProjectRows(t.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div style="margin-top:14px;"><div class="section-info"><span class="section-title">${t.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
+      if (res.matches > 0 || term === '') mayHtml += `<div style="margin-top:14px;"><div class="section-info"><span class="section-title">${t.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
     });
-
-    cardHtml += `</div></div>`;
-    col1.appendChild(document.createRange().createContextualFragment(cardHtml));
+    mayHtml += `</div></div>`;
   }
 
-  // 4. Hub de Innovación
-  const hub = findProg('Hub de Innovación');
+  let hubHtml = '';
   if (hub) {
-    let cardHtml = `<div class="card header-hub"><div class="card-head"><h2>${getProgEmoji(hub.nombre)} ${hub.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-hub.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${hub.total_proyectos}</span></div></div>`;
+    hubHtml = `<div class="card header-hub"><div class="card-head"><h2>${getProgEmoji(hub.nombre)} ${hub.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-hub.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${hub.total_proyectos}</span></div></div>`;
     hub.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
+      if (res.matches > 0 || term === '') hubHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
     });
-    cardHtml += `</div>`;
-    col2.appendChild(document.createRange().createContextualFragment(cardHtml));
+    hubHtml += `</div>`;
   }
 
-  // 5. Habilitadores
-  const co = findProg('Habilitadores');
+  let coHtml = '';
   if (co) {
-    let cardHtml = `<div class="card header-carryover"><div class="card-head"><h2>${getProgEmoji(co.nombre)} ${co.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-habilitadores.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${co.total_proyectos}</span></div></div>`;
+    coHtml = `<div class="card header-carryover"><div class="card-head"><h2>${getProgEmoji(co.nombre)} ${co.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-habilitadores.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${co.total_proyectos}</span></div></div>`;
     co.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
+      if (res.matches > 0 || term === '') coHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
     });
-    cardHtml += `</div>`;
-    col3.appendChild(document.createRange().createContextualFragment(cardHtml));
+    coHtml += `</div>`;
   }
+
+  // Construcción del diseño final balanceado por bloques horizontales
+  const gridHtml = `
+    <div class="gantt-column-block">
+      <div class="gantt-row-block">${minorHtml}</div>
+      <div class="gantt-row-block style-align-target">${mayHtml}</div>
+    </div>
+    <div class="gantt-column-block">
+      <div class="gantt-row-block">${regHtml}</div>
+      <div class="gantt-row-block style-align-target">${hubHtml}</div>
+    </div>
+    <div class="gantt-column-block">
+      <div class="gantt-row-block h-100">${coHtml}</div>
+    </div>
+  `;
+
+  container.appendChild(document.createRange().createContextualFragment(gridHtml));
 }
 
 document.getElementById('search-input').addEventListener('input', render);
