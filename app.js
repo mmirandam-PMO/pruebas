@@ -16,6 +16,17 @@ function getProgEmoji(name) {
   return '📂';
 }
 
+// Icono SVG exacto de la ruta con pin y bandera
+const routeIconSvg = `
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7F8C8D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.85;">
+    <path d="M4 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+    <path d="M4 15V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3H5"/>
+    <path d="M12 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+    <path d="M14 17h4a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-4"/>
+    <path d="M12 15V8a2 2 0 0 0-2-2H4"/>
+  </svg>
+`;
+
 function buildProjectRows(proyectos, term) {
   let html = '';
   let matches = 0;
@@ -53,7 +64,7 @@ function render() {
   // 1. Banca Minorista -> Columna 1
   const minor = findProg('Banca Minorista');
   if (minor) {
-    let cardHtml = `<div class="card header-minorista"><div class="card-head"><h2>${getProgEmoji(minor.nombre)} ${minor.nombre}</h2><span class="badge">${minor.total_proyectos}</span></div>`;
+    let cardHtml = `<div class="card header-minorista"><div class="card-head"><h2>${getProgEmoji(minor.nombre)} ${minor.nombre}</h2><div style="display:flex; align-items:center; gap:6px;">${routeIconSvg} <span class="badge">${minor.total_proyectos}</span></div></div>`;
     minor.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
       if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
@@ -65,7 +76,7 @@ function render() {
   // 2. Regulatorios -> Columna 2
   const reg = findProg('Regulatorios');
   if (reg) {
-    let cardHtml = `<div class="card header-regulatorios"><div class="card-head"><h2>${getProgEmoji(reg.nombre)} ${reg.nombre}</h2><span class="badge">${reg.total_proyectos}</span></div>`;
+    let cardHtml = `<div class="card header-regulatorios"><div class="card-head"><h2>${getProgEmoji(reg.nombre)} ${reg.nombre}</h2><div style="display:flex; align-items:center; gap:6px;">${routeIconSvg} <span class="badge">${reg.total_proyectos}</span></div></div>`;
     reg.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
       if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
@@ -77,7 +88,7 @@ function render() {
   // 3. Banca Mayorista -> Columna 1
   const may = findProg('Banca Mayorista');
   if (may) {
-    let cardHtml = `<div class="card header-mayorista"><div class="card-head"><h2>${getProgEmoji(may.nombre)} ${may.nombre}</h2><span class="badge">8</span></div><div class="section-area">`;
+    let cardHtml = `<div class="card header-mayorista"><div class="card-head"><h2>${getProgEmoji(may.nombre)} ${may.nombre}</h2><div style="display:flex; align-items:center; gap:6px;">${routeIconSvg} <span class="badge">8</span></div></div><div class="section-area">`;
     
     cardHtml += `<div class="subprogram-block-grid">`;
     may.subprogramas.forEach(sp => {
@@ -101,7 +112,7 @@ function render() {
   // 4. Hub de Innovación -> Columna 2
   const hub = findProg('Hub de Innovación');
   if (hub) {
-    let cardHtml = `<div class="card header-hub"><div class="card-head"><h2>${getProgEmoji(hub.nombre)} ${hub.nombre}</h2><span class="badge">${hub.total_proyectos}</span></div>`;
+    let cardHtml = `<div class="card header-hub"><div class="card-head"><h2>${getProgEmoji(hub.nombre)} ${hub.nombre}</h2><div style="display:flex; align-items:center; gap:6px;">${routeIconSvg} <span class="badge">${hub.total_proyectos}</span></div></div>`;
     hub.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
       if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
@@ -113,7 +124,7 @@ function render() {
   // 5. Habilitadores -> Columna 3
   const co = findProg('Habilitadores');
   if (co) {
-    let cardHtml = `<div class="card header-carryover"><div class="card-head"><h2>${getProgEmoji(co.nombre)} ${co.nombre}</h2><span class="badge">${co.total_proyectos}</span></div>`;
+    let cardHtml = `<div class="card header-carryover"><div class="card-head"><h2>${getProgEmoji(co.nombre)} ${co.nombre}</h2><div style="display:flex; align-items:center; gap:6px;">${routeIconSvg} <span class="badge">${co.total_proyectos}</span></div></div>`;
     co.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
       if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
