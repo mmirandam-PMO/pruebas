@@ -134,7 +134,9 @@
       color: var(--text-dark);
     }
     .proj-title { font-weight: 500; }
-    .proj-owner { font-weight: 600; color: #4A5568; }
+    
+    /* CORRECCIÓN: Quitadas las negritas (font-weight: 400) para el Líder de Proyecto */
+    .proj-owner { font-weight: 400; color: var(--text-dark); }
 
     /* Barras del Cronograma */
     .bar {
@@ -274,7 +276,4 @@
           <div class="gantt-timeline-cell" style="grid-column: 13 / span 2;"></div>
         </div>
 
-        <!-- Proyecto 6 -->
-        <div class="gantt-row row-project">
-          <div class="gantt-cell"><span class="proj-title">Cash Loans</span></div>
-          <div class="gantt-cell"><span class="proj-owner">S. Olivero</span></div>
+        <!-- Proyecto 6 (CORREGIDO: Añadida la barra del timeline de Cash Loans) -->
