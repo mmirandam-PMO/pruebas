@@ -3,242 +3,185 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio de Proyectos 2027</title>
+  <title>Portafolio de Proyectos 2027 · PMO</title>
   <link rel="preconnect" href="https://googleapis.com">
   <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy: #1B355D;
-      --bg-main: #F4F6F9;
+      --bg-main: #F7F8FA;
       --white: #ffffff;
-      --border: #E2E8F0;
-      --text-dark: #1A202C;
-      --text-muted: #718096;
-      --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      --radius: 6px;
+      --border: #E1E4E8;
+      --text-dark: #24292F;
+      --text-muted: #6B7280;
+      --shadow: 0 4px 16px rgba(27, 42, 74, 0.08);
+      --radius: 14px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); min-height: 100vh; padding-bottom: 60px; }
-    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); min-height: 100vh; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 34px; }
 
-    /* CABECERA PRINCIPAL CON LETRAS BLANCAS Y GRANDES */
     header.masthead {
-      background-color: var(--navy);
+      background: linear-gradient(90deg, var(--navy) 0%, #1B4E5A 100%);
       color: var(--white);
-      padding: 24px 0 20px 0;
-      margin-bottom: 24px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 14px rgba(27,42,74,.28);
+      margin-bottom: 28px;
     }
-    .header-inner { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
     
-    .brand-area { display: flex; flex-direction: column-reverse; }
-    .brand-area h1 { font-size: 28px; font-weight: 700; color: var(--white); line-height: 1.2; }
-    .brand-top { font-size: 14px; font-weight: 600; color: #A0AEC0; margin-bottom: 6px; letter-spacing: 0.3px; }
+    /* CABECERA CORREGIDA: TEXTO BLANCO GRANDE Y SUBTÍTULO ACTUALIZADO */
+    .brand-top { font-size: 11px; text-transform: uppercase; font-weight: 700; color: #7DACE2; letter-spacing: .5px; }
+    .brand h1 { font-family: 'Merriweather', serif; font-size: 22px; font-weight: 900; display: flex; align-items: center; gap: 16px; }
 
     .search-area input { 
-      background: rgba(255,255,255,0.1); 
-      color: var(--white); 
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 6px; 
-      padding: 10px 16px; 
-      width: 300px; 
-      font-size: 13px; 
-      outline: none;
-      transition: all 0.2s;
+      background: rgba(255,255,255,0.15); color: var(--white); border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px; padding: 8px 16px; width: 280px; font-size: 13px; outline: none; 
     }
-    .search-area input::placeholder { color: rgba(255,255,255,0.4); }
-    .search-area input:focus { background: var(--white); color: var(--text-dark); border-color: var(--white); }
+    .search-area input:focus { background: var(--white); color: var(--text-dark); }
 
-    /* ESTRUCTURA DE 3 COLUMNAS CORREGIDA */
-    .dashboard-layout {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr 1fr;
-      gap: 20px;
-      align-items: start;
-    }
-
-    @media (max-width: 1150px) { .dashboard-layout { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 768px) { .dashboard-layout { grid-template-columns: 1fr; } }
-
-    .column { display: flex; flex-direction: column; gap: 20px; }
-
-    /* CONTENEDOR DE PROGRAMAS (BLOQUES PRINCIPALES) */
-    .program-card { background: transparent; display: flex; flex-direction: column; gap: 10px; }
+    .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .column { display: flex; flex-direction: column; gap: 24px; }
     
-    .prog-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 20px;
-      border-radius: var(--radius);
-      font-weight: 700;
-      font-size: 16px;
-    }
-    .prog-header .counter { font-size: 20px; font-weight: 700; }
-
-    /* Colores exactos de las cabeceras basados en tu imagen */
-    .bg-minorista { background-color: #D3E4F4; color: #1B355D; }
-    .bg-regulatorios { background-color: #923D1F; color: var(--white); }
-    .bg-habilitadores { background-color: #1F3A60; color: var(--white); }
-    .bg-mayorista { background-color: #F1DFD7; color: #5C3A21; }
-    .bg-hub { background-color: #B0B3B8; color: var(--white); }
-
-    .subsection-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-top: 6px;
-      padding-bottom: 2px;
-    }
-
-    /* FILAS DOBLES HORIZONTALES PARA MINORISTA Y MAYORISTA */
-    .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    @media (max-width: 650px) { .dual-grid { grid-template-columns: 1fr; } }
-
-    .proj-list { display: flex; flex-direction: column; gap: 8px; }
-
-    /* CONTENEDOR BLANCO COMPACTO DE PROYECTO */
-    .proj-row {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 10px 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12.5px;
-      box-shadow: var(--shadow);
-    }
-    .proj-name { font-weight: 500; color: #2D3748; padding-right: 8px; line-height: 1.4; }
-    .proj-lead {
-      font-size: 11px;
-      font-weight: 600;
-      background: #EFF4FA;
-      color: #2B6CB0;
-      padding: 3px 8px;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-    .proj-lead.empty {
-      background: #F7FAFC;
-      color: #A0AEC0;
-    }
-
-    /* Bloques específicos de subprogramas internos de Mayorista */
-    .subprogram-box {
-      border: 1px solid var(--border);
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 14px;
-      box-shadow: var(--shadow);
-    }
-    .subprogram-header { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
-    .subprogram-leads { font-size: 11px; color: var(--text-muted); margin-bottom: 10px; font-weight: 600; }
+    .card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; position: relative; }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; z-index: 10; }
     
-    .bullet-container { display: flex; flex-direction: column; gap: 4px; padding-top: 6px; border-top: 1px dashed var(--border); }
-    .bullet-item { font-size: 12px; color: #4A5568; padding-left: 14px; position: relative; }
-    .bullet-item::before { content: "•"; position: absolute; left: 2px; color: #A0AEC0; font-size: 14px; }
-    .bullet-tbd { color: var(--text-muted); font-size: 11px; font-weight: 500; margin-left: 4px; }
+    .header-minorista::before { background: linear-gradient(90deg, #4A90E2 0%, #2980B9 100%); }
+    .header-regulatorios::before { background: linear-gradient(90deg, #923D1F 0%, #D35400 100%); }
+    .header-habilitadores::before { background: linear-gradient(90deg, #1F3A60 0%, #34495E 100%); }
+
+    .card-head { padding: 18px 20px 14px; background: #FAFBFC; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .card-head h2 { font-family: 'Merriweather', serif; font-size: 20px; font-weight: 800; color: var(--navy); }
+    .badge { background: rgba(27,42,74,0.08); color: var(--navy); padding: 4px 10px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+    
+    .subsection-header { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; padding: 10px 18px 4px; letter-spacing: 0.5px; }
+    .section-area { padding: 4px 18px 14px; }
+    .proj-list { display: flex; flex-direction: column; gap: 6px; }
+    
+    .proj-row { background: #F5F7FA; padding: 10px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+    .proj-name { font-weight: 500; color: var(--text-dark); }
+    .proj-owner { font-size: 11px; font-weight: 700; background: #E2E8F0; color: #4A5568; padding: 2px 6px; border-radius: 4px; }
   </style>
 </head>
 <body>
 
-  <!-- CABECERA ACTUALIZADA CON TEXTO GRANDE BLANCO -->
   <header class="masthead">
     <div class="wrap header-inner">
-      <div class="brand-area">
+      <div class="brand">
+        <!-- 1. CAMBIO DE NOMBRE EN SUBTÍTULO -->
+        <span class="brand-top">3 Programas  ·  38 Proyectos</span>
+        <!-- 2. CAMBIO DE NOMBRE EN TÍTULO PRINCIPAL (SIN BOTÓN DEL ROADMAP) -->
         <h1>Portafolio de Proyectos 2027</h1>
-        <div class="brand-top">3 Programas &nbsp;•&nbsp; 38 Proyectos</div>
       </div>
-      <div class="search-area">
-        <input type="text" id="search-input" placeholder="Buscar proyecto o responsable...">
-      </div>
+      <div class="search-area"><input type="text" id="search-input" placeholder="Buscar..."></div>
     </div>
   </header>
 
   <main class="wrap">
-    <div class="dashboard-layout">
+    <div class="dashboard-grid">
       
-      <!-- COLUMNA I: BANCA MINORISTA Y BANCA MAYORISTA -->
+      <!-- COLUMNA 1: MINORISTA -->
       <div class="column">
-        
-        <!-- Bloque 1: Banca Minorista -->
-        <div class="program-card">
-          <div class="prog-header bg-minorista">
-            <span>Banca Minorista</span>
-            <span class="counter">8</span>
+        <div class="card header-minorista">
+          <div class="card-head">
+            <h2>🔷 Banca Minorista</h2>
+            <span class="badge">8</span>
           </div>
-          <div class="subsection-title">Nuevos proyectos • 8</div>
-          <div class="dual-grid">
-            <div class="proj-list" id="minorista-col-1"></div>
-            <div class="proj-list" id="minorista-col-2"></div>
+          <div class="subsection-header">Nuevos proyectos · 8</div>
+          <div class="section-area">
+            <div class="proj-list" id="col-minorista"></div>
           </div>
         </div>
-
-        <!-- Bloque 2: Banca Mayorista -->
-        <div class="program-card">
-          <div class="prog-header bg-mayorista">
-            <span>Banca Mayorista</span>
-            <span class="counter">...</span>
-          </div>
-          
-          <div class="dual-grid" style="align-items: start;">
-            <!-- Subprograma Izquierdo -->
-            <div class="proj-list">
-              <div class="subprogram-box">
-                <div class="subprogram-header">Banca de Empresas · Programa</div>
-                <div class="subprogram-leads">R. Galindo / B. Flores</div>
-                <div class="proj-row" style="box-shadow:none; padding:0; border:none; margin-bottom:8px;">
-                  <span class="proj-name" style="color:#2B6CB0; font-weight:600; font-size:12.5px;">Plataforma Banca Empresarial Fase 1 <br><span style="font-size:10.5px; color:var(--text-muted);">(PyME, Empresa Mediana y Gpos Corporativos)</span></span>
-                </div>
-                <div class="bullet-container">
-                  <div class="bullet-item">Proyectos Crédito <span class="bullet-tbd">(TBD)</span></div>
-                  <div class="bullet-item">Proyectos Captación <span class="bullet-tbd">(TBD)</span></div>
-                  <div class="bullet-item">Proyectos Servicios <span class="bullet-tbd">(TBD)</span></div>
-                </div>
-              </div>
-              <div class="subsection-title">Transversales • 4</div>
-              <div id="may-transversales" class="proj-list"></div>
-            </div>
-
-            <!-- Subprograma Derecho -->
-            <div class="proj-list">
-              <div class="subprogram-box">
-                <div class="subprogram-header">Banca de Gobierno · Programa</div>
-                <div class="subprogram-leads">R. Vázquez</div>
-                <div class="proj-row" style="box-shadow:none; padding:0; border:none; margin-bottom:8px;">
-                  <span class="proj-name" style="color:#2B6CB0; font-weight:600; font-size:12.5px;">Plataforma Banca Gobierno Fase 1 <br><span style="font-size:10.5px; color:var(--text-muted);">(TBD)</span></span>
-                </div>
-                <div class="bullet-container">
-                  <div class="bullet-item">Proyectos Crédito <span class="bullet-tbd">(TBD)</span></div>
-                  <div class="bullet-item">Proyectos Captación <span class="bullet-tbd">(TBD)</span></div>
-                  <div class="bullet-item">Proyectos Servicios <span class="bullet-tbd">(TBD)</span></div>
-                </div>
-              </div>
-              <div id="may-lineas-negocio" class="proj-list" style="margin-top:4px;"></div>
-            </div>
-          </div>
-        </div>
-
       </div>
 
-      <!-- COLUMNA II: REGULATORIOS Y HUB DE INNOVACIÓN -->
+      <!-- COLUMNA 2: REGULATORIOS -->
       <div class="column">
-        <!-- Bloque 3: Regulatorios -->
-        <div class="program-card">
-          <div class="prog-header bg-regulatorios">
-            <span>Regulatorios</span>
-            <span class="counter">7</span>
+        <div class="card header-regulatorios">
+          <div class="card-head">
+            <h2>🔶 Regulatorios</h2>
+            <span class="badge">7</span>
           </div>
-          <div class="subsection-title">Carry-over 2026 • 4</div>
-          <div class="proj-list" id="reg-carryover"></div>
-          
-          <div class="subsection-title">Nuevos proyectos • 3</div>
-          <div class="proj-list" id="reg-nuevos"></div>
+          <!-- 3. CAMBIO DE TEXTO INTERNO A CARRY-OVER 2026 -->
+          <div class="subsection-header">Carry-over 2026 · 4</div>
+          <div class="section-area">
+            <div class="proj-list" id="col-regulatorios-carry"></div>
+          </div>
+          <div class="subsection-header">Nuevos proyectos · 3</div>
+          <div class="section-area">
+            <div class="proj-list" id="col-regulatorios-nuevos"></div>
+          </div>
         </div>
+      </div>
 
-        <!-- Bloque 4: Hub de Innovación -->
-        <div class="program-card">
-          <div class="prog-header bg-hub">
+      <!-- COLUMNA 3: HABILITADORES -->
+      <div class="column">
+        <div class="card header-habilitadores">
+          <div class="card-head">
+            <h2>⚙️ Habilitadores</h2>
+            <span class="badge">13</span>
+          </div>
+          <div class="subsection-header">Enfoque al Cliente · 3</div>
+          <div class="section-area">
+            <div class="proj-list" id="col-habilitadores-cliente"></div>
+          </div>
+          <div class="subsection-header">Operaciones · 4</div>
+          <div class="section-area">
+            <div class="proj-list" id="col-habilitadores-ops"></div>
+          </div>
+          <div class="subsection-header">Modernización Tecnológica · 6</div>
+          <div class="section-area">
+            <div class="proj-list" id="col-habilitadores-tech"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // DATA EXACTA ORIGINAL
+    const pmoData = [
+      { programa: "minorista", sub: "nuevos", nombre: "App de Inversiones MVP 2", responsable: "S. Olivero" },
+      { programa: "minorista", sub: "nuevos", nombre: "Rediseño Proceso de Originación MVP 2", responsable: "S. Olivero" },
+      { programa: "minorista", sub: "nuevos", nombre: "Copiloto MVP 2", responsable: "S. Olivero" },
+      { programa: "minorista", sub: "nuevos", nombre: "Seguros RANMA", responsable: "S. Olivero" },
+      { programa: "minorista", sub: "nuevos", nombre: "Créditos Asociados a Nómina (CAN)", responsable: "S. Olivero" },
+      { programa: "minorista", sub: "nuevos", nombre: "Cash Loans", responsable: "S. Olivero" },
+      { programa: "minorista", sub: "nuevos", nombre: "Personalización de Ofertas", responsable: "S. Olivero" },
+      { programa: "minorista", sub: "nuevos", nombre: "Cuenta Rocket", responsable: "S. Olivero" },
+
+      { programa: "regulatorios", sub: "carry", nombre: "PCI DSS", responsable: "C. Carreón" },
+      { programa: "regulatorios", sub: "carry", nombre: "Segundo factor de autenticación (Trxs no presenciales)", responsable: "C. Carreón" },
+      { programa: "regulatorios", sub: "carry", nombre: "Formulario FATCA / CRS", responsable: "C. Budar" },
+      { programa: "regulatorios", sub: "carry", nombre: "Identificador Cliente Derechos ARCO", responsable: "C. Carreón" },
+      { programa: "regulatorios", sub: "nuevos", nombre: "Nueva Plataforma PLD", responsable: "C. Carreón" },
+      { programa: "regulatorios", sub: "nuevos", nombre: "Plataforma Reportes Regulatorios", responsable: "C. Budar" },
+      { programa: "regulatorios", sub: "nuevos", nombre: "Herramientas Ciberseguridad", responsable: "C. Carreón" },
+
+      { programa: "habilitadores", sub: "cliente", nombre: "Programa Lazos", responsable: "A. Nava" },
+      { programa: "habilitadores", sub: "cliente", nombre: "Reingeniería IVR", responsable: "A. Nava" },
+      { programa: "habilitadores", sub: "cliente", nombre: "Automatización de procesos ATC (3 SOWs)", responsable: "A. Nava" },
+      { programa: "habilitadores", sub: "ops", nombre: "Automatización proceso trxs POS", responsable: "A. Nava" },
+      { programa: "habilitadores", sub: "ops", nombre: "Implementación de TEF", responsable: "A. Nava" },
+      { programa: "habilitadores", sub: "ops", nombre: "Tokenización", responsable: "A. Nava" },
+      { programa: "habilitadores", sub: "ops", nombre: "Migración Campo c63 al c57", responsable: "A. Nava" },
+      { programa: "habilitadores", sub: "tech", nombre: "CRM Objetivo", responsable: "M. Matus" },
+      { programa: "habilitadores", sub: "tech", nombre: "Content Manager Objetivo (Filenet)", responsable: "M. Matus" },
+      { Hyde: "habilitadores", sub: "tech", nombre: "Upgrade S4 HANNA (E R P)", responsable: "C. Budar" },
+      { programa: "habilitadores", sub: "tech", nombre: "Herramientas IA", responsable: "M. Matus" },
+      { programa: "habilitadores", sub: "tech", nombre: "Implementación Middleware (Greenfield)", responsable: "M. Matus" },
+      { programa: "habilitadores", sub: "tech", nombre: "Nuevo Core Bancario & Bca Empresarial", responsable: "M. Matus" }
+    ];
+
+    function render() {
+      const term = document.getElementById('search-input').value.toLowerCase().trim();
+      
+      const containers = {
+        'minorista-nuevos': document.getElementById('col-minorista'),
+        'regulatorios-carry': document.getElementById('col-regulatorios-carry'),
+        'regulatorios-nuevos': document.getElementById('col-regulatorios-nuevos'),
