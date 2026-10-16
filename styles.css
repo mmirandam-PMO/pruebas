@@ -32,7 +32,13 @@ input { border: 1px solid var(--border); border-radius: 10px; padding: 8px 14px;
 .search-area input::placeholder { color: rgba(255,255,255,0.7); }
 .search-area input:focus { background: var(--white); color: var(--text-dark); }
 
-.dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+/* Corrección: stretch garantiza que las columnas y tarjetas conserven la misma altura horizontal */
+.dashboard-grid { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 24px; 
+  align-items: stretch; 
+}
 @media (max-width: 1024px) { .dashboard-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) { .dashboard-grid { grid-template-columns: 1fr; } }
 
