@@ -59,7 +59,7 @@ function render() {
   const term = document.getElementById('search-input').value.toLowerCase().trim();
   const findProg = name => pmoData.programas.find(p => p.nombre === name);
 
-  // 1. Banca Minorista -> VÍNCULO CORREGIDO PARA ABRIR EN NUEVA PESTAÑA
+  // 1. Banca Minorista -> VÍNCULO ACTUALIZADO (Removido target="_blank" para abrir aquí mismo)
   const minor = findProg('Banca Minorista');
   if (minor) {
     let cardHtml = `
@@ -67,7 +67,7 @@ function render() {
         <div class="card-head">
           <h2>${getProgEmoji(minor.nombre)} ${minor.nombre}</h2>
           <div style="display:flex; align-items:center; gap:6px;">
-            <a href="roadmap-minorista.html" target="_blank" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">
+            <a href="roadmap-minorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">
               ${barChartIconSvg}
             </a> 
             <span class="badge">${minor.total_proyectos}</span>
