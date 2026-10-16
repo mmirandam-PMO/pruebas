@@ -4,178 +4,98 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roadmap 2027 · PMO</title>
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://googleapis.com" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
   <style>
-    :root {
-      --navy: #1B355D;
-      --bg-main: #F7F8FA;
-      --white: #ffffff;
-      --border: #E1E4E8;
-      --text-dark: #24292F;
-      --text-muted: #6B7280;
-      --shadow: 0 4px 16px rgba(27, 42, 74, 0.08);
-      --radius: 14px;
-      
-      /* Colores Solicitados */
-      --timeline-bar: #B1CDEE;
-      --timeline-bg: #F6F7F9;
-      --tag-bg: #EFF4FA;
-      --tag-text: #2B6CB0;
+    .brand-flex-layout {
+      display: flex;
+      align-items: flex-end;
+      gap: 18px;
+      flex-wrap: wrap;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); min-height: 100vh; padding-bottom: 40px; }
-    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 34px; }
-
-    /* Cabecera superior principal */
-    header.masthead {
-      background: linear-gradient(90deg, var(--navy) 0%, #1B4E5A 100%);
-      color: var(--white);
-      padding: 16px 0;
-      box-shadow: 0 2px 14px rgba(27,42,74,.28);
-    }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
-    
-    /* Contenedor del título con Flexbox */
-    .brand-title-area { display: flex; align-items: center; gap: 16px; }
-    .brand-title-area h1 { font-family: 'Merriweather', serif; font-size: 22px; font-weight: 900; }
-
-    /* BOTÓN ESTILO OVALADO BLANCO - FIJO A LA DERECHA DEL TÍTULO */
-    .btn-back {
-      background: var(--white);
-      color: var(--navy);
-      text-decoration: none;
-      padding: 6px 18px;
-      border-radius: 30px;
-      font-size: 13px;
-      font-weight: 600;
+    .btn-executive-roadmap {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: background 0.2s, transform 0.1s;
-      font-family: 'Inter', sans-serif;
-    }
-    .btn-back:hover { 
-      background: #F1F5F9;
-      transform: translateY(-1px);
-    }
-
-    .search-area input { 
-      background: rgba(255,255,255,0.15); 
-      color: var(--white); 
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 20px; 
-      padding: 8px 16px; 
-      width: 320px; 
-      font-size: 13px; 
-      outline: none; 
-    }
-    .search-area input::placeholder { color: rgba(255,255,255,0.6); }
-    .search-area input:focus { background: var(--white); color: var(--text-dark); }
-
-    /* ENCABEZADO FIJO DE COLUMNAS (STICKY) */
-    .roadmap-header-row {
-      position: sticky;
-      top: 0;
-      z-index: 90;
-      display: grid;
-      grid-template-columns: 180px 1fr 180px 400px;
-      gap: 16px;
-      padding: 16px 24px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--white);
-      background-color: var(--navy);
-      border-radius: 14px;
-      align-items: center;
-      margin-top: 20px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-
-    .timeline-quarters { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; }
-    
-    /* Contenedor con margen superior para empujar las tarjetas hacia abajo del encabezado */
-    .roadmap-container { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
-
-    /* VERSIÓN DE BANDAS BLANCAS CON ESPACIADO ORIGINAL */
-    .roadmap-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      display: grid;
-      grid-template-columns: 180px 1fr 180px 400px;
-      gap: 16px;
-      padding: 16px 24px;
-      align-items: center;
-      transition: transform 0.15s, background 0.15s;
-      border: 1px solid transparent;
-    }
-    .roadmap-card:hover {
-      transform: translateX(3px);
-      background: #FAFBFC;
-      border-color: var(--border);
-    }
-
-    .col-classification { 
-      font-size: 12px; 
-      font-weight: 600; 
-      padding: 4px 12px; 
-      border-radius: 6px; 
-      display: inline-block; 
-      width: fit-content;
-      background-color: var(--tag-bg);
-      color: var(--tag-text);
-      white-space: nowrap;
-    }
-
-    .col-project { font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.4; }
-    .col-responsible { font-size: 13px; font-weight: 500; color: #4A5568; }
-    .col-responsible.tbd { color: #E85301; font-weight: 600; }
-
-    /* VERSIÓN DE TIMELINE AMPLIO Y HOLGADO */
-    .col-timeline {
-      background: var(--timeline-bg);
-      height: 44px;
-      border-radius: 10px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      padding: 0 16px;
-    }
-
-    .timeline-grid-lines {
-      position: absolute;
-      top: 0; left: 16px; right: 16px; bottom: 0;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      pointer-events: none;
-    }
-    .timeline-grid-line { border-right: 1px dashed rgba(0, 0, 0, 0.04); }
-    .timeline-grid-line:last-child { border-right: none; }
-
-    .timeline-bar-wrapper { position: relative; width: 100%; height: 16px; }
-
-    /* BARRA DE PROGRESO AMPLIA */
-    .timeline-bar {
-      position: absolute;
-      height: 16px;
-      background: var(--timeline-bar);
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      padding: 5px 14px;
       border-radius: 20px;
-      transition: all 0.3s ease;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      margin-bottom: 2px;
+      transition: all 0.2s ease;
+    }
+    .btn-executive-roadmap:hover {
+      background: #ffffff;
+      color: #1B355D;
     }
 
-    @media (max-width: 1200px) {
-      .roadmap-header-row, .roadmap-card { grid-template-columns: 150px 1fr 140px 320px; }
+    /* Contenedor principal Gantt */
+    .gantt-box { 
+      background: var(--white); 
+      border-radius: var(--radius); 
+      box-shadow: var(--shadow); 
+      overflow: hidden; 
+      border: 1px solid var(--border); 
+      margin-top: 20px; 
     }
-    @media (max-width: 768px) {
-      .roadmap-header-row { display: none; }
-      .roadmap-card { grid-template-columns: 1fr; gap: 10px; padding: 16px; }
-      .col-timeline { margin-top: 4px; }
+    .gantt-title-row { 
+      display: grid; 
+      grid-template-columns: 2.5fr 1fr repeat(4, 1fr); 
+      background: var(--navy); 
+      color: var(--white); 
+      font-size: 13px; 
+      font-weight: 700; 
+      text-align: center; 
+    }
+    .gantt-title-row div { 
+      padding: 14px; 
+      border-right: 1px solid rgba(255, 255, 255, 0.1); 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+    }
+    .gantt-title-row .align-left { 
+      justify-content: flex-start; 
+      padding-left: 20px; 
+    }
+    .gantt-row { 
+      display: grid; 
+      grid-template-columns: 2.5fr 1fr 4fr; 
+      border-bottom: 1px solid var(--border); 
+      align-items: center; 
+      background: var(--white); 
+    }
+    .gantt-row:last-child { border-bottom: none; }
+    .cell-info { padding: 14px 20px; font-size: 13.5px; }
+    .cell-info small { display: block; font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; margin-bottom: 2px; }
+    .cell-info span { font-weight: 500; color: var(--text-dark); }
+    .cell-lead { padding: 14px; font-size: 12px; color: #4A5568; font-weight: 700; }
+    
+    /* Espacio del timeline track */
+    .timeline-track { 
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      height: 48px; 
+      position: relative; 
+      align-items: center; 
+      border-left: 1px solid var(--border); 
+    }
+    .q-divider { height: 100%; border-right: 1px solid #EDF2F7; }
+    .q-divider:last-child { border-right: none; }
+    
+    /* Barras azules ejecutivas */
+    .gantt-bar-fill { 
+      position: absolute; 
+      height: 12px; 
+      background: #4A90E2; 
+      border-radius: 20px; 
+      z-index: 5; 
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
   </style>
 </head>
@@ -184,55 +104,89 @@
   <header class="masthead">
     <div class="wrap header-inner">
       <div class="brand">
-        <div class="brand-title-area">
+        <span class="brand-top">PORTAFOLIO DE PROYECTOS 2027 · PMO</span>
+        <div class="brand-flex-layout">
           <h1>Roadmap 2027</h1>
-          <a href="index.html" class="btn-back">⬅️ Regresar al Tablero</a>
+          <a href="index.html" class="btn-executive-roadmap">
+            ⬅️ Regresar al Tablero
+          </a>
         </div>
       </div>
       <div class="search-area">
-        <input type="text" id="search-input" placeholder="Buscar proyecto, responsable o clasificación...">
+        <input type="text" id="gantt-search" placeholder="🔍 Buscar proyecto o responsable...">
       </div>
     </div>
   </header>
 
   <main class="wrap">
-    <!-- Fila del encabezado azul oscuro fija -->
-    <div class="roadmap-header-row">
-      <div>Clasificación</div>
-      <div>Proyecto</div>
-      <div>Responsable</div>
-      <div class="timeline-quarters">
-        <div>1Q</div>
-        <div>2Q</div>
-        <div>3Q</div>
-        <div>4Q</div>
+    <div class="gantt-box">
+      <div class="gantt-title-row">
+        <div class="align-left">Proyecto</div>
+        <div class="align-left">Responsable</div>
+        <div>Q1 2027</div>
+        <div>Q2 2027</div>
+        <div>Q3 2027</div>
+        <div>Q4 2027</div>
       </div>
+      <div id="gantt-content"></div>
     </div>
-
-    <!-- Contenedor corregido donde se inyecta la información de proyectos -->
-    <div class="roadmap-container" id="roadmap-container"></div>
   </main>
 
+  <!-- Cargamos tu nuevo archivo JavaScript estructurado -->
+  <script src="roadmap-data.js"></script>
   <script>
-    const excelData = [
-      { clasificacion: "Banca Minorista", proyecto: "Aplicación de inversiones MVP 2", responsable: "S. Olivero", inicio: "2027-01-01", fin: "2027-12-31" },
-      { clasificacion: "Banca Minorista", proyecto: "Rediseño Proceso de Originación MVP 2", responsable: "S. Olivero", inicio: "2027-04-01", fin: "2027-11-15" }, 
-      { clasificacion: "Banca Minorista", proyecto: "Copiloto MVP 2", responsable: "S. Olivero", inicio: "2027-03-01", fin: "2027-09-30" },
-      { clasificacion: "Banca Minorista", proyecto: "Seguros RANMA", responsable: "S. Olivero", inicio: "2027-05-01", fin: "2027-11-30" },
-      { clasificacion: "Banca Minorista", proyecto: "Créditos Asociados a Nómina (CAN)", responsable: "S. Olivero", inicio: "2027-01-01", fin: "2027-12-31" },
-      { clasificacion: "Banca Minorista", proyecto: "Cash Loans", responsable: "S. Olivero", inicio: "2027-01-01", fin: "2027-12-31" },
-      { clasificacion: "Banca Minorista", proyecto: "Personalización de ofertas", responsable: "S. Olivero", inicio: "2027-01-01", fin: "2027-12-31" },
-      { clasificacion: "Banca Mayorista", proyecto: "Plataforma Banca Empresarial (Fase 1) - PyME Empresa Mediana y Grupos Corporativos", responsable: "R.Galindo, R. Vázquez, B.Flores", inicio: "2027-01-01", fin: "2027-12-31" },
-      { clasificacion: "Banca Mayorista", proyecto: "Banca Electrónica Móvil", responsable: "--", inicio: "2027-01-01", fin: "2027-12-31" },
-      { clasificacion: "Banca Mayorista", proyecto: "Dispersión de Nóminas", responsable: "--", inicio: "2027-02-01", fin: "2027-10-31" },
-      { clasificacion: "Banca Mayorista", proyecto: "Hub de pagos", responsable: "--", inicio: "2027-01-01", fin: "2027-12-31" },
-      { clasificacion: "Banca Mayorista", proyecto: "Liquidez (Cash Management)", responsable: "--", inicio: "2027-04-01", fin: "2027-12-31" },
-      { clasificacion: "Banca Mayorista", proyecto: "Créditos para Empresas", responsable: "--", inicio: "2027-01-01", fin: "2027-12-31" },
-      { clasificacion: "Banca Mayorista", proyecto: "Otros", responsable: "--", inicio: "2027-01-01", fin: "2027-12-31" },
-      { clasificacion: "Banca Mayorista", proyecto: "Banco recaudador", responsable: "R. Vázquez", inicio: "2027-01-01", fin: "2027-12-31" },
-      { clasificacion: "Banca Minorista", proyecto: "Aplicación de inversiones MVP 1", responsable: "S. Olivero", inicio: "2027-01-01", fin: "2027-06-30" },
-      { clasificacion: "Banca Minorista", proyecto: "Rediseño Proceso de Originación MVP 1", responsable: "S. Olivero", inicio: "2027-01-01", fin: "2027-06-30" },
-      { clasificacion: "Banca Minorista", proyecto: "Copiloto MVP 1", responsable: "S. Olivero", inicio: "2027-01-01", fin: "2027-06-30" },
-      { clasificacion: "Nuevos proyectos", proyecto: "CRM Objetivo", responsable: "M. Matus", inicio: "2027-01-01", fin: "2027-12-31" },
-      { clasificacion: "Nuevos proyectos", proyecto: "Content Manager Objetivo (Filenet)", responsable: "M. Matus", inicio: "2027-01-01", fin: "2027-01-31" },
-      { clasificacion: "Nuevos proyectos", proyecto: "Implementación Middleware (Greenfield)", responsable: "M. Matus", inicio: "2027-01-01", fin: "2027-01-31" },
+    // Parsea las fechas de forma segura previniendo desajustes de zona horaria
+    function getYearPercentage(dateString) {
+      const parts = dateString.trim().split('-');
+      if(parts.length !== 3) return 0;
+      
+      const current = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+      const start = new Date(2027, 0, 1);
+      const end = new Date(2027, 11, 31);
+      
+      const percentage = ((current - start) / (end - start)) * 100;
+      return Math.min(Math.max(percentage, 0), 100);
+    }
+
+    function renderGantt() {
+      const container = document.getElementById('gantt-content');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const term = document.getElementById('gantt-search').value.toLowerCase().trim();
+
+      // "excelData" viene directo de roadmap-data.js
+      excelData.forEach(row => {
+        const clasi = row.clasificacion || "";
+        const proy = row.proyecto || "";
+        const resp = row.responsable || "";
+        const inicio = row.inicio || "";
+        const fin = row.fin || "";
+
+        if (!inicio || !fin) return;
+
+        if (proy.toLowerCase().includes(term) || resp.toLowerCase().includes(term) || clasi.toLowerCase().includes(term)) {
+          const leftPercent = getYearPercentage(inicio);
+          const rightPercent = getYearPercentage(fin);
+          const barWidth = Math.max(rightPercent - leftPercent, 2); // Ancho mínimo estético
+
+          const divRow = document.createElement('div');
+          divRow.className = 'gantt-row';
+          divRow.innerHTML = `
+            <div class="cell-info"><small>${clasi}</small><span>${proy}</span></div>
+            <div class="cell-lead">${resp || '--'}</div>
+            <div class="timeline-track">
+              <div class="q-divider"></div><div class="q-divider"></div><div class="q-divider"></div><div class="q-divider"></div>
+              <div class="gantt-bar-fill" style="left: ${leftPercent}%; width: ${barWidth}%;"></div>
+            </div>
+          `;
+          container.appendChild(divRow);
+        }
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', renderGantt);
+    document.getElementById('gantt-search').addEventListener('input', renderGantt);
+  </script>
+</body>
+</html>
