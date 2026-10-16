@@ -27,7 +27,7 @@ const pmoData = {
           tipo: "Carryover 2026 · 4",
           proyectos: [
             { nombre: "PCI DSS", responsable: "C. Carreón" },
-            { nombre: "2o Factor Autentic. trx TDD no presenc.", responsable: "C. Carreón" },
+            { nombre: "Segundo factor de autenticación (Trxs no presenciales)", responsable: "C. Carreón" },
             { nombre: "Formulario FATCA / CRS", responsable: "C. Budar", destacado: "pink" },
             { nombre: "Identificador Cliente Derechos ARCO", responsable: "C. Carreón" }
           ]
@@ -100,7 +100,7 @@ const pmoData = {
       ]
     },
     {
-      nombre: "Carry-over 2026",
+      nombre: "Habilitadores",
       total_proyectos: 13,
       categorias: [
         {
@@ -108,7 +108,7 @@ const pmoData = {
           proyectos: [
             { nombre: "Programa Lazos", responsable: "A. Nava", destacado: "orange" },
             { nombre: "Reingeniería IVR", responsable: "A. Nava", destacado: "orange" },
-            { nombre: "Automatización de procesos ATC (3 saws)", responsable: "A. Nava", destacado: "orange" }
+            { nombre: "Automatización de procesos ATC (3 SOWs)", responsable: "A. Nava", destacado: "orange" }
           ]
         },
         {
