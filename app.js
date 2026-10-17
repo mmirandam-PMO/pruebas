@@ -87,7 +87,7 @@ const pmoData = {
           tipo: "Por autorizar · 5",
           proyectos: [
             { nombre: "Comunidad Lazos", responsable: "R. Flores" },
-            { fontname: "sans-serif", nombre: "MVNO", responsable: "--" },
+            { nombre: "MVNO", responsable: "--" },
             { nombre: "Productos de crédito (3) ...", responsable: "--" },
             { nombre: "Producto de crédito", responsable: "--" }
           ]
@@ -190,19 +190,17 @@ function buildProjectRows(proyectos, term) {
 }
 
 function render() {
-  const cMinorista = document.getElementById('card-minorista');
-  const cRegulatorios = document.getElementById('card-regulatorios');
-  const cMayorista = document.getElementById('card-mayorista');
-  const cHub = document.getElementById('card-hub');
-  const cHabilitadores = document.getElementById('card-habilitadores');
+  const col1 = document.getElementById('col-1');
+  const col2 = document.getElementById('col-2');
+  const col3 = document.getElementById('col-3');
   
-  if (!cMinorista || !cRegulatorios || !cMayorista || !cHub || !cHabilitadores) return;
+  if (!col1 || !col2 || !col3) return;
   
-  cMinorista.innerHTML = ''; cRegulatorios.innerHTML = ''; cMayorista.innerHTML = ''; cHub.innerHTML = ''; cHabilitadores.innerHTML = '';
+  col1.innerHTML = ''; col2.innerHTML = ''; col3.innerHTML = '';
   const term = document.getElementById('search-input').value.toLowerCase().trim();
   const findProg = name => pmoData.programas.find(p => p.nombre === name);
 
-  // 1. Banca Minorista
+  // 1. Banca Minorista -> Va en la columna 1
   const minor = findProg('Banca Minorista');
   if (minor) {
     let cardHtml = `
@@ -222,10 +220,10 @@ function render() {
       if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
     });
     cardHtml += `</div>`;
-    cMinorista.appendChild(document.createRange().createContextualFragment(cardHtml));
+    col1.appendChild(document.createRange().createContextualFragment(cardHtml));
   }
 
-  // 2. Regulatorios
+  // 2. Regulatorios -> Va en la columna 2
   const reg = findProg('Regulatorios');
   if (reg) {
     let cardHtml = `<div class="card header-regulatorios"><div class="card-head"><h2>${getProgEmoji(reg.nombre)} ${reg.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-regulatorios.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${reg.total_proyectos}</span></div></div>`;
@@ -234,9 +232,10 @@ function render() {
       if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
     });
     cardHtml += `</div>`;
-    cRegulatorios.appendChild(document.createRange().createContextualFragment(cardHtml));
+    col2.appendChild(document.createRange().createContextualFragment(cardHtml));
   }
 
-  // 3. Habilitadores
+  // 3. Habilitadores -> Va en la columna 3 (Completa a la derecha)
   const co = findProg('Habilitadores');
   if (co) {
+    let cardHtml = `<div class="card header-carryover"><div class="card-head"><h2>${getProgEmoji(co.nombre)} ${co.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-habilitadores.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${co.total_proyectos}</span></div></div>`;
