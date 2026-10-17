@@ -37,7 +37,7 @@
     .header-inner { display: flex; justify-content: space-between; align-items: center; }
     .header-inner h1 { font-family: 'Merriweather', serif; font-size: 24px; font-weight: 900; }
 
-    /* Botón Ovalado Superior Derecho Original */
+    /* Botón Ovalado Superior Derecho */
     .btn-back {
       background: rgba(255, 255, 255, 0.12);
       color: var(--white);
@@ -55,7 +55,7 @@
       box-shadow: var(--shadow);
     }
 
-    /* Tabla de Cronograma Original de 3 Filas */
+    /* Estructura del Cronograma Base */
     .timeline-container {
       background: var(--white);
       border-radius: var(--radius);
@@ -64,47 +64,52 @@
       overflow-x: auto;
       margin-bottom: 40px;
     }
-    .timeline-table { width: 100%; border-collapse: collapse; min-width: 1200px; table-layout: fixed; }
+    .timeline-table { width: 100%; border-collapse: collapse; min-width: 1200px; }
     
-    /* Encabezados con líneas divisorias */
+    /* Tres filas de encabezado con líneas divisorias */
     .timeline-table th {
-      padding: 14px;
-      font-size: 11px;
+      padding: 12px;
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       color: var(--text-muted);
       border-bottom: 1px solid var(--border);
-      border-right: 1px solid #F3F4F6;
+      border-right: 1px solid #EEF0F2;
       text-align: center;
       background: #FAFBFC;
     }
     .timeline-table th:last-child { border-right: none; }
-    .timeline-table th.col-info { text-align: left; width: 240px; font-size: 13px; color: var(--text-dark); text-transform: none; }
-    .timeline-table th.col-lead { text-align: left; width: 140px; font-size: 13px; color: var(--text-dark); text-transform: none; }
+    .timeline-table th.col-info { text-align: left; width: 250px; font-size: 13px; color: var(--text-dark); text-transform: none; border-bottom: none; }
+    .timeline-table th.col-lead { text-align: left; width: 140px; font-size: 13px; color: var(--text-dark); text-transform: none; border-bottom: none; }
+    .timeline-table th.sub-header { text-align: left; text-transform: none; font-size: 13px; color: var(--text-dark); padding: 14px; background: #ffffff; }
 
-    /* Filas y bordes de la cuadrícula Excel original */
-    .timeline-table td { padding: 14px; border-bottom: 1px solid #F3F4F6; border-right: 1px solid #F3F4F6; vertical-align: middle; }
+    /* Celdas de la cuadrícula */
+    .timeline-table td { padding: 12px; border-bottom: 1px solid #F3F4F6; border-right: 1px solid #EEF0F2; vertical-align: middle; }
     .timeline-table td:last-child { border-right: none; }
+    
     .row-program { background: #F4F7FC; font-weight: 700; }
     .row-program td { color: var(--navy); font-size: 15px; }
     
     .proj-name { font-size: 13.5px; font-weight: 500; color: var(--text-dark); padding-left: 10px; }
     .proj-lead { font-size: 13px; color: var(--text-muted); }
 
-    /* Estructura elástica interna de la barra por celda */
-    .bar-wrapper { position: relative; width: 100%; height: 12px; }
-    .bar { height: 100%; width: 100%; }
-    
-    /* Esquinas redondeadas inteligentes para simular continuidad fluida */
-    .bar.start { border-top-left-radius: 20px; border-bottom-left-radius: 20px; }
-    .bar.end { border-top-right-radius: 20px; border-bottom-right-radius: 20px; }
-    .bar.mid { border-radius: 0; }
-    .bar.full-round { border-radius: 20px; }
-    
-    /* Colores del Programa Maestro */
-    .bar.program-bar { background: var(--navy); }
+    /* Contenedor elástico para dibujo de barras continuas fluidas */
+    .gantt-cell { position: relative; padding: 0 !important; }
+    .gantt-grid-bg { display: grid; grid-template-columns: repeat(12, 1fr); width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+    .gantt-grid-bg div { border-right: 1px solid #EEF0F2; height: 100%; }
+    .gantt-grid-bg div:last-child { border-right: none; }
 
-    /* Línea Roja Vertical Indicadora de Mes Activo original de la Imagen 2 */
+    .bar-wrapper { position: relative; width: 100%; height: 44px; z-index: 10; }
+    .bar {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 12px;
+      border-radius: 20px;
+    }
+    .bar.program-bar { height: 14px; background: var(--navy); width: 100%; left: 0; }
+
+    /* Línea Roja Vertical Indicadora */
     .current-month-indicator {
       position: absolute; 
       top: 0; 
@@ -129,17 +134,18 @@
     <div class="timeline-container">
       <table class="timeline-table">
         <thead>
-          <!-- Estructura de 3 filas de encabezado idéntica a la Imagen 2 -->
+          <!-- Fila 1: Meses -->
           <tr>
             <th class="col-info"></th>
             <th class="col-lead"></th>
             <th>Ene 27</th><th>Feb 27</th><th>Mar 27</th><th>Abr 27</th><th>May 27</th><th>Jun 27</th>
             <th>Jul 27</th><th>Ago 27</th><th>Sep 27</th><th>Oct 27</th><th>Nov 27</th><th>Dic 27</th>
           </tr>
+          <!-- Fila 2: Sub-títulos del encabezado -->
           <tr>
-            <th class="col-info">Nuevos proyectos · 8</th>
-            <th class="col-lead">Lider de Proyecto</th>
-            <th colspan="12" style="padding: 0; height: 0; border: none;"></th>
+            <th class="sub-header" style="font-weight: 700;">Nuevos proyectos · 8</th>
+            <th class="sub-header" style="color: var(--text-muted);">Lider de Proyecto</th>
+            <th colspan="12" style="background: #ffffff; border-bottom: 1px solid var(--border);"></th>
           </tr>
         </thead>
         <tbody>
@@ -148,58 +154,73 @@
           <tr class="row-program">
             <td class="proj-name">🔷 Banca Minorista</td>
             <td class="proj-lead">S. Olivero</td>
-            <td style="position: relative; padding: 14px 0;"><div class="current-month-indicator"></div><div class="bar-wrapper"><div class="bar program-bar start"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar program-bar mid"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar program-bar mid"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar program-bar mid"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar program-bar mid"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar program-bar mid"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar program-bar mid"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar program-bar mid"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar program-bar mid"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar program-bar mid"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar program-bar mid"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar program-bar end"></div></div></td>
+            <td colspan="12" class="gantt-cell">
+              <div class="gantt-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+              <div class="bar-wrapper">
+                <div class="current-month-indicator"></div>
+                <div class="bar program-bar"></div>
+              </div>
+            </td>
           </tr>
 
-          <!-- Proyecto 1 (Color 1: #3B82F6) -> Ene a Abr -->
+          <!-- 1. App de Inversiones (Color 1 - Azul Fuerte) -> Ene a Abr -->
           <tr>
             <td class="proj-name">App de Inversiones MVP 2</td>
             <td class="proj-lead">S. Olivero</td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar start" style="background: #3B82F6;"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar mid" style="background: #3B82F6;"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar mid" style="background: #3B82F6;"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar end" style="background: #3B82F6;"></div></div></td>
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td colspan="12" class="gantt-cell">
+              <div class="gantt-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+              <div class="bar-wrapper"><div class="bar" style="width: 33.33%; left: 0%; background: #3B82F6;"></div></div>
+            </td>
           </tr>
 
-          <!-- Proyecto 2 (Color 2: #4A90E2) -> Feb a May -->
+          <!-- 2. Rediseño Proceso (Color 2 - Azul Medio) -> Feb a May -->
           <tr>
             <td class="proj-name">Rediseño Proceso de Originación MVP 2</td>
             <td class="proj-lead">S. Olivero</td>
-            <td></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar start" style="background: #4A90E2;"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar mid" style="background: #4A90E2;"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar mid" style="background: #4A90E2;"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar end" style="background: #4A90E2;"></div></div></td>
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td colspan="12" class="gantt-cell">
+              <div class="gantt-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+              <div class="bar-wrapper"><div class="bar" style="width: 33.33%; left: 8.33%; background: #4A90E2;"></div></div>
+            </td>
           </tr>
 
-          <!-- Proyecto 3 (Color 3: #74B9FF) -> Mar a Jul -->
+          <!-- 3. Copiloto MVP 2 (Color 3 - Celeste Muted) -> Mar a Jul -->
           <tr>
             <td class="proj-name">Copiloto MVP 2</td>
             <td class="proj-lead">S. Olivero</td>
-            <td></td><td></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar start" style="background: #74B9FF;"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar mid" style="background: #74B9FF;"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar mid" style="background: #74B9FF;"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar mid" style="background: #74B9FF;"></div></div></td>
-            <td style="padding: 14px 0;"><div class="bar-wrapper"><div class="bar end" style="background: #74B9FF;"></div></div></td>
-            <td></td><td></td><td></td><td></td><td></td>
+            <td colspan="12" class="gantt-cell">
+              <div class="gantt-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+              <div class="bar-wrapper"><div class="bar" style="width: 41.66%; left: 16.66%; background: #74B9FF;"></div></div>
+            </td>
           </tr>
 
-          <!-- Proyecto 4 (Se repite Color 1) -> Abr a Ago -->
+          <!-- 4. Seguros RANMA (Color 1 - Azul Fuerte) -> Abr a Ago -->
           <tr>
             <td class="proj-name">Seguros RANMA</td>
             <td class="proj-lead">S. Olivero</td>
-            <td></td><td></td><td></td>
+            <td colspan="12" class="gantt-cell">
+              <div class="gantt-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+              <div class="bar-wrapper"><div class="bar" style="width: 41.66%; left: 25%; background: #3B82F6;"></div></div>
+            </td>
+          </tr>
+
+          <!-- 5. CAN (Color 2 - Azul Medio) -> Jun a Nov -->
+          <tr>
+            <td class="proj-name">Créditos Asociados a Nómina (CAN)</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td colspan="12" class="gantt-cell">
+              <div class="gantt-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+              <div class="bar-wrapper"><div class="bar" style="width: 50%; left: 41.66%; background: #4A90E2;"></div></div>
+            </td>
+          </tr>
+
+          <!-- 6. Cash Loans (Color 3 - Celeste Muted) -> Jun a Nov -->
+          <tr>
+            <td class="proj-name">Cash Loans</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td colspan="12" class="gantt-cell">
+              <div class="gantt-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+              <div class="bar-wrapper"><div class="bar" style="width: 50%; left: 41.66%; background: #74B9FF;"></div></div>
+            </td>
+          </tr>
+
+          <!-- 7. Personalización (Color 1 - Azul Fuerte) -> Jun a Nov -->
