@@ -1,196 +1,55 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roadmap Banca Minorista · PMO 2027</title>
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;700&family=Merriweather:wght@700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --navy: #1B355D;
-      --bg-main: #F7F8FA;
-      --white: #ffffff;
-      --border: #E1E4E8;
-      --text-dark: #24292F;
-      --text-muted: #6B7280;
-      --shadow: 0 4px 16px rgba(27, 42, 74, 0.08);
-      --radius: 14px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); min-height: 100vh; }
-    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 34px; }
-
-    /* Cabecera del Roadmap */
-    header.masthead {
-      background: linear-gradient(90deg, var(--navy) 0%, #1B4E5A 100%);
-      color: var(--white);
-      padding: 20px 0;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      box-shadow: 0 2px 14px rgba(27,42,74,.28);
-      margin-bottom: 28px;
-    }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; }
-    .header-inner h1 { font-family: 'Merriweather', serif; font-size: 24px; font-weight: 900; }
-
-    /* Botón Ovalado Superior Derecho Original */
-    .btn-back {
-      background: rgba(255, 255, 255, 0.12);
-      color: var(--white);
-      padding: 10px 22px;
-      border-radius: 24px;
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      transition: all 0.2s ease;
-    }
-    .btn-back:hover {
-      background: var(--white);
-      color: var(--navy);
-      box-shadow: var(--shadow);
-    }
-
-    /* Estructura del Cronograma Base Original */
-    .timeline-container {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      overflow-x: auto;
-      margin-bottom: 40px;
-    }
-    .timeline-table { width: 100%; border-collapse: collapse; min-width: 1200px; table-layout: fixed; }
-    
-    /* Encabezados y líneas divisorias exactas */
-    .timeline-table th {
-      padding: 14px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border);
-      text-align: center;
-      background: #FAFBFC;
-    }
-    .timeline-table th.col-info { text-align: left; width: 240px; font-size: 13px; color: var(--text-dark); text-transform: none; }
-    .timeline-table th.col-lead { text-align: left; width: 140px; font-size: 13px; color: var(--text-dark); text-transform: none; }
-    .timeline-table th.month-col { width: calc((100% - 380px) / 12); border-left: 1px solid #F0F2F4; }
-
-    /* Filas y bordes de las celdas */
-    .timeline-table td { padding: 14px; border-bottom: 1px solid #F3F4F6; vertical-align: middle; }
-    .timeline-table td.month-cell { border-left: 1px solid #F0F2F4; padding: 0 !important; }
-    .row-program { background: #F4F7FC; font-weight: 700; }
-    .row-program td { color: var(--navy); font-size: 15px; }
-    
-    .proj-name { font-size: 13.5px; font-weight: 500; color: var(--text-dark); padding-left: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .proj-lead { font-size: 13px; color: var(--text-muted); }
-
-    /* Bloques contenedores elásticos para las barras */
-    .timeline-cell { position: relative; padding: 0 !important; height: 48px; }
-    .bar-wrapper { position: absolute; top: 50%; transform: translateY(-50%); height: 12px; left: 0; right: 0; z-index: 10; }
-    
-    /* Barras fluidas continuas */
-    .bar {
-      height: 100%;
-      border-radius: 20px;
-      width: 100%;
-    }
-    .bar.program-bar { background: var(--navy); }
-
-    /* Línea Roja Vertical Indicadora */
-    .current-month-indicator {
-      position: absolute; 
-      top: 0; 
-      bottom: 0; 
-      left: 0; 
-      width: 2px; 
-      background: #E74C3C; 
-      z-index: 20;
-    }
-  </style>
-</head>
-<body>
-
-  <header class="masthead">
-    <div class="wrap header-inner">
-      <h1>Roadmap Banca Minorista</h1>
-      <a href="index.html" class="btn-back">← Volver al Portafolio</a>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <div class="timeline-container">
-      <table class="timeline-table">
-        <thead>
+          <!-- 5. CAN (Color 2) -->
           <tr>
-            <th class="col-info">Nuevos proyectos · 8</th>
-            <th class="col-lead">Lider de Proyecto</th>
-            <th class="month-col">Ene 27</th>
-            <th class="month-col">Feb 27</th>
-            <th class="month-col">Mar 27</th>
-            <th class="month-col">Abr 27</th>
-            <th class="month-col">May 27</th>
-            <th class="month-col">Jun 27</th>
-            <th class="month-col">Jul 27</th>
-            <th class="month-col">Ago 27</th>
-            <th class="month-col">Sep 27</th>
-            <th class="month-col">Oct 27</th>
-            <th class="month-col">Nov 27</th>
-            <th class="month-col">Dic 27</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-          <!-- Fila Maestra del Programa (Con la línea roja original intacta) -->
-          <tr class="row-program">
-            <td class="proj-name">🔷 Banca Minorista</td>
+            <td class="proj-name">Créditos Asociados a Nómina (CAN)</td>
             <td class="proj-lead">S. Olivero</td>
-            <td class="timeline-cell month-cell"><div class="current-month-indicator"></div><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-          </tr>
-
-          <!-- Línea 1 Restaurada (Color 1 - Azul Intenso) -> Ene a Abr -->
-          <tr>
-            <td class="proj-name">App de inversiones MVP 2</td>
-            <td class="proj-lead">S. Olivero</td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td>
-          </tr>
-
-          <!-- Línea 2 Restaurada (Color 2 - Azul Medio) -> Feb a May -->
-          <tr>
-            <td class="proj-name">Rediseño Proceso de Originación MVP 2</td>
-            <td class="proj-lead">S. Olivero</td>
-            <td class="month-cell"></td>
+            <td></td><td></td><td></td><td></td><td></td>
             <td class="timeline-cell month-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
             <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
             <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
             <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
-            <td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td>
+            <td class="month-cell"></td>
           </tr>
 
-          <!-- Línea 3 Restaurada (Color 3 - Celeste Claro) -> Mar a Jul -->
+          <!-- 6. Cash Loans (Color 3) -->
           <tr>
-            <td class="proj-name">Copiloto MVP 2</td>
+            <td class="proj-name">Cash Loans</td>
             <td class="proj-lead">S. Olivero</td>
-            <td class="month-cell"></td><td class="month-cell"></td>
+            <td></td><td></td><td></td><td></td><td></td>
             <td class="timeline-cell month-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
             <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
+            <td class="month-cell"></td>
+          </tr>
+
+          <!-- 7. Personalización de ofertas (Color 1) -->
+          <tr>
+            <td class="proj-name">Personalización de ofertas</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
+            <td class="month-cell"></td>
+          </tr>
+
+          <!-- 8. Cuenta Rocket (Color 2) -->
+          <tr>
+            <td class="proj-name">Cuenta Rocket</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
+            <td class="month-cell"></td>
+          </tr>
