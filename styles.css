@@ -87,5 +87,5 @@ input { border: 1px solid var(--border); border-radius: 10px; padding: 8px 14px;
    Ajuste Ligero: Baja la tarjeta de Banca Mayorista solo un poco
    ========================================================================== */
 .header-mayorista {
-  margin-top: 25px !important;
+  margin-top: 22px !important;
 }
