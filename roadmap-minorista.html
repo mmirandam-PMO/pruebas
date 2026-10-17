@@ -23,6 +23,7 @@
     body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); min-height: 100vh; }
     .wrap { max-width: 1440px; margin: 0 auto; padding: 0 34px; }
 
+    /* Cabecera del Roadmap */
     header.masthead {
       background: linear-gradient(90deg, var(--navy) 0%, #1B4E5A 100%);
       color: var(--white);
@@ -36,6 +37,7 @@
     .header-inner { display: flex; justify-content: space-between; align-items: center; }
     .header-inner h1 { font-family: 'Merriweather', serif; font-size: 24px; font-weight: 900; }
 
+    /* Botón Ovalado Superior Derecho Original */
     .btn-back {
       background: rgba(255, 255, 255, 0.12);
       color: var(--white);
@@ -53,6 +55,7 @@
       box-shadow: var(--shadow);
     }
 
+    /* Estructura de la Tabla Original de 3 Filas */
     .timeline-container {
       background: var(--white);
       border-radius: var(--radius);
@@ -63,6 +66,7 @@
     }
     .timeline-table { width: 100%; border-collapse: collapse; min-width: 1200px; table-layout: fixed; }
     
+    /* Encabezados y líneas divisorias de meses */
     .timeline-table th {
       padding: 14px;
       font-size: 11px;
@@ -77,6 +81,7 @@
     .timeline-table th.col-lead { text-align: left; width: 140px; font-size: 13px; color: var(--text-dark); text-transform: none; }
     .timeline-table th.month-col { width: calc((100% - 380px) / 12); border-left: 1px solid #F0F2F4; }
 
+    /* Filas y bordes de las celdas (Rejilla de fondo) */
     .timeline-table td { padding: 14px; border-bottom: 1px solid #F3F4F6; vertical-align: middle; }
     .timeline-table td.month-cell { border-left: 1px solid #F0F2F4; padding: 0 !important; }
     .row-program { background: #F4F7FC; font-weight: 700; }
@@ -85,9 +90,11 @@
     .proj-name { font-size: 13.5px; font-weight: 500; color: var(--text-dark); padding-left: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .proj-lead { font-size: 13px; color: var(--text-muted); }
 
+    /* Bloques contenedores elásticos para las barras */
     .timeline-cell { position: relative; padding: 0 !important; height: 48px; }
     .bar-wrapper { position: absolute; top: 50%; transform: translateY(-50%); height: 12px; left: 0; right: 0; z-index: 10; }
     
+    /* Propiedades de las barras fluidas */
     .bar {
       height: 100%;
       border-radius: 20px;
@@ -95,6 +102,7 @@
     }
     .bar.program-bar { background: var(--navy); }
 
+    /* Línea Roja Vertical Indicadora de Mes Activo */
     .current-month-indicator {
       position: absolute; 
       top: 0; 
@@ -138,7 +146,7 @@
         </thead>
         <tbody>
           
-          <!-- Fila Maestra del Programa Estable -->
+          <!-- Fila Maestra del Programa -->
           <tr class="row-program">
             <td class="proj-name">🔷 Banca Minorista</td>
             <td class="proj-lead">S. Olivero</td>
@@ -156,28 +164,33 @@
             <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
           </tr>
 
-          <!-- Los 8 proyectos se inyectan aquí con la paleta de 3 colores repetidos cubriendo todo el año de forma continua -->
+          <!-- 1. App de Inversiones MVP 2 -->
           <tr>
-            <td class="proj-name">App de inversiones MVP 2</td>
+            <td class="proj-name">App de Inversiones MVP 2</td>
             <td class="proj-lead">S. Olivero</td>
             <td class="timeline-cell month-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
             <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
             <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
             <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
+            <td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td>
           </tr>
 
+          <!-- 2. Rediseño Proceso de Originación MVP 2 -->
           <tr>
             <td class="proj-name">Rediseño Proceso de Originación MVP 2</td>
             <td class="proj-lead">S. Olivero</td>
+            <td class="month-cell"></td>
             <td class="timeline-cell month-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
             <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
             <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
+            <td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td>
+          </tr>
+
+          <!-- 3. Copiloto MVP 2 -->
+          <tr>
+            <td class="proj-name">Copiloto MVP 2</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td class="month-cell"></td><td class="month-cell"></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
+            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
