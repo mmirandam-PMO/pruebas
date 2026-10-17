@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roadmap Habilitadores</title>
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1B355D;
+      --blue-brand: #2980B9;
+      --blue-light: #4A90E2;
+      --bg-main: #F7F8FA;
+      --white: #ffffff;
+      --border: #E1E4E8;
+      --text-dark: #24292F;
+      --text-muted: #6B7280;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); padding-bottom: 60px; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+    header.masthead {
+      background: linear-gradient(90deg, var(--navy) 0%, #1B4E5A 100%);
+      color: var(--white);
+      padding: 20px 0;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 14px rgba(27,42,74,.15);
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
+    .brand h1 { font-family: 'Merriweather', serif; font-size: 24px; font-weight: 900; }
+    .btn-back {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      background: rgba(255,255,255,0.15);
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .btn-back:hover { background: rgba(255,255,255,0.25); }
+    .roadmap-container {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 16px rgba(27, 42, 74, 0.05);
+      border: 1px solid var(--border);
+      overflow-x: auto;
+    }
+    .gantt-grid {
+      display: grid;
+      grid-template-columns: 280px 160px repeat(12, minmax(65px, 1fr));
+      min-width: 1200px;
+    }
+    .gantt-header-cell {
+      background: #FAFBFC;
+      padding: 14px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
+      border-bottom: 2px solid var(--border);
+      border-right: 1px solid #EAECEF;
+    }
+    .gantt-header-cell.title-side { text-align: left; font-size: 12px; color: var(--navy); background: #FAFBFC; }
+    .gantt-row { display: contents; }
+    .gantt-cell {
+      padding: 12px 16px;
+      border-bottom: 1px solid #EAECEF;
+      border-right: 1px solid #F0F2F5;
+      display: flex;
+      align-items: center;
+      background: var(--white);
+      position: relative;
+    }
+    .gantt-timeline-cell {
+      padding: 0;
+      border-bottom: 1px solid #EAECEF;
+      border-right: 1px solid #F0F2F5;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      position: relative;
+      min-height: 43px;
+    }
+    .row-program .gantt-cell {
+      background: #F4F7FA;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--navy);
+      border-bottom: 2px solid var(--border);
+    }
+    .row-program .gantt-timeline-cell { background: #F4F7FA; border-bottom: 2px solid var(--border); }
+    .row-category .gantt-cell {
+      background: #FAFBFC;
+      font-weight: 600;
+      font-size: 13.5px;
+      color: var(--blue-brand);
+    }
+    .row-category .gantt-cell.leader-header {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.3px;
+    }
+    .row-category .gantt-timeline-cell { background: #FAFBFC; }
+    .row-project .gantt-cell { font-size: 13px; color: var(--text-dark); }
+    .proj-title { font-weight: 500; }
+    .proj-owner { font-weight: 400; color: var(--text-dark); }
+    .bar {
+      height: 12px;
+      border-radius: 20px;
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .bar-program { background: var(--navy); height: 16px; }
+    .bar-category { background: var(--blue-brand); height: 14px; }
+    .bar-project { background: var(--blue-light); }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap header-inner">
+      <div class="brand"><h1>📂 Habilitadores</h1></div>
+      <div><a href="index.html" class="btn-back">← Volver al Portafolio</a></div>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="roadmap-container">
+      <div class="gantt-grid">
+        <div class="gantt-header-cell title-side"></div>
+        <div class="gantt-header-cell title-side"></div>
+        <div class="gantt-header-cell">Ene 27</div>
+        <div class="gantt-header-cell">Feb 27</div>
+        <div class="gantt-header-cell">Mar 27</div>
+        <div class="gantt-header-cell">Abr 27</div>
+        <div class="gantt-header-cell">May 27</div>
+        <div class="gantt-header-cell">Jun 27</div>
+        <div class="gantt-header-cell">Jul 27</div>
+        <div class="gantt-header-cell">Ago 27</div>
+        <div class="gantt-header-cell">Sep 27</div>
+        <div class="gantt-header-cell">Oct 27</div>
+        <div class="gantt-header-cell">Nov 27</div>
+        <div class="gantt-header-cell">Dic 27</div>
+
+        <div class="gantt-row row-program">
+          <div class="gantt-cell">📂 Habilitadores</div>
+          <div class="gantt-cell"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-program"></div></div>
+        </div>
+
+        <!-- SUBCLASIFICACIÓN 1 -->
+        <div class="gantt-row row-category">
+          <div class="gantt-cell">Enfoque al Cliente · 3</div>
+          <div class="gantt-cell leader-header">Líder de Proyecto</div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-category"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Programa Lazos</span></div>
+          <div class="gantt-cell"><span class="proj-owner">A. Nava</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Reingeniería IVR</span></div>
+          <div class="gantt-cell"><span class="proj-owner">A. Nava</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Automatización de procesos ATC (3 SOWs)</span></div>
+          <div class="gantt-cell"><span class="proj-owner">A. Nava</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+
+        <!-- SUBCLASIFICACIÓN 2 -->
+        <div class="gantt-row row-category">
+          <div class="gantt-cell">Operaciones · 4</div>
+          <div class="gantt-cell leader-header">Líder de Proyecto</div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-category"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Automatización proceso trxs POS</span></div>
+          <div class="gantt-cell"><span class="proj-owner">A. Nava</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Implementación de TEF</span></div>
+          <div class="gantt-cell"><span class="proj-owner">A. Nava</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Tokenización</span></div>
+          <div class="gantt-cell"><span class="proj-owner">A. Nava</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Migración Campo c53 al c57</span></div>
+          <div class="gantt-cell"><span class="proj-owner">A. Nava</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <!-- SUBCLASIFICACIÓN 3 -->
+        <div class="gantt-row row-category">
+          <div class="gantt-cell">Modernización Tecnológica · 6</div>
+          <div class="gantt-cell leader-header">Líder de Proyecto</div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-category"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">CRM Objetivo</span></div>
+          <div class="gantt-cell"><span class="proj-owner">M. Matus</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Content Manager Objetivo (Filenet)</span></div>
+          <div class="gantt-cell"><span class="proj-owner">M. Matus</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Upgrade S4 HANNA (E R P)</span></div>
+          <div class="gantt-cell"><span class="proj-owner">C. Budar</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Herramientas IA</span></div>
+          <div class="gantt-cell"><span class="proj-owner">M. Matus</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Implementación Middleware (Greenfield)</span></div>
+          <div class="gantt-cell"><span class="proj-owner">M. Matus</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Nuevo Core Bancario & Bca Empresarial</span></div>
+          <div class="gantt-cell"><span class="proj-owner">M. Matus</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</body>
+</html>
+
