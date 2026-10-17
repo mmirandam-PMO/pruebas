@@ -17,6 +17,7 @@
       --text-muted: #6B7280;
       --shadow: 0 4px 16px rgba(27, 42, 74, 0.08);
       --radius: 14px;
+      --bar-blue: #3A82D1;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -55,7 +56,7 @@
       box-shadow: var(--shadow);
     }
 
-    /* Estructura de la Tabla Original de 3 Filas */
+    /* Tabla de Cronograma */
     .timeline-container {
       background: var(--white);
       border-radius: var(--radius);
@@ -64,9 +65,9 @@
       overflow-x: auto;
       margin-bottom: 40px;
     }
-    .timeline-table { width: 100%; border-collapse: collapse; min-width: 1200px; table-layout: fixed; }
+    .timeline-table { width: 100%; border-collapse: collapse; min-width: 1200px; }
     
-    /* Encabezados y líneas divisorias de meses */
+    /* Encabezados de Columnas */
     .timeline-table th {
       padding: 14px;
       font-size: 11px;
@@ -77,40 +78,39 @@
       text-align: center;
       background: #FAFBFC;
     }
-    .timeline-table th.col-info { text-align: left; width: 240px; font-size: 13px; color: var(--text-dark); text-transform: none; }
-    .timeline-table th.col-lead { text-align: left; width: 140px; font-size: 13px; color: var(--text-dark); text-transform: none; }
-    .timeline-table th.month-col { width: calc((100% - 380px) / 12); border-left: 1px solid #F0F2F4; }
+    .timeline-table th.col-info { text-align: left; width: 25%; font-size: 13px; color: var(--text-dark); text-transform: none; }
+    .timeline-table th.col-lead { text-align: left; width: 15%; font-size: 13px; color: var(--text-dark); text-transform: none; }
 
-    /* Filas y bordes de las celdas (Rejilla de fondo) */
+    /* Filas y bordes */
     .timeline-table td { padding: 14px; border-bottom: 1px solid #F3F4F6; vertical-align: middle; }
-    .timeline-table td.month-cell { border-left: 1px solid #F0F2F4; padding: 0 !important; }
     .row-program { background: #F4F7FC; font-weight: 700; }
     .row-program td { color: var(--navy); font-size: 15px; }
     
-    .proj-name { font-size: 13.5px; font-weight: 500; color: var(--text-dark); padding-left: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .proj-name { font-size: 13.5px; font-weight: 500; color: var(--text-dark); padding-left: 10px; }
     .proj-lead { font-size: 13px; color: var(--text-muted); }
 
-    /* Bloques contenedores elásticos para las barras continuas */
-    .timeline-cell { position: relative; padding: 0 !important; height: 48px; }
-    .bar-wrapper { position: absolute; top: 50%; transform: translateY(-50%); height: 12px; left: 0; right: 0; z-index: 10; }
+    /* Estructura de las Barras Continuas */
+    .bar-container-cell { position: relative; padding: 0 14px !important; }
+    .bar-wrapper { position: relative; width: 100%; height: 12px; }
     
-    /* Propiedades de las barras fluidas */
     .bar {
       height: 100%;
       border-radius: 20px;
+      position: absolute;
       width: 100%;
+      left: 0;
     }
-    .bar.program-bar { background: var(--navy); }
+    .bar.program-bar { height: 14px; background: var(--navy); }
 
-    /* Línea Roja Vertical Indicadora de Mes Activo */
+    /* Línea Roja Vertical Indicadora */
     .current-month-indicator {
       position: absolute; 
-      top: 0; 
-      bottom: 0; 
-      left: 0; 
+      top: -14px; 
+      bottom: -14px; 
+      left: 14px; 
       width: 2px; 
       background: #E74C3C; 
-      z-index: 20;
+      z-index: 30;
     }
   </style>
 </head>
@@ -127,63 +127,89 @@
     <div class="timeline-container">
       <table class="timeline-table">
         <thead>
-          <!-- Tus 3 filas de encabezado originales con los nombres y meses alineados -->
           <tr>
             <th class="col-info">Nuevos proyectos · 8</th>
-            <th class="col-lead">Lider de Proyecto</th>
-            <th class="month-col">Ene 27</th>
-            <th class="month-col">Feb 27</th>
-            <th class="month-col">Mar 27</th>
-            <th class="month-col">Abr 27</th>
-            <th class="month-col">May 27</th>
-            <th class="month-col">Jun 27</th>
-            <th class="month-col">Jul 27</th>
-            <th class="month-col">Ago 27</th>
-            <th class="month-col">Sep 27</th>
-            <th class="month-col">Oct 27</th>
-            <th class="month-col">Nov 27</th>
-            <th class="month-col">Dic 27</th>
+            <th class="col-lead">Líder de Proyecto</th>
+            <th>Ene 27</th><th>Feb 27</th><th>Mar 27</th><th>Abr 27</th><th>May 27</th><th>Jun 27</th>
+            <th>Jul 27</th><th>Ago 27</th><th>Sep 27</th><th>Oct 27</th><th>Nov 27</th><th>Dic 27</th>
           </tr>
         </thead>
         <tbody>
           
-          <!-- Fila Maestra del Programa (Con tu rejilla de meses y línea roja vertical original) -->
+          <!-- Fila Maestra del Programa (Las primeras líneas se quedan fijas tal como me indicaste) -->
           <tr class="row-program">
-            <td class="proj-name">🔷 Banca Minorista</td>
-            <td class="proj-lead">S. Olivero</td>
-            <td class="timeline-cell month-cell"><div class="current-month-indicator"></div><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
+            <td>🔷 Banca Minorista</td>
+            <td>S. Olivero</td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="current-month-indicator"></div>
+              <div class="bar-wrapper">
+                <div class="bar program-bar"></div>
+              </div>
+            </td>
           </tr>
 
-          <!-- Lista de los 8 proyectos expandidos cubriendo todo el año como en el Excel -->
+          <!-- Las 8 líneas de proyectos del Excel visibles por completo -->
           <tr>
             <td class="proj-name">App de inversiones MVP 2</td>
             <td class="proj-lead">S. Olivero</td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="background: var(--bar-blue);"></div></div>
+            </td>
           </tr>
-
           <tr>
             <td class="proj-name">Rediseño Proceso de Originación MVP 2</td>
             <td class="proj-lead">S. Olivero</td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="background: var(--bar-blue);"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="proj-name">Copiloto MVP 2</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="background: var(--bar-blue);"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="proj-name">Seguros RANMA</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="background: var(--bar-blue);"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="proj-name">Créditos Asociados a Nómina (CAN)</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="background: var(--bar-blue);"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="proj-name">Cash Loans</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="background: var(--bar-blue);"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="proj-name">Personalización de ofertas</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="background: var(--bar-blue);"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="proj-name">Cuenta Rocket</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="background: var(--bar-blue);"></div></div>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</body>
+</html>
