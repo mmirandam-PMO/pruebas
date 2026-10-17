@@ -1,3 +1,141 @@
+const pmoData = {
+  programas: [
+    {
+      nombre: "Banca Minorista",
+      total_proyectos: 8,
+      categorias: [
+        {
+          tipo: "Nuevos proyectos · 8",
+          proyectos: [
+            { nombre: "App de Inversiones MVP 2", responsable: "S. Olivero" },
+            { nombre: "Rediseño Proceso de Originación MVP 2", responsable: "S. Olivero" },
+            { nombre: "Copiloto MVP 2", responsable: "S. Olivero" },
+            { nombre: "Seguros RANMA", responsable: "S. Olivero" },
+            { nombre: "Créditos Asociados a Nómina (CAN)", responsable: "S. Olivero" },
+            { nombre: "Cash Loans", responsable: "S. Olivero" },
+            { nombre: "Personalización de Ofertas", responsable: "S. Olivero" },
+            { nombre: "Cuenta Rocket", responsable: "S. Olivero", destacado: "orange" }
+          ]
+        }
+      ]
+    },
+    {
+      nombre: "Regulatorios",
+      total_proyectos: 7,
+      categorias: [
+        {
+          tipo: "Carryover 2026 · 4",
+          proyectos: [
+            { nombre: "PCI DSS", responsable: "C. Carreón" },
+            { nombre: "2o Factor Autentic. trx TDD no presenc.", responsable: "C. Carreón" },
+            { nombre: "Formulario FATCA / CRS", responsable: "C. Budar", destacado: "pink" },
+            { nombre: "Identificador Cliente Derechos ARCO", responsable: "C. Carreón" }
+          ]
+        },
+        {
+          tipo: "Nuevos proyectos · 3",
+          proyectos: [
+            { nombre: "Nueva Plataforma PLD", responsable: "C. Carreón" },
+            { fontname: "sans-serif", nombre: "Plataforma Reportes Regulatorios", responsable: "C. Budar", destacado: "blue" },
+            { nombre: "Herramientas Ciberseguridad", responsable: "C. Carreón" }
+          ]
+        }
+      ]
+    },
+    {
+      nombre: "Banca Mayorista",
+      total_proyectos: 8,
+      subprogramas: [
+        { 
+          nombre: "Banca de Empresas · Programa", 
+          responsables: ["R. Galindo", "B. Flores"], 
+          proyectos: [
+            { nombre: "Plataforma Banca Empresarial Fase 1 (PyME, Empresa Mediana y Gpos Corporativos)", responsable: "R. Galindo / B. Flores", destacado: "blue" }, 
+            { nombre: "• Proyectos Crédito", responsable: "TBD", destacado: "muted" },
+            { nombre: "• Proyectos Captación", responsable: "TBD", destacado: "muted" },
+            { nombre: "• Proyectos Servicios", responsable: "TBD", destacado: "muted" }
+          ] 
+        },
+        { 
+          nombre: "Banca de Gobierno · Programa", 
+          responsables: ["R. Vázquez"], 
+          proyectos: [
+            { nombre: "Plataforma Banca Gobierno Fase 1 (TBD)", responsable: "R. Vázquez", destacado: "blue" },
+            { nombre: "• Proyectos Crédito", responsable: "TBD", destacado: "muted" },
+            { nombre: "• Proyectos Captación", responsable: "TBD", destacado: "muted" },
+            { nombre: "• Proyectos Servicios", responsable: "TBD", destacado: "muted" }
+          ] 
+        }
+      ],
+      transversales: [
+        {
+          tipo: "Transversales · 4",
+          proyectos: [
+            { nombre: "Banca Electrónica y Móvil", responsable: "--", destacado: "red" }, 
+            { nombre: "Hub de pagos", responsable: "--", destacado: "red" }
+          ]
+        },
+        {
+          tipo: "Líneas de Negocio",
+          proyectos: [
+            { nombre: "Dispersión de Nóminas", responsable: "--" }, 
+            { nombre: "Banco Recaudador", responsable: "R. Vázquez", destacado: "red" }
+          ]
+        }
+      ]
+    },
+    {
+      nombre: "Hub de Innovación",
+      total_proyectos: 5,
+      categorias: [
+        {
+          tipo: "Por autorizar · 5",
+          proyectos: [
+            { nombre: "Comunidad Lazos", responsable: "R. Flores" },
+            { nombre: "MVNO", responsable: "--" },
+            { nombre: "Productos de crédito (3) ...", responsable: "--" },
+            { nombre: "Producto de crédito", responsable: "--" }
+          ]
+        }
+      ]
+    },
+    {
+      nombre: "Carry-over 2026",
+      total_proyectos: 13,
+      categorias: [
+        {
+          tipo: "Enfoque al Cliente · 3",
+          proyectos: [
+            { nombre: "Programa Lazos", responsable: "A. Nava", destacado: "orange" },
+            { nombre: "Reingeniería IVR", responsable: "A. Nava", destacado: "orange" },
+            { nombre: "Automatización de procesos ATC (3 saws)", responsable: "A. Nava", destacado: "orange" }
+          ]
+        },
+        {
+          tipo: "Operaciones · 4",
+          proyectos: [
+            { nombre: "Automatización proceso trxs POS", responsable: "A. Nava" },
+            { nombre: "Implementación de TEF", responsable: "A. Nava" },
+            { nombre: "Tokenización", responsable: "A. Nava" },
+            { nombre: "Migración Campo c53 al c57", responsable: "A. Nava" }
+          ]
+        },
+        {
+          tipo: "Modernización Tecnológica · 6",
+          proyectos: [
+            { nombre: "CRM Objetivo", responsable: "M. Matus" },
+            { nombre: "Content Manager Objetivo (Filenet)", responsable: "M. Matus" },
+            { nombre: "Upgrade S4 HANNA (E R P)", responsable: "C. Budar" },
+            { nombre: "Herramientas IA", responsable: "M. Matus" },
+            { nombre: "Implementación Middleware (Greenfield)", responsable: "M. Matus" },
+            { nombre: "Nuevo Core Bancario & Bca Empresarial", responsable: "M. Matus" }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
 function getProjectColor(q) {
   if (q.destacado === 'muted') return '#7F8C8D';
   if (q.destacado === 'blue') return '#1B355D';
@@ -12,11 +150,9 @@ function getProgEmoji(name) {
   if (name.includes('Regulatorios')) return '⚖️';
   if (name.includes('Mayorista')) return '🔶';
   if (name.includes('Hub')) return '🔘';
-  if (name.includes('Habilitadores')) return '📂';
   return '📂';
 }
 
-// Estilo de etiqueta "Roadmap" basado en el badge gris redondeado de la imagen 2
 const roadmapBadgeHtml = `
   <span style="
     background: rgba(27, 42, 74, 0.06); 
@@ -68,21 +204,10 @@ function render() {
   const term = document.getElementById('search-input').value.toLowerCase().trim();
   const findProg = name => pmoData.programas.find(p => p.nombre === name);
 
-  // 1. Banca Minorista -> Abre en la misma pestaña
+  // 1. Banca Minorista -> Columna 1
   const minor = findProg('Banca Minorista');
   if (minor) {
-    let cardHtml = `
-      <div class="card header-minorista">
-        <div class="card-head">
-          <h2>${getProgEmoji(minor.nombre)} ${minor.nombre}</h2>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <a href="roadmap-minorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">
-              ${roadmapBadgeHtml}
-            </a> 
-            <span class="badge">${minor.total_proyectos}</span>
-          </div>
-        </div>
-    `;
+    let cardHtml = `<div class="card header-minorista"><div class="card-head"><h2>${getProgEmoji(minor.nombre)} ${minor.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-minorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${minor.total_proyectos}</span></div></div>`;
     minor.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
       if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
@@ -91,19 +216,7 @@ function render() {
     col1.appendChild(document.createRange().createContextualFragment(cardHtml));
   }
 
-  // 2. Regulatorios
-  const reg = findProg('Regulatorios');
-  if (reg) {
-    let cardHtml = `<div class="card header-regulatorios"><div class="card-head"><h2>${getProgEmoji(reg.nombre)} ${reg.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-regulatorios.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${reg.total_proyectos}</span></div></div>`;
-    reg.categorias.forEach(c => {
-      const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
-    });
-    cardHtml += `</div>`;
-    col2.appendChild(document.createRange().createContextualFragment(cardHtml));
-  }
-
-  // 3. Banca Mayorista
+  // 2. Banca Mayorista -> Columna 1 (¡Inicia la segunda fila de la Columna 1!)
   const may = findProg('Banca Mayorista');
   if (may) {
     let cardHtml = `<div class="card header-mayorista"><div class="card-head"><h2>${getProgEmoji(may.nombre)} ${may.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-mayorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">8</span></div></div><div class="section-area">`;
@@ -124,33 +237,3 @@ function render() {
     });
 
     cardHtml += `</div></div>`;
-    col1.appendChild(document.createRange().createContextualFragment(cardHtml));
-  }
-
-  // 4. Hub de Innovación
-  const hub = findProg('Hub de Innovación');
-  if (hub) {
-    let cardHtml = `<div class="card header-hub"><div class="card-head"><h2>${getProgEmoji(hub.nombre)} ${hub.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-hub.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${hub.total_proyectos}</span></div></div>`;
-    hub.categorias.forEach(c => {
-      const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
-    });
-    cardHtml += `</div>`;
-    col2.appendChild(document.createRange().createContextualFragment(cardHtml));
-  }
-
-  // 5. Habilitadores
-  const co = findProg('Habilitadores');
-  if (co) {
-    let cardHtml = `<div class="card header-carryover"><div class="card-head"><h2>${getProgEmoji(co.nombre)} ${co.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-habilitadores.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${co.total_proyectos}</span></div></div>`;
-    co.categorias.forEach(c => {
-      const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
-    });
-    cardHtml += `</div>`;
-    col3.appendChild(document.createRange().createContextualFragment(cardHtml));
-  }
-}
-
-document.getElementById('search-input').addEventListener('input', render);
-window.addEventListener('DOMContentLoaded', render);
