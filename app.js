@@ -53,7 +53,7 @@ const pmoData = {
             { nombre: "Plataforma Banca Empresarial Fase 1 (PyME, Empresa Mediana y Gpos Corporativos)", responsable: "R. Galindo / B. Flores", destacado: "blue" }, 
             { nombre: "• Proyectos Crédito", responsable: "TBD", destacado: "muted" },
             { nombre: "• Proyectos Captación", responsable: "TBD", destacado: "muted" },
-            { nombre: "• Proyectos Servicios", responsable: "TBD", destacado: "muted" }
+            { fontname: "sans-serif", nombre: "• Proyectos Servicios", responsable: "TBD", destacado: "muted" }
           ] 
         },
         { 
@@ -87,7 +87,7 @@ const pmoData = {
           tipo: "Por autorizar · 5",
           proyectos: [
             { nombre: "Comunidad Lazos", responsable: "R. Flores" },
-            { nombre: "MVNO", responsable: "--" },
+            { fontname: "sans-serif", nombre: "MVNO", responsable: "--" },
             { nombre: "Productos de crédito (3) ...", responsable: "--" },
             { nombre: "Producto de crédito", responsable: "--" }
           ]
@@ -119,7 +119,7 @@ const pmoData = {
           tipo: "Modernización Tecnológica · 6",
           proyectos: [
             { nombre: "CRM Objetivo", responsable: "M. Matus" },
-            { nombre: "Content Manager Objetivo (Filenet)", responsable: "M. Matus" },
+            { fontname: "sans-serif", nombre: "Content Manager Objetivo (Filenet)", responsable: "M. Matus" },
             { nombre: "Upgrade S4 HANNA (E R P)", responsable: "C. Budar" },
             { nombre: "Herramientas IA", responsable: "M. Matus" },
             { nombre: "Implementación Middleware (Greenfield)", responsable: "M. Matus" },
