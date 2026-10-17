@@ -14,7 +14,7 @@ const pmoData = {
             { nombre: "Créditos Asociados a Nómina (CAN)", responsable: "S. Olivero" },
             { nombre: "Cash Loans", responsable: "S. Olivero" },
             { nombre: "Personalización de Ofertas", responsable: "S. Olivero" },
-            { nombre: "Cuenta Rocket", responsable: "S. Olivero", destacado: "orange" }
+            { nombre: "Cuenta Rocket", responsable: "S. Olivero" }
           ]
         }
       ]
@@ -27,8 +27,8 @@ const pmoData = {
           tipo: "Carryover 2026 · 4",
           proyectos: [
             { nombre: "PCI DSS", responsable: "C. Carreón" },
-            { nombre: "2o Factor Autentic. trx TDD no presenc.", responsable: "C. Carreón" },
-            { nombre: "Formulario FATCA / CRS", responsable: "C. Budar", destacado: "pink" },
+            { nombre: "Segundo factor de autenticación (Trxs no presenciales)", responsable: "C. Carreón" },
+            { nombre: "Formulario FATCA / CRS", responsable: "C. Budar" },
             { nombre: "Identificador Cliente Derechos ARCO", responsable: "C. Carreón" }
           ]
         },
@@ -53,7 +53,7 @@ const pmoData = {
             { nombre: "Plataforma Banca Empresarial Fase 1 (PyME, Empresa Mediana y Gpos Corporativos)", responsable: "R. Galindo / B. Flores", destacado: "blue" }, 
             { nombre: "• Proyectos Crédito", responsable: "TBD", destacado: "muted" },
             { nombre: "• Proyectos Captación", responsable: "TBD", destacado: "muted" },
-            { nombre: "• Proyectos Servicios", responsable: "TBD", destacado: "muted" }
+            { fontname: "sans-serif", nombre: "• Proyectos Servicios", responsable: "TBD", destacado: "muted" }
           ] 
         },
         { 
@@ -71,15 +71,10 @@ const pmoData = {
         {
           tipo: "Transversales · 4",
           proyectos: [
-            { nombre: "Banca Electrónica y Móvil", responsable: "--", destacado: "red" }, 
-            { nombre: "Hub de pagos", responsable: "--", destacado: "red" }
-          ]
-        },
-        {
-          tipo: "Líneas de Negocio",
-          proyectos: [
-            { nombre: "Dispersión de Nóminas", responsable: "--" }, 
-            { nombre: "Banco Recaudador", responsable: "R. Vázquez", destacado: "red" }
+            { nombre: "Banca Electrónica y Móvil", responsable: "--" },
+            { fontname: "sans-serif", nombre: "Hub de pagos", responsable: "--" },
+            { nombre: "Dispersión de Nóminas", responsable: "--" },
+            { nombre: "Banco Recaudador", responsable: "R. Vázquez" }
           ]
         }
       ]
@@ -94,21 +89,21 @@ const pmoData = {
             { nombre: "Comunidad Lazos", responsable: "R. Flores" },
             { nombre: "MVNO", responsable: "--" },
             { nombre: "Productos de crédito (3) ...", responsable: "--" },
-            { fontname: "sans-serif", nombre: "Producto de crédito", responsable: "--" }
+            { nombre: "Producto de crédito", responsable: "--" }
           ]
         }
       ]
     },
     {
-      nombre: "Carry-over 2026",
+      nombre: "Habilitadores",
       total_proyectos: 13,
       categorias: [
         {
           tipo: "Enfoque al Cliente · 3",
           proyectos: [
-            { nombre: "Programa Lazos", responsable: "A. Nava", destacado: "orange" },
-            { nombre: "Reingeniería IVR", responsable: "A. Nava", destacado: "orange" },
-            { nombre: "Automatización de procesos ATC (3 saws)", responsable: "A. Nava", destacado: "orange" }
+            { nombre: "Programa Lazos", responsable: "A. Nava" },
+            { nombre: "Reingeniería IVR", responsable: "A. Nava" },
+            { nombre: "Automatización de procesos ATC (3 SOWs)", responsable: "A. Nava" }
           ]
         },
         {
@@ -124,7 +119,7 @@ const pmoData = {
           tipo: "Modernización Tecnológica · 6",
           proyectos: [
             { nombre: "CRM Objetivo", responsable: "M. Matus" },
-            { nombre: "Content Manager Objetivo (Filenet)", responsable: "M. Matus" },
+            { fontname: "sans-serif", nombre: "Content Manager Objetivo (Filenet)", responsable: "M. Matus" },
             { nombre: "Upgrade S4 HANNA (E R P)", responsable: "C. Budar" },
             { nombre: "Herramientas IA", responsable: "M. Matus" },
             { nombre: "Implementación Middleware (Greenfield)", responsable: "M. Matus" },
@@ -150,6 +145,7 @@ function getProgEmoji(name) {
   if (name.includes('Regulatorios')) return '⚖️';
   if (name.includes('Mayorista')) return '🔶';
   if (name.includes('Hub')) return '🔘';
+  if (name.includes('Habilitadores')) return '📂';
   return '📂';
 }
 
@@ -207,7 +203,18 @@ function render() {
   // 1. Banca Minorista -> Columna 1
   const minor = findProg('Banca Minorista');
   if (minor) {
-    let cardHtml = `<div class="card header-minorista"><div class="card-head"><h2>${getProgEmoji(minor.nombre)} ${minor.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-minorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${minor.total_proyectos}</span></div></div>`;
+    let cardHtml = `
+      <div class="card header-minorista">
+        <div class="card-head">
+          <h2>${getProgEmoji(minor.nombre)} ${minor.nombre}</h2>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <a href="roadmap-minorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">
+              ${roadmapBadgeHtml}
+            </a> 
+            <span class="badge">${minor.total_proyectos}</span>
+          </div>
+        </div>
+    `;
     minor.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
       if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
@@ -216,25 +223,21 @@ function render() {
     col1.appendChild(document.createRange().createContextualFragment(cardHtml));
   }
 
-  // 2. Banca Mayorista -> Columna 1 (Va abajo de Minorista)
+  // 2. Regulatorios -> Columna 2
+  const reg = findProg('Regulatorios');
+  if (reg) {
+    let cardHtml = `<div class="card header-regulatorios"><div class="card-head"><h2>${getProgEmoji(reg.nombre)} ${reg.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-regulatorios.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${reg.total_proyectos}</span></div></div>`;
+    reg.categorias.forEach(c => {
+      const res = buildProjectRows(c.proyectos, term);
+      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
+    });
+    cardHtml += `</div>`;
+    col2.appendChild(document.createRange().createContextualFragment(cardHtml));
+  }
+
+  // 3. Banca Mayorista -> Columna 1
   const may = findProg('Banca Mayorista');
   if (may) {
     let cardHtml = `<div class="card header-mayorista"><div class="card-head"><h2>${getProgEmoji(may.nombre)} ${may.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-mayorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">8</span></div></div><div class="section-area">`;
     
     cardHtml += `<div class="subprogram-block-grid">`;
-    may.subprogramas.forEach(sp => {
-      const res = buildProjectRows(sp.proyectos, term);
-      if (res.matches > 0 || term === '') {
-        const leads = sp.responsables ? `<div class="subprogram-leads">${sp.responsables.join(' / ')}</div>` : '';
-        cardHtml += `<div class="subprogram-card"><div class="subprogram-title">${sp.nombre}</div>${leads}<div class="proj-list">${res.html}</div></div>`;
-      }
-    });
-    cardHtml += `</div>`;
-
-    may.transversales.forEach(t => {
-      const res = buildProjectRows(t.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div style="margin-top:14px;"><div class="section-info"><span class="section-title">${t.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
-    });
-
-    cardHtml += `</div></div>`;
-    col1.appendChild(document.createRange().createContextualFragment(cardHtml));
