@@ -3,194 +3,277 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roadmap Banca Minorista · PMO 2027</title>
+  <title>Roadmap Banca Minorista</title>
   <link rel="preconnect" href="https://googleapis.com">
   <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;700&family=Merriweather:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --navy: #1B355D;
+      --blue-brand: #2980B9;
+      --blue-light: #4A90E2;
       --bg-main: #F7F8FA;
       --white: #ffffff;
       --border: #E1E4E8;
       --text-dark: #24292F;
       --text-muted: #6B7280;
-      --shadow: 0 4px 16px rgba(27, 42, 74, 0.08);
-      --radius: 14px;
+      --radius: 12px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); min-height: 100vh; }
-    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 34px; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); padding-bottom: 60px; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
 
-    /* Cabecera del Roadmap */
+    /* Cabecera */
     header.masthead {
       background: linear-gradient(90deg, var(--navy) 0%, #1B4E5A 100%);
       color: var(--white);
       padding: 20px 0;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      box-shadow: 0 2px 14px rgba(27,42,74,.28);
-      margin-bottom: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 14px rgba(27,42,74,.15);
     }
     .header-inner { display: flex; justify-content: space-between; align-items: center; }
-    .header-inner h1 { font-family: 'Merriweather', serif; font-size: 24px; font-weight: 900; }
-
-    /* Botón Ovalado Superior Derecho Original */
+    .brand h1 { font-family: 'Merriweather', serif; font-size: 24px; font-weight: 900; }
+    
     .btn-back {
-      background: rgba(255, 255, 255, 0.12);
       color: var(--white);
-      padding: 10px 22px;
-      border-radius: 24px;
-      font-size: 13px;
-      font-weight: 700;
       text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      transition: all 0.2s ease;
+      font-size: 13px;
+      font-weight: 500;
+      background: rgba(255,255,255,0.15);
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background 0.2s;
     }
-    .btn-back:hover {
-      background: var(--white);
-      color: var(--navy);
-      box-shadow: var(--shadow);
-    }
+    .btn-back:hover { background: rgba(255,255,255,0.25); }
 
-    /* Estructura de la Tabla Original de 3 Filas */
-    .timeline-container {
+    /* Contenedor del Roadmap */
+    .roadmap-container {
       background: var(--white);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      box-shadow: 0 4px 16px rgba(27, 42, 74, 0.05);
       border: 1px solid var(--border);
       overflow-x: auto;
-      margin-bottom: 40px;
     }
-    .timeline-table { width: 100%; border-collapse: collapse; min-width: 1200px; table-layout: fixed; }
-    
-    /* Encabezados y líneas divisorias de meses */
-    .timeline-table th {
-      padding: 14px;
+
+    /* Estructura del Grid */
+    .gantt-grid {
+      display: grid;
+      grid-template-columns: 280px 160px repeat(12, minmax(65px, 1fr));
+      min-width: 1200px;
+    }
+
+    /* Cabecera de la Gráfica */
+    .gantt-header-cell {
+      background: #FAFBFC;
+      padding: 14px 12px;
       font-size: 11px;
       font-weight: 700;
-      text-transform: uppercase;
       color: var(--text-muted);
-      border-bottom: 1px solid var(--border);
       text-align: center;
+      border-bottom: 2px solid var(--border);
+      border-right: 1px solid #EAECEF;
+    }
+    .gantt-header-cell.title-side { text-align: left; font-size: 12px; color: var(--navy); background: #FAFBFC; }
+
+    /* Filas del Diagrama */
+    .gantt-row {
+      display: contents;
+    }
+
+    .gantt-cell {
+      padding: 12px 16px;
+      border-bottom: 1px solid #EAECEF;
+      border-right: 1px solid #F0F2F5;
+      display: flex;
+      align-items: center;
+      background: var(--white);
+      position: relative;
+    }
+
+    /* Celdas del Cronograma */
+    .gantt-timeline-cell {
+      padding: 0;
+      border-bottom: 1px solid #EAECEF;
+      border-right: 1px solid #F0F2F5;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Nivel 1: Programa */
+    .row-program .gantt-cell {
+      background: #F4F7FA;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--navy);
+      border-bottom: 2px solid var(--border);
+    }
+    .row-program .gantt-timeline-cell { background: #F4F7FA; border-bottom: 2px solid var(--border); }
+
+    /* Nivel 2: Categoría */
+    .row-category .gantt-cell {
       background: #FAFBFC;
+      font-weight: 600;
+      font-size: 13.5px;
+      color: var(--blue-brand);
     }
-    .timeline-table th.col-info { text-align: left; width: 240px; font-size: 13px; color: var(--text-dark); text-transform: none; }
-    .timeline-table th.col-lead { text-align: left; width: 140px; font-size: 13px; color: var(--text-dark); text-transform: none; }
-    .timeline-table th.month-col { width: calc((100% - 380px) / 12); border-left: 1px solid #F0F2F4; }
+    .row-category .gantt-cell.leader-header {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.3px;
+    }
+    .row-category .gantt-timeline-cell { background: #FAFBFC; }
 
-    /* Filas y bordes de las celdas (Rejilla de fondo) */
-    .timeline-table td { padding: 14px; border-bottom: 1px solid #F3F4F6; vertical-align: middle; }
-    .timeline-table td.month-cell { border-left: 1px solid #F0F2F4; padding: 0 !important; }
-    .row-program { background: #F4F7FC; font-weight: 700; }
-    .row-program td { color: var(--navy); font-size: 15px; }
+    /* Nivel 3: Proyectos */
+    .row-project .gantt-cell {
+      font-size: 13px;
+      color: var(--text-dark);
+    }
+    .proj-title { font-weight: 500; }
     
-    .proj-name { font-size: 13.5px; font-weight: 500; color: var(--text-dark); padding-left: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .proj-lead { font-size: 13px; color: var(--text-muted); }
+    /* CORRECCIÓN: Quitadas las negritas (font-weight: 400) para el Líder de Proyecto */
+    .proj-owner { font-weight: 400; color: var(--text-dark); }
 
-    /* Bloques contenedores elásticos para las barras */
-    .timeline-cell { position: relative; padding: 0 !important; height: 48px; }
-    .bar-wrapper { position: absolute; top: 50%; transform: translateY(-50%); height: 12px; left: 0; right: 0; z-index: 10; }
-    
-    /* Propiedades de las barras fluidas */
+    /* Barras del Cronograma */
     .bar {
-      height: 100%;
+      height: 12px;
       border-radius: 20px;
-      width: 100%;
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
-    .bar.program-bar { background: var(--navy); }
+    
+    .bar-program { background: var(--navy); height: 16px; }
+    .bar-category { background: var(--blue-brand); height: 14px; }
+    .bar-project { background: var(--blue-light); }
+    .bar-project.offset-q2 { background: #5DADE2; }
+    .bar-project.offset-q3 { background: #85C1E9; }
 
-    /* Línea Roja Vertical Indicadora de Mes Activo */
-    .current-month-indicator {
-      position: absolute; 
-      top: 0; 
-      bottom: 0; 
-      left: 0; 
-      width: 2px; 
-      background: #E74C3C; 
+    /* Indicador de Línea de Hoy */
+    .today-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 15px;
+      width: 2px;
+      background: #E85301;
+      border-dashed: 1px #E85301;
       z-index: 20;
     }
   </style>
 </head>
 <body>
 
+  <!-- Cabecera -->
   <header class="masthead">
     <div class="wrap header-inner">
-      <h1>Roadmap Banca Minorista</h1>
-      <a href="index.html" class="btn-back">← Volver al Portafolio</a>
+      <div class="brand">
+        <h1>Roadmap Banca Minorista</h1>
+      </div>
+      <div>
+        <a href="index.html" class="btn-back">← Volver al Portafolio</a>
+      </div>
     </div>
   </header>
 
+  <!-- Contenedor del Diagrama -->
   <main class="wrap">
-    <div class="timeline-container">
-      <table class="timeline-table">
-        <thead>
-          <tr>
-            <th class="col-info">Nuevos proyectos · 8</th>
-            <th class="col-lead">Líder de Proyecto</th>
-            <th class="month-col">Ene 27</th>
-            <th class="month-col">Feb 27</th>
-            <th class="month-col">Mar 27</th>
-            <th class="month-col">Abr 27</th>
-            <th class="month-col">May 27</th>
-            <th class="month-col">Jun 27</th>
-            <th class="month-col">Jul 27</th>
-            <th class="month-col">Ago 27</th>
-            <th class="month-col">Sep 27</th>
-            <th class="month-col">Oct 27</th>
-            <th class="month-col">Nov 27</th>
-            <th class="month-col">Dic 27</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-          <!-- Fila Maestra del Programa -->
-          <tr class="row-program">
-            <td class="proj-name">🔷 Banca Minorista</td>
-            <td class="proj-lead">S. Olivero</td>
-            <td class="timeline-cell month-cell"><div class="current-month-indicator"></div><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-          </tr>
+    <div class="roadmap-container">
+      <div class="gantt-grid">
+        
+        <!-- Fila de Encabezados -->
+        <div class="gantt-header-cell title-side"></div>
+        <div class="gantt-header-cell title-side"></div>
+        <div class="gantt-header-cell">Ene 27</div>
+        <div class="gantt-header-cell">Feb 27</div>
+        <div class="gantt-header-cell">Mar 27</div>
+        <div class="gantt-header-cell">Abr 27</div>
+        <div class="gantt-header-cell">May 27</div>
+        <div class="gantt-header-cell">Jun 27</div>
+        <div class="gantt-header-cell">Jul 27</div>
+        <div class="gantt-header-cell">Ago 27</div>
+        <div class="gantt-header-cell">Sep 27</div>
+        <div class="gantt-header-cell">Oct 27</div>
+        <div class="gantt-header-cell">Nov 27</div>
+        <div class="gantt-header-cell">Dic 27</div>
 
-          <!-- 1. App de Inversiones MVP 2 -->
-          <tr>
-            <td class="proj-name">App de Inversiones MVP 2</td>
-            <td class="proj-lead">S. Olivero</td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td>
-          </tr>
+        <!-- ================= NIVEL 1: PROGRAMA ================= -->
+        <div class="gantt-row row-program">
+          <div class="gantt-cell">🔷 Banca Minorista</div>
+          <div class="gantt-cell"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;">
+            <div class="bar bar-program"></div>
+            <div class="today-line"></div>
+          </div>
+        </div>
 
-          <!-- 2. Rediseño Proceso de Originación MVP 2 -->
-          <tr>
-            <td class="proj-name">Rediseño Proceso de Originación MVP 2</td>
-            <td class="proj-lead">S. Olivero</td>
-            <td class="month-cell"></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
-            <td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td><td class="month-cell"></td>
-          </tr>
+        <!-- ================= NIVEL 2: CATEGORÍA ================= -->
+        <div class="gantt-row row-category">
+          <div class="gantt-cell">Nuevos proyectos · 8</div>
+          <div class="gantt-cell leader-header">Líder de Proyecto</div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;">
+            <div class="bar bar-category"></div>
+          </div>
+        </div>
 
-          <!-- 3. Copiloto MVP 2 -->
-          <tr>
-            <td class="proj-name">Copiloto MVP 2</td>
-            <td class="proj-lead">S. Olivero</td>
-            <td class="month-cell"></td><td class="month-cell"></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
-            <td class="timeline-cell month-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
+        <!-- ================= NIVEL 3: PROYECTOS ================= -->
+        <!-- Proyecto 1 -->
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">App de Inversiones MVP 2</span></div>
+          <div class="gantt-cell"><span class="proj-owner">S. Olivero</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 4;">
+            <div class="bar bar-project"></div>
+          </div>
+          <div class="gantt-timeline-cell" style="grid-column: 7 / span 8;"></div>
+        </div>
+
+        <!-- Proyecto 2 -->
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Rediseño Proceso de Originación MVP 2</span></div>
+          <div class="gantt-cell"><span class="proj-owner">S. Olivero</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 1;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 4 / span 4;">
+            <div class="bar bar-project"></div>
+          </div>
+          <div class="gantt-timeline-cell" style="grid-column: 8 / span 7;"></div>
+        </div>
+
+        <!-- Proyecto 3 -->
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Copiloto MVP 2</span></div>
+          <div class="gantt-cell"><span class="proj-owner">S. Olivero</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 2;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 5 / span 5;">
+            <div class="bar bar-project offset-q2"></div>
+          </div>
+          <div class="gantt-timeline-cell" style="grid-column: 10 / span 5;"></div>
+        </div>
+
+        <!-- Proyecto 4 -->
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Seguros RANMA</span></div>
+          <div class="gantt-cell"><span class="proj-owner">S. Olivero</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 3;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 6 / span 5;">
+            <div class="bar bar-project offset-q2"></div>
+          </div>
+          <div class="gantt-timeline-cell" style="grid-column: 11 / span 4;"></div>
+        </div>
+
+        <!-- Proyecto 5 -->
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">Créditos Asociados a Nómina (CAN)</span></div>
+          <div class="gantt-cell"><span class="proj-owner">S. Olivero</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 5;"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 8 / span 5;">
+            <div class="bar bar-project offset-q3"></div>
+          </div>
+          <div class="gantt-timeline-cell" style="grid-column: 13 / span 2;"></div>
+        </div>
+
+        <!-- Proyecto 6 (CORREGIDO: Añadida la barra del timeline de Cash Loans) -->
