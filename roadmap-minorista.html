@@ -17,7 +17,6 @@
       --text-muted: #6B7280;
       --shadow: 0 4px 16px rgba(27, 42, 74, 0.08);
       --radius: 14px;
-      --bar-blue: #3A82D1;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -89,17 +88,27 @@
     .proj-name { font-size: 13.5px; font-weight: 500; color: var(--text-dark); padding-left: 10px; }
     .proj-lead { font-size: 13px; color: var(--text-muted); }
 
-    /* Barras de Duración Uniformes al 100% para los 12 meses */
+    /* Estructura Base de las Barras del Cronograma */
     .bar-wrapper { position: relative; width: 100%; height: 100%; padding-right: 10px; }
     .bar {
       height: 10px;
-      background: var(--bar-blue);
       border-radius: 20px;
       position: relative;
-      width: 100%; /* Cubre el año completo */
+      width: 100%;
       left: 0;
     }
     .bar.program-bar { height: 14px; background: var(--navy); }
+
+    /* Línea Roja Vertical Indicadora de Mes Activo */
+    .current-month-indicator {
+      position: absolute; 
+      top: 0; 
+      bottom: 0; 
+      left: 3.5%; /* Calibrado al inicio de la tabla (Enero) */
+      width: 2px; 
+      background: #E74C3C; 
+      z-index: 20;
+    }
 
   </style>
 </head>
@@ -135,72 +144,73 @@
         </thead>
         <tbody>
           
-          <!-- Fila Maestra del Programa -->
+          <!-- Fila Maestra del Programa (Contiene la línea indicadora roja) -->
           <tr class="row-program">
             <td>🔷 Banca Minorista</td>
             <td>S. Olivero</td>
-            <td colspan="12">
+            <td colspan="12" style="position: relative;">
+              <div class="current-month-indicator"></div>
               <div class="bar-wrapper">
                 <div class="bar program-bar"></div>
               </div>
             </td>
           </tr>
 
-          <!-- Los 8 proyectos expandidos cubriendo los 12 meses completos (01/01 al 31/12) -->
+          <!-- Lista de Proyectos Expandidos al 100% con Colores en Cascada -->
           <tr>
             <td class="proj-name">App de Inversiones MVP 2</td>
             <td class="proj-lead">S. Olivero</td>
             <td colspan="12">
-              <div class="bar-wrapper"><div class="bar"></div></div>
+              <div class="bar-wrapper"><div class="bar" style="background: #2563EB;"></div></div>
             </td>
           </tr>
           <tr>
             <td class="proj-name">Rediseño Proceso de Originación MVP 2</td>
             <td class="proj-lead">S. Olivero</td>
             <td colspan="12">
-              <div class="bar-wrapper"><div class="bar"></div></div>
+              <div class="bar-wrapper"><div class="bar" style="background: #3B82F6;"></div></div>
             </td>
           </tr>
           <tr>
             <td class="proj-name">Copiloto MVP 2</td>
             <td class="proj-lead">S. Olivero</td>
             <td colspan="12">
-              <div class="bar-wrapper"><div class="bar"></div></div>
+              <div class="bar-wrapper"><div class="bar" style="background: #60A5FA;"></div></div>
             </td>
           </tr>
           <tr>
             <td class="proj-name">Seguros RANMA</td>
             <td class="proj-lead">S. Olivero</td>
             <td colspan="12">
-              <div class="bar-wrapper"><div class="bar"></div></div>
+              <div class="bar-wrapper"><div class="bar" style="background: #93C5FD;"></div></div>
             </td>
           </tr>
           <tr>
             <td class="proj-name">Créditos Asociados a Nómina (CAN)</td>
             <td class="proj-lead">S. Olivero</td>
             <td colspan="12">
-              <div class="bar-wrapper"><div class="bar"></div></div>
+              <div class="bar-wrapper"><div class="bar" style="background: #06B6D4;"></div></div>
             </td>
           </tr>
           <tr>
             <td class="proj-name">Cash Loans</td>
             <td class="proj-lead">S. Olivero</td>
             <td colspan="12">
-              <div class="bar-wrapper"><div class="bar"></div></div>
+              <div class="bar-wrapper"><div class="bar" style="background: #22D3EE;"></div></div>
             </td>
           </tr>
           <tr>
             <td class="proj-name">Personalización de ofertas</td>
             <td class="proj-lead">S. Olivero</td>
             <td colspan="12">
-              <div class="bar-wrapper"><div class="bar"></div></div>
+              <div class="bar-wrapper"><div class="bar" style="background: #67E8F9;"></div></div>
             </td>
           </tr>
           <tr>
             <td class="proj-name">Cuenta Rocket</td>
             <td class="proj-lead">S. Olivero</td>
             <td colspan="12">
-              <div class="bar-wrapper"><div class="bar"></div></div>
+              <div class="bar-wrapper"><div class="bar" style="background: #A5F3FC;"></div></div>
             </td>
           </tr>
           
