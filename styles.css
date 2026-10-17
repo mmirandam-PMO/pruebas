@@ -32,21 +32,15 @@ input { border: 1px solid var(--border); border-radius: 10px; padding: 8px 14px;
 .search-area input::placeholder { color: rgba(255,255,255,0.7); }
 .search-area input:focus { background: var(--white); color: var(--text-dark); }
 
+/* Cuadrícula maestra de tres columnas */
 .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
 @media (max-width: 1024px) { .dashboard-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) { .dashboard-grid { grid-template-columns: 1fr; } }
 
-/* ==========================================================================
-   ALINEACIÓN ELÁSTICA NATIVA: Nivelación automática al fondo de la columna
-   ========================================================================== */
-.column { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 24px; 
-  justify-content: space-between; 
-  align-items: stretch; 
-}
+/* Forzar alineación limpia hacia arriba sin desfases */
+.column { display: flex; flex-direction: column; gap: 24px; justify-content: flex-start; align-items: stretch; }
 
+/* Tarjetas con corte de overflow para proteger las esquinas redondas */
 .card { 
   background: var(--white); 
   border-radius: var(--radius); 
@@ -55,6 +49,7 @@ input { border: 1px solid var(--border); border-radius: 10px; padding: 8px 14px;
   position: relative;
 }
 
+/* Pseudo-elemento para pintar la línea superior con gradiente sin romper la curva */
 .card::before {
   content: '';
   position: absolute;
@@ -71,6 +66,7 @@ input { border: 1px solid var(--border); border-radius: 10px; padding: 8px 14px;
 .header-hub::before { background: linear-gradient(90deg, #BDC3C7 0%, #7F8C8D 100%); }
 .header-carryover::before { background: linear-gradient(90deg, #1F3A60 0%, #34495E 100%); }
 
+/* Títulos de los programas grandes y ejecutivos */
 .card-head { padding: 18px 20px 14px; background: #FAFBFC; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
 .card-head h2 { font-family: 'Merriweather', serif; font-size: 21px; font-weight: 800; color: var(--navy); }
 .badge { background: rgba(27,42,74,0.08); color: var(--navy); padding: 4px 10px; border-radius: 20px; font-size: 13px; font-weight: 700; }
@@ -81,6 +77,7 @@ input { border: 1px solid var(--border); border-radius: 10px; padding: 8px 14px;
 .section-title { font-size: 13.5px; font-weight: 700; color: var(--navy); }
 .subprogram-leads { font-size: 12px; font-weight: 700; color: #00788A; margin-bottom: 8px; }
 
+/* Sub-bloques internos para la visualización paralela de Banca Mayorista */
 .subprogram-block-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
 .subprogram-card { background: #FAFBFD; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
 .subprogram-title { font-size: 13px; font-weight: 700; color: var(--navy); border-bottom: 1px dashed var(--border); padding-bottom: 4px; margin-bottom: 8px; }
