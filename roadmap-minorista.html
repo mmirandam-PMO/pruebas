@@ -55,7 +55,7 @@
       box-shadow: var(--shadow);
     }
 
-    /* Tabla de Cronograma Ejecutiva (Gantt) */
+    /* Tabla de Cronograma Ejecutiva Nativa (Imagen 2) */
     .timeline-container {
       background: var(--white);
       border-radius: var(--radius);
@@ -64,9 +64,9 @@
       overflow-x: auto;
       margin-bottom: 40px;
     }
-    .timeline-table { width: 100%; border-collapse: collapse; min-width: 1200px; table-layout: fixed; }
+    .timeline-table { width: 100%; border-collapse: collapse; min-width: 1200px; }
     
-    /* Encabezados de Columnas y Meses */
+    /* Encabezados de Columnas */
     .timeline-table th {
       padding: 14px;
       font-size: 11px;
@@ -77,37 +77,38 @@
       text-align: center;
       background: #FAFBFC;
     }
-    .timeline-table th.col-info { text-align: left; width: 220px; font-size: 13px; color: var(--text-dark); text-transform: none; }
-    .timeline-table th.col-lead { text-align: left; width: 140px; font-size: 13px; color: var(--text-dark); text-transform: none; }
-    .timeline-table th.month-col { width: calc((100% - 360px) / 12); }
+    .timeline-table th.col-info { text-align: left; width: 25%; font-size: 13px; color: var(--text-dark); text-transform: none; }
+    .timeline-table th.col-lead { text-align: left; width: 15%; font-size: 13px; color: var(--text-dark); text-transform: none; }
 
-    /* Filas y bordes */
+    /* Filas y celdas */
     .timeline-table td { padding: 14px; border-bottom: 1px solid #F3F4F6; vertical-align: middle; }
     .row-program { background: #F4F7FC; font-weight: 700; }
     .row-program td { color: var(--navy); font-size: 15px; }
     
-    .proj-name { font-size: 13.5px; font-weight: 500; color: var(--text-dark); padding-left: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .proj-name { font-size: 13.5px; font-weight: 500; color: var(--text-dark); padding-left: 10px; }
     .proj-lead { font-size: 13px; color: var(--text-muted); }
 
-    /* Contenedor relativo para el dibujo de barras por meses */
-    .timeline-cell { position: relative; padding: 0 !important; height: 48px; }
-    .bar-wrapper { position: absolute; top: 50%; transform: translateY(-50%); height: 12px; left: 0; right: 0; z-index: 10; }
+    /* Contenedor Maestro Elástico de Barras Continuas */
+    .bar-container-cell { position: relative; padding: 0 14px !important; }
+    .bar-wrapper { position: relative; width: 100%; height: 12px; }
+    
+    /* Propiedades de las barras fluidas redondeadas */
     .bar {
       height: 100%;
       border-radius: 20px;
-      width: 100%;
+      position: absolute;
     }
-    .bar.program-bar { background: var(--navy); }
+    .bar.program-bar { height: 14px; background: var(--navy); width: 100%; left: 0; }
 
-    /* Línea Roja Vertical Indicadora de Mes Activo */
+    /* Línea Roja Vertical Indicadora de Mes Activo (Nativa) */
     .current-month-indicator {
       position: absolute; 
-      top: 0; 
-      bottom: 0; 
-      left: 0; 
+      top: -14px; 
+      bottom: -14px; 
+      left: 14px; 
       width: 2px; 
       background: #E74C3C; 
-      z-index: 20;
+      z-index: 30;
     }
   </style>
 </head>
@@ -116,7 +117,6 @@
   <header class="masthead">
     <div class="wrap header-inner">
       <h1>Roadmap Banca Minorista</h1>
-      <!-- Mantiene tu posición y texto original intacto -->
       <a href="index.html" class="btn-back">← Volver al Tablero</a>
     </div>
   </header>
@@ -128,79 +128,96 @@
           <tr>
             <th class="col-info">Nuevos proyectos · 8</th>
             <th class="col-lead">Lider de Proyecto</th>
-            <th class="month-col">Ene 27</th>
-            <th class="month-col">Feb 27</th>
-            <th class="month-col">Mar 27</th>
-            <th class="month-col">Abr 27</th>
-            <th class="month-col">May 27</th>
-            <th class="month-col">Jun 27</th>
-            <th class="month-col">Jul 27</th>
-            <th class="month-col">Ago 27</th>
-            <th class="month-col">Sep 27</th>
-            <th class="month-col">Oct 27</th>
-            <th class="month-col">Nov 27</th>
-            <th class="month-col">Dic 27</th>
+            <th>Ene 27</th>
+            <th>Feb 27</th>
+            <th>Mar 27</th>
+            <th>Abr 27</th>
+            <th>May 27</th>
+            <th>Jun 27</th>
+            <th>Jul 27</th>
+            <th>Ago 27</th>
+            <th>Sep 27</th>
+            <th>Oct 27</th>
+            <th>Nov 27</th>
+            <th>Dic 27</th>
           </tr>
         </thead>
         <tbody>
           
-          <!-- Fila Maestra del Programa (Con la línea roja en Enero) -->
+          <!-- Fila Maestra del Programa (Contiene la línea indicadora roja perfecta de la Imagen 2) -->
           <tr class="row-program">
-            <td class="proj-name">🔷 Banca Minorista</td>
-            <td class="proj-lead">S. Olivero</td>
-            <td class="timeline-cell" style="position: relative;">
+            <td>🔷 Banca Minorista</td>
+            <td>S. Olivero</td>
+            <td colspan="12" class="bar-container-cell">
               <div class="current-month-indicator"></div>
-              <div class="bar-wrapper"><div class="bar program-bar"></div></div>
+              <div class="bar-wrapper">
+                <div class="bar program-bar"></div>
+              </div>
             </td>
-            <td class="timeline-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper"><div class="bar program-bar"></div></div></td>
           </tr>
 
-          <!-- Proyecto 1 (Color 1 - Azul Fuerte) -> Ene a Abr -->
+          <!-- Lista de Proyectos con Posiciones de la Imagen 2 y los 3 Colores Repetidos -->
           <tr>
             <td class="proj-name">App de Inversiones MVP 2</td>
             <td class="proj-lead">S. Olivero</td>
-            <td class="timeline-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper" style="left: -10px;"><div class="bar" style="background: #3B82F6;"></div></div></td>
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="width: 33.3%; left: 0%; background: #3B82F6;"></div></div>
+            </td>
           </tr>
-
-          <!-- Proyecto 2 (Color 2 - Azul Medio) -> Feb a May -->
           <tr>
             <td class="proj-name">Rediseño Proceso de Originación MVP 2</td>
             <td class="proj-lead">S. Olivero</td>
-            <td></td>
-            <td class="timeline-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper" style="left: -10px;"><div class="bar" style="background: #4A90E2;"></div></div></td>
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="width: 41.6%; left: 8.3%; background: #4A90E2;"></div></div>
+            </td>
           </tr>
-
-          <!-- Proyecto 3 (Color 3 - Celeste Muted) -> Mar a Jul -->
           <tr>
             <td class="proj-name">Copiloto MVP 2</td>
             <td class="proj-lead">S. Olivero</td>
-            <td></td><td></td>
-            <td class="timeline-cell"><div class="bar-wrapper" style="right: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper" style="left: -10px; right: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
-            <td class="timeline-cell"><div class="bar-wrapper" style="left: -10px;"><div class="bar" style="background: #74B9FF;"></div></div></td>
-            <td></td><td></td><td></td><td></td><td></td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="width: 50%; left: 16.6%; background: #74B9FF;"></div></div>
+            </td>
           </tr>
-
-          <!-- Proyecto 4 (Se repite Color 1) -> Abr a Ago -->
           <tr>
             <td class="proj-name">Seguros RANMA</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="width: 41.6%; left: 25%; background: #3B82F6;"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="proj-name">Créditos Asociados a Nómina (CAN)</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="width: 41.6%; left: 41.6%; background: #4A90E2;"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="proj-name">Cash Loans</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="width: 41.6%; left: 41.6%; background: #74B9FF;"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="proj-name">Personalización de ofertas</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="width: 41.6%; left: 41.6%; background: #3B82F6;"></div></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="proj-name">Cuenta Rocket</td>
+            <td class="proj-lead">S. Olivero</td>
+            <td colspan="12" class="bar-container-cell">
+              <div class="bar-wrapper"><div class="bar" style="width: 41.6%; left: 41.6%; background: #4A90E2;"></div></div>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</body>
+</html>
