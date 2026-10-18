@@ -5,34 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roadmap Banca Mayorista</title>
     <style>
-        :root {
-            /* Colores basados en tu diseño original */
-            --azul-encabezado-superior: #0F1E36;
-            --azul-programa-nuevo: #1D4ED8;   /* Azul rey/oscuro para los programas marcados */
-            --azul-barras-estandar: #2563EB;   /* El azul estándar de tus fases/proyectos */
-            --gris-texto: #64748B;
-            --fondo-cabecera: #F8FAFC;
-        }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 20px;
-            background-color: #F1F5F9;
+            background-color: #F8FAFC;
         }
 
         .roadmap-container {
             width: 100%;
-            background: #FFFFFF;
             border-collapse: collapse;
+            background: #FFFFFF;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        /* ENCABEZADO SUPERIOR PRINCIPAL (Restaurado) */
-        .encabezado-principal {
-            background-color: var(--azul-encabezado-superior);
+        /* ENCABEZADO SUPERIOR GLOBAL */
+        .encabezado-global {
+            background-color: #0A192F;
             color: #FFFFFF;
         }
-        .encabezado-principal td {
+        .encabezado-global td {
             padding: 14px 16px;
             font-weight: bold;
             font-size: 15px;
@@ -42,17 +33,17 @@
             margin-right: 6px;
         }
 
-        /* Cabecera de Meses */
+        /* FILA DE MESES */
         .fila-meses th {
             padding: 12px 8px;
             font-size: 11px;
-            color: var(--gris-texto);
+            color: #64748B;
             font-weight: 500;
             background-color: #FFFFFF;
             border-bottom: 1px solid #E2E8F0;
         }
 
-        /* Filas de la Tabla */
+        /* ESTILOS DE FILAS Y CELDAS */
         td, th {
             padding: 12px 16px;
             border-bottom: 1px solid #E2E8F0;
@@ -76,11 +67,11 @@
         }
 
         .col-lider {
-            color: var(--gris-texto);
+            color: #64748B;
             width: 160px;
         }
 
-        /* Estructura del Timeline */
+        /* CONTENEDORES DE LAS BARRAS DEL TIMELINE */
         .timeline-cell {
             padding: 0 16px;
             vertical-align: middle;
@@ -93,14 +84,14 @@
             width: 100%;
         }
 
-        /* NUEVA BARRA: Tono de azul diferente para programas */
+        /* NUEVAS BARRAS (Marcado amarillo): Tono de azul diferente */
         .barra-programa {
-            background-color: var(--azul-programa-nuevo);
+            background-color: #1D4ED8;
         }
 
-        /* BARRAS ESTÁNDAR: Tus barras originales */
+        /* BARRAS ESTÁNDAR: El azul original de tus proyectos */
         .barra-proyecto {
-            background-color: var(--azul-barras-estandar);
+            background-color: #3B82F6;
         }
     </style>
 </head>
@@ -108,14 +99,14 @@
 
     <table class="roadmap-container">
         <thead>
-            <!-- ENCABEZADO SUPERIOR RESTAURADO -->
-            <tr class="encabezado-principal">
+            <!-- ENCABEZADO SUPERIOR INTACTO -->
+            <tr class="encabezado-global">
                 <td colspan="2"><span class="indicador-naranja">◆</span> Banca Mayorista</td>
                 <td colspan="12"></td>
             </tr>
-            <!-- Fila de Meses -->
+            <!-- FILA DE MESES -->
             <tr class="fila-meses">
-                <th style="text-align: left; padding-left: 16px;"></th>
+                <th style="text-align: left;"></th>
                 <th style="text-align: left;"></th>
                 <th>Ene 27</th>
                 <th>Feb 27</th>
@@ -132,7 +123,7 @@
             </tr>
         </thead>
         <tbody>
-            <!-- BANCA DE EMPRESAS (Con su barra agregada en azul rey) -->
+            <!-- 1. BANCA DE EMPRESAS (Con nueva barra añadida) -->
             <tr class="programa-row">
                 <td>Banca de Empresas · Programa</td>
                 <td class="col-lider">Líder de Proyecto</td>
@@ -143,23 +134,78 @@
             <tr class="fase-row">
                 <td>Plataforma Banca Empresarial Fase 1</td>
                 <td class="col-lider">R. Galindo / B. Flores</td>
-                <td colspan="12" class="timeline-cell">
-                    <div class="barra-base barra-proyecto"></div>
-                </td>
+                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
             </tr>
             <tr class="proyecto-row">
                 <td>• Proyectos Crédito</td>
                 <td class="col-lider">TBD</td>
-                <td colspan="12" class="timeline-cell">
-                    <div class="barra-base barra-proyecto"></div>
-                </td>
+                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
             </tr>
             <tr class="proyecto-row">
                 <td>• Proyectos Captación</td>
                 <td class="col-lider">TBD</td>
+                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
+            </tr>
+            <tr class="proyecto-row">
+                <td>• Proyectos Servicios</td>
+                <td class="col-lider">TBD</td>
+                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
+            </tr>
+
+            <!-- 2. BANCA DE GOBIERNO (Con nueva barra añadida) -->
+            <tr class="programa-row">
+                <td>Banca de Gobierno · Programa</td>
+                <td class="col-lider">Líder de Proyecto</td>
                 <td colspan="12" class="timeline-cell">
-                    <div class="barra-base barra-proyecto"></div>
+                    <div class="barra-base barra-programa"></div>
                 </td>
+            </tr>
+            <tr class="fase-row">
+                <td>Plataforma Banca Gobierno Fase 1</td>
+                <td class="col-lider">R. Vázquez</td>
+                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
+            </tr>
+            <tr class="proyecto-row">
+                <td>• Proyectos Crédito</td>
+                <td class="col-lider">TBD</td>
+                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
+            </tr>
+            <tr class="proyecto-row">
+                <td>• Proyectos Captación</td>
+                <td class="col-lider">TBD</td>
+                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
+            </tr>
+            <tr class="proyecto-row">
+                <td>• Proyectos Servicios</td>
+                <td class="col-lider">TBD</td>
+                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
+            </tr>
+
+            <!-- TRANSVERSALES -->
+            <tr class="programa-row">
+                <td>Transversales · 4</td>
+                <td class="col-lider">Líder de Proyecto</td>
+                <td colspan="12" class="timeline-cell"></td>
+            </tr>
+            <tr class="proyecto-row">
+                <td>Banca Electrónica y Móvil</td>
+                <td class="col-lider">--</td>
+                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
+            </tr>
+            <tr class="proyecto-row">
+                <td>Hub de pagos</td>
+                <td class="col-lider">--</td>
+                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
+            </tr>
+            <tr class="proyecto-row">
+                <td>Dispersión de Nóminas</td>
+                <td class="col-lider">--</td>
+                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
+            </tr>
+            <tr class="proyecto-row">
+                <td>Banco Recaudador</td>
+                <td class="col-lider">R. Vázquez</td>
+                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
             </tr>
         </tbody>
     </table>
