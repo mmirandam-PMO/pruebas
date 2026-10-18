@@ -16,9 +16,9 @@
             background-color: #F8FAFC;
         }
 
-        /* NAVBAR SUPERIOR FIEL A TU DISEÑO NATIVO */
+        /* NAVBAR SUPERIOR OSCURA */
         .navbar {
-            background-color: #163041;
+            background-color: #173142;
             color: #FFFFFF;
             display: flex;
             justify-content: space-between;
@@ -28,7 +28,7 @@
         }
 
         .navbar-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
         }
 
@@ -36,13 +36,6 @@
             color: #94A3B8;
             text-decoration: none;
             font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .navbar-back:hover {
-            color: #FFFFFF;
         }
 
         /* CONTENEDOR PRINCIPAL */
@@ -51,7 +44,7 @@
             width: 100%;
         }
 
-        /* ESTRUCTURA NATIVA DE LA TABLA (MÁRGENES Y BORDES CLONADOS) */
+        /* ESTRUCTURA DE LA TABLA */
         .roadmap-table {
             width: 100%;
             border-collapse: collapse;
@@ -61,21 +54,12 @@
 
         .roadmap-table th, .roadmap-table td {
             border: 1px solid #E2E8F0;
-            padding: 10px 16px;
+            padding: 12px 16px;
             font-size: 13px;
             vertical-align: middle;
         }
 
-        /* COLUMNAS FIJAS DE TEXTO */
-        .col-concepto {
-            width: 25%;
-        }
-
-        .col-lider {
-            width: 15%;
-        }
-
-        /* CABECERA DE MESES */
+        /* ENCABEZADO DE MESES */
         .months-header th {
             font-weight: 400;
             color: #64748B;
@@ -85,29 +69,25 @@
             width: 5%;
         }
 
-        /* FILA SUPERIOR GLOBAL (BANCA MAYORISTA) */
+        /* FILA SUPERIOR BANCA MAYORISTA */
         .row-banca-mayorista {
             background-color: #FFFFFF;
         }
-
         .text-banca-mayorista {
             font-weight: 700;
             color: #0F172A;
         }
-
         .rhombus-orange {
             color: #E0533C;
             margin-right: 8px;
         }
-
         .barra-superior-dark {
-            background-color: #0B1E36;
+            background-color: #0D1E36;
             height: 24px;
             border-radius: 12px;
             width: 100%;
             position: relative;
         }
-
         .linea-roja-indicador {
             position: absolute;
             left: 15px;
@@ -117,68 +97,69 @@
             background-color: #E0533C;
         }
 
-        /* CONFIGURACIÓN DE FILAS SEGÚN TU ESTRUCTURA */
+        /* CONFIGURACIÓN DE LAS FILAS DE CONTENIDO */
         .row-programa {
-            background-color: #F8FAFC;
+            background-color: #FFFFFF;
         }
-
         .text-programa {
             font-weight: 700;
-            color: #1E40AF;
+            color: #2563EB;
         }
-
         .text-lider-label {
-            color: #475569;
-            font-weight: 600;
+            color: #64748B;
         }
 
         .row-fase td:first-child {
             color: #2563EB;
             font-weight: 600;
-            padding-left: 16px;
         }
-
         .text-lider-nombre {
             color: #334155;
-            font-weight: 500;
         }
 
         .row-proyecto td:first-child {
             color: #475569;
-            padding-left: 32px;
+            padding-left: 24px;
         }
-
         .text-tbd {
             color: #64748B;
         }
 
-        /* BARRAS DEL TIMELINE */
+        /* COLUMNAS IZQUIERDAS DE TEXTO FIJO */
+        .col-concepto {
+            width: 25%;
+        }
+        .col-lider {
+            width: 15%;
+        }
+
+        /* CONFIGURACIÓN DE LAS BARRAS DEL CRONOGRAMA */
         .barra-base {
             height: 12px;
             border-radius: 6px;
             width: 100%;
         }
 
-        /* BARRAS ORIGINALES AZUL CLARO */
-        .barra-proyecto-original {
-            background-color: #3B82F6;
+        /* LAS DOS NUEVAS BARRAS (Tono de azul diferente solicitado) */
+        .barra-programa-nueva {
+            background-color: #1F3A60;
         }
 
-        /* NUEVAS BARRAS EN UN TONO AZUL OSCURO/MARINO INTEGRADO */
-        .barra-programa-nueva {
-            background-color: #0B2545;
+        /* BARRAS ORIGINALES (El azul estándar de tus proyectos) */
+        .barra-proyecto-original {
+            background-color: #3B82F6;
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR SUPERIOR ORIGINAL (Mantiene la función de enlace intacta) -->
+    <!-- NAVBAR SUPERIOR -->
     <div class="navbar">
         <div class="navbar-title">Banca Mayorista</div>
         <a href="index.html" class="navbar-back">← Volver al Portafolio</a>
     </div>
 
-    <!-- CONTENEDOR PRINCIPAL DE LA TABLA -->
+    <!-- CONTENEDOR DE LA TABLA -->
     <div class="main-container">
         <table class="roadmap-table">
             <thead>
@@ -214,11 +195,11 @@
                     </td>
                 </tr>
 
-                <!-- 1. BANCA DE EMPRESAS (Con barra de timeline en azul oscuro) -->
+                <!-- 1. BANCA DE EMPRESAS (Con timeline agregado en azul marino medio) -->
                 <tr class="row-programa">
                     <td class="text-programa">Banca de Empresas · Programa</td>
                     <td class="text-lider-label">Líder de Proyecto</td>
-                    <td colspan="12" style="padding: 0 16px; vertical-align: middle;">
+                    <td colspan="12">
                         <div class="barra-base barra-programa-nueva"></div>
                     </td>
                 </tr>
@@ -243,11 +224,11 @@
                     <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
                 </tr>
 
-                <!-- 2. BANCA DE GOBIERNO (Con barra de timeline en azul oscuro) -->
+                <!-- 2. BANCA DE GOBIERNO (Con timeline agregado en azul marino medio) -->
                 <tr class="row-programa">
                     <td class="text-programa">Banca de Gobierno · Programa</td>
                     <td class="text-lider-label">Líder de Proyecto</td>
-                    <td colspan="12" style="padding: 0 16px; vertical-align: middle;">
+                    <td colspan="12">
                         <div class="barra-base barra-programa-nueva"></div>
                     </td>
                 </tr>
@@ -272,11 +253,11 @@
                     <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
                 </tr>
 
-                <!-- TRANSVERSALES -->
+                <!-- TRANSVERSALES (Corregido y con su barra azul original devuelta) -->
                 <tr class="row-programa">
                     <td class="text-programa">Transversales · 4</td>
                     <td class="text-lider-label">Líder de Proyecto</td>
-                    <td colspan="12"></td>
+                    <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
                 </tr>
                 <tr class="row-proyecto">
                     <td>Banca Electrónica y Móvil</td>
