@@ -17,274 +17,214 @@
         }
 
         /* NAVBAR SUPERIOR OSCURA */
-        .navbar {
-            background-color: #163041;
+        .navbar-top {
+            background: linear-gradient(90deg, #163041 0%, #1A3644 100%);
             color: #FFFFFF;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 24px;
+            padding: 16px 40px;
             width: 100%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .navbar-title {
             font-size: 18px;
             font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
-        .navbar-back {
+        .navbar-back-btn {
             color: #94A3B8;
             text-decoration: none;
             font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 6px 14px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        /* CONTENEDOR PRINCIPAL */
-        .main-container {
-            padding: 24px;
+        .content-wrapper {
+            padding: 32px 40px;
             width: 100%;
         }
 
-        /* ESTRUCTURA DE LA TABLA */
-        .roadmap-table {
+        .roadmap-main-table {
             width: 100%;
             border-collapse: collapse;
-            background: #FFFFFF;
+            background-color: #FFFFFF;
             border: 1px solid #E2E8F0;
         }
-
-        .roadmap-table th, .roadmap-table td {
+        /* DISEÑO DE CELDAS GENERALES */
+        .roadmap-main-table th, .roadmap-main-table td {
             border: 1px solid #E2E8F0;
-            padding: 10px 16px;
+            padding: 12px 20px;
             font-size: 13px;
             vertical-align: middle;
         }
 
-        /* ENCABEZADO DE MESES */
-        .months-header th {
+        .col-title-concept { width: 25%; text-align: left; }
+        .col-assigned-leader { width: 15%; text-align: left; }
+
+        /* CABECERA DE MESES */
+        .months-row th {
             font-weight: 400;
             color: #64748B;
             font-size: 11px;
             text-align: center;
             background-color: #FFFFFF;
             width: 5%;
+            padding: 14px 2px;
         }
 
-        /* FILA SUPERIOR BANCA MAYORISTA */
-        .row-banca-mayorista {
-            background-color: #FFFFFF;
-        }
-        .text-banca-mayorista {
-            font-weight: 700;
-            color: #0F172A;
-        }
-        .rhombus-orange {
-            color: #E0533C;
-            margin-right: 8px;
-        }
-        .barra-superior-dark {
-            background-color: #0B1E36;
-            height: 24px;
-            border-radius: 12px;
+        /* ESTILOS DE FILAS */
+        .row-global-header { background-color: #FFFFFF; }
+        .text-global-header { font-weight: 700; color: #0F172A; }
+        .rhombus-marker { color: #E0533C; margin-right: 8px; font-size: 12px; }
+
+        .barra-top-dark-container {
+            background-color: #112946;
+            height: 22px;
+            border-radius: 11px;
             width: 100%;
             position: relative;
         }
+
         .linea-roja-indicador {
             position: absolute;
-            left: 15px;
-            top: -6px;
-            bottom: -6px;
-            width: 2px;
+            left: 12px;
+            top: -5px;
+            bottom: -5px;
+            width: 3px;
             background-color: #E0533C;
         }
 
-        /* FILAS DE PROGRAMA (Fondo grisáceo y texto azul oscuro) */
-        .row-programa {
-            background-color: #F8FAFC;
-        }
-        .text-programa {
-            font-weight: 700;
-            color: #1E40AF;
-        }
-        .text-lider-label {
-            color: #475569;
-            font-weight: 600;
-        }
+        .row-style-programa { background-color: #F8FAFC; }
+        .text-style-programa { font-weight: 700; color: #1E40AF; }
+        .label-style-lider { color: #475569; font-weight: 600; }
 
-        /* FILAS DE FASE (Texto azul brillante intermedio) */
-        .row-fase td:first-child {
-            color: #2563EB;
-            font-weight: 600;
-        }
-        .text-lider-nombre {
-            color: #334155;
-            font-weight: 500;
-        }
+        .row-style-fase td:first-child { color: #2563EB; font-weight: 600; padding-left: 20px; }
+        .text-style-lider-name { color: #334155; font-weight: 500; }
 
-        /* FILAS DE PROYECTO (Texto gris con sangría) */
-        .row-proyecto td:first-child {
-            color: #475569;
-            padding-left: 32px;
-        }
-        .text-tbd {
-            color: #64748B;
-        }
+        .row-style-proyecto td:first-child { color: #475569; padding-left: 36px; }
+        .text-style-tbd { color: #64748B; }
 
-        /* ANCHOS DE COLUMNAS */
-        .col-concepto {
-            width: 25%;
-        }
-        .col-lider {
-            width: 15%;
-        }
-
-        /* BARRAS DEL TIMELINE */
-        .barra-base {
-            height: 12px;
-            border-radius: 6px;
-            width: 100%;
-        }
-
-        /* NUEVAS BARRAS: En las filas de programas (Tono azul rey oscuro diferenciado) */
-        .barra-programa-nueva {
-            background-color: #1E3A8A;
-        }
-
-        /* BARRAS ORIGINALES: El azul estándar de fases, proyectos y transversales */
-        .barra-proyecto-original {
-            background-color: #3B82F6;
-        }
+        /* COMPONENTE DE BARRAS */
+        .timeline-bar-wrapper { height: 12px; border-radius: 6px; width: 100%; }
+        
+        /* NUEVAS BARRAS (AZUL MARINO DIFERENTE) */
+        .barra-programa-amarillo { background-color: #1E3A8A; }
+        
+        /* BARRAS ORIGINALES AZULES */
+        .barra-proyecto-original { background-color: #3B82F6; }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR SUPERIOR -->
-    <div class="navbar">
+    <div class="navbar-top">
         <div class="navbar-title">Banca Mayorista</div>
-        <a href="#" class="navbar-back">← Volver al Portafolio</a>
+        <a href="#" class="navbar-back-btn">← Volver al Portafolio</a>
     </div>
 
-    <!-- CONTENEDOR DE LA TABLA -->
-    <div class="main-container">
-        <table class="roadmap-table">
+    <div class="content-wrapper">
+        <table class="roadmap-main-table">
             <thead>
-                <tr class="months-header">
+                <tr class="months-row">
                     <th style="border: none; background: transparent;"></th>
                     <th style="border: none; background: transparent;"></th>
-                    <th>Ene 27</th>
-                    <th>Feb 27</th>
-                    <th>Mar 27</th>
-                    <th>Abr 27</th>
-                    <th>May 27</th>
-                    <th>Jun 27</th>
-                    <th>Jul 27</th>
-                    <th>Ago 27</th>
-                    <th>Sep 27</th>
-                    <th>Oct 27</th>
-                    <th>Nov 27</th>
-                    <th>Dic 27</th>
+                    <th>Ene 27</th><th>Feb 27</th><th>Mar 27</th><th>Abr 27</th><th>May 27</th><th>Jun 27</th>
+                    <th>Jul 27</th><th>Ago 27</th><th>Sep 27</th><th>Oct 27</th><th>Nov 27</th><th>Dic 27</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- ENCABEZADO GLOBAL BANCA MAYORISTA -->
-                <tr class="row-banca-mayorista">
-                    <td class="col-concepto text-banca-mayorista">
-                        <span class="rhombus-orange">◆</span>Banca Mayorista
-                    </td>
-                    <td class="col-lider"></td>
+                <tr class="row-global-header">
+                    <td class="col-title-concept text-global-header"><span class="rhombus-marker">◆</span>Banca Mayorista</td>
+                    <td class="col-assigned-leader"></td>
                     <td colspan="12">
-                        <div class="barra-superior-dark">
-                            <div class="linea-roja-indicador"></div>
-                        </div>
+                        <div class="barra-top-dark-container"><div class="linea-roja-indicador"></div></div>
                     </td>
                 </tr>
-
-                <!-- 1. BANCA DE EMPRESAS -->
-                <tr class="row-programa">
-                    <td class="text-programa">Banca de Empresas · Programa</td>
-                    <td class="text-lider-label">Líder de Proyecto</td>
+                <!-- BLOQUE 1: BANCA DE EMPRESAS -->
+                <tr class="row-style-programa">
+                    <td class="text-style-programa">Banca de Empresas · Programa</td>
+                    <td class="label-style-lider">Líder de Proyecto</td>
                     <td colspan="12">
-                        <!-- TIMELINE AGREGADO EXCLUSIVAMENTE AQUÍ -->
-                        <div class="barra-base barra-programa-nueva"></div>
+                        <!-- TIMELINE NUEVO AGREGADO -->
+                        <div class="timeline-bar-wrapper barra-programa-amarillo"></div>
                     </td>
                 </tr>
-                <tr class="row-fase">
+                <tr class="row-style-fase">
                     <td>Plataforma Banca Empresarial Fase 1</td>
-                    <td class="text-lider-nombre">R. Galindo / B. Flores</td>
-                    <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
+                    <td class="text-style-lider-name">R. Galindo / B. Flores</td>
+                    <td colspan="12"><div class="timeline-bar-wrapper barra-proyecto-original"></div></td>
                 </tr>
-                <tr class="row-proyecto">
+                <tr class="row-style-proyecto">
                     <td>• Proyectos Crédito</td>
-                    <td class="text-tbd">TBD</td>
-                    <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
+                    <td class="text-style-tbd">TBD</td>
+                    <td colspan="12"><div class="timeline-bar-wrapper barra-proyecto-original"></div></td>
                 </tr>
-                <tr class="row-proyecto">
+                <tr class="row-style-proyecto">
                     <td>• Proyectos Captación</td>
-                    <td class="text-tbd">TBD</td>
-                    <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
+                    <td class="text-style-tbd">TBD</td>
+                    <td colspan="12"><div class="timeline-bar-wrapper barra-proyecto-original"></div></td>
                 </tr>
-                <tr class="row-proyecto">
+                <tr class="row-style-proyecto">
                     <td>• Proyectos Servicios</td>
-                    <td class="text-tbd">TBD</td>
-                    <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
+                    <td class="text-style-tbd">TBD</td>
+                    <td colspan="12"><div class="timeline-bar-wrapper barra-proyecto-original"></div></td>
                 </tr>
-
-                <!-- 2. BANCA DE GOBIERNO -->
-                <tr class="row-programa">
-                    <td class="text-programa">Banca de Gobierno · Programa</td>
-                    <td class="text-lider-label">Líder de Proyecto</td>
+                <!-- BLOQUE 2: BANCA DE GOBIERNO -->
+                <tr class="row-style-programa">
+                    <td class="text-style-programa">Banca de Gobierno · Programa</td>
+                    <td class="label-style-lider">Líder de Proyecto</td>
                     <td colspan="12">
-                        <!-- TIMELINE AGREGADO EXCLUSIVAMENTE AQUÍ -->
-                        <div class="barra-base barra-programa-nueva"></div>
+                        <!-- TIMELINE NUEVO AGREGADO -->
+                        <div class="timeline-bar-wrapper barra-programa-amarillo"></div>
                     </td>
                 </tr>
-                <tr class="row-fase">
+                <tr class="row-style-fase">
                     <td>Plataforma Banca Gobierno Fase 1</td>
-                    <td class="text-lider-nombre">R. Vázquez</td>
-                    <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
+                    <td class="text-style-lider-name">R. Vázquez</td>
+                    <td colspan="12"><div class="timeline-bar-wrapper barra-proyecto-original"></div></td>
                 </tr>
-                <tr class="row-proyecto">
+                <tr class="row-style-proyecto">
                     <td>• Proyectos Crédito</td>
-                    <td class="text-tbd">TBD</td>
-                    <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
+                    <td class="text-style-tbd">TBD</td>
+                    <td colspan="12"><div class="timeline-bar-wrapper barra-proyecto-original"></div></td>
                 </tr>
-                <tr class="row-proyecto">
+                <tr class="row-style-proyecto">
                     <td>• Proyectos Captación</td>
-                    <td class="text-tbd">TBD</td>
-                    <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
+                    <td class="text-style-tbd">TBD</td>
+                    <td colspan="12"><div class="timeline-bar-wrapper barra-proyecto-original"></div></td>
                 </tr>
-                <tr class="row-proyecto">
+                <tr class="row-style-proyecto">
                     <td>• Proyectos Servicios</td>
-                    <td class="text-tbd">TBD</td>
-                    <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
+                    <td class="text-style-tbd">TBD</td>
+                    <td colspan="12"><div class="timeline-bar-wrapper barra-proyecto-original"></div></td>
                 </tr>
-
-                <!-- 3. TRANSVERSALES (Alineado con el estilo exacto de row-fase) -->
-                <tr class="row-fase">
-                    <td>Transversales · 4</td>
-                    <td class="text-lider-nombre">Líder de Proyecto</td>
-                    <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
+                <!-- BLOQUE 3: TRANSVERSALES -->
+                <tr class="row-style-programa">
+                    <td class="text-style-programa">Transversales · 4</td>
+                    <td class="label-style-lider">Líder de Proyecto</td>
+                    <td colspan="12"></td>
                 </tr>
-                <tr class="row-proyecto">
+                <tr class="row-style-proyecto">
                     <td>Banca Electrónica y Móvil</td>
-                    <td class="text-tbd">--</td>
-                    <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
+                    <td class="text-style-tbd">--</td>
+                    <td colspan="12"><div class="timeline-bar-wrapper barra-proyecto-original"></div></td>
                 </tr>
-                <tr class="row-proyecto">
+                <tr class="row-style-proyecto">
                     <td>Hub de pagos</td>
-                    <td class="text-tbd">--</td>
-                    <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
+                    <td class="text-style-tbd">--</td>
+                    <td colspan="12"><div class="timeline-bar-wrapper barra-proyecto-original"></div></td>
                 </tr>
-                <tr class="row-proyecto">
+                <tr class="row-style-proyecto">
                     <td>Dispersión de Nóminas</td>
-                    <td class="text-tbd">--</td>
-                    <td colspan="12"><div class="barra-base barra-proyecto-original"></div></td>
+                    <td class="text-style-tbd">--</td>
+                    <td colspan="12"><div class="timeline-bar-wrapper barra-proyecto-original"></div></td>
                 </tr>
             </tbody>
         </table>
     </div>
-
 </body>
 </html>
