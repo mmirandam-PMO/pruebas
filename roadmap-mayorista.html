@@ -1,214 +1,225 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roadmap Banca Mayorista</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            margin: 20px;
-            background-color: #F8FAFC;
-        }
-
-        .roadmap-container {
-            width: 100%;
-            border-collapse: collapse;
-            background: #FFFFFF;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        /* ENCABEZADO SUPERIOR GLOBAL */
-        .encabezado-global {
-            background-color: #0A192F;
-            color: #FFFFFF;
-        }
-        .encabezado-global td {
-            padding: 14px 16px;
-            font-weight: bold;
-            font-size: 15px;
-        }
-        .indicador-naranja {
-            color: #FF6B35;
-            margin-right: 6px;
-        }
-
-        /* FILA DE MESES */
-        .fila-meses th {
-            padding: 12px 8px;
-            font-size: 11px;
-            color: #64748B;
-            font-weight: 500;
-            background-color: #FFFFFF;
-            border-bottom: 1px solid #E2E8F0;
-        }
-
-        /* ESTILOS DE FILAS Y CELDAS */
-        td, th {
-            padding: 12px 16px;
-            border-bottom: 1px solid #E2E8F0;
-            font-size: 13px;
-        }
-
-        .programa-row {
-            background-color: #F8FAFC;
-            font-weight: 700;
-            color: #1E3A8A;
-        }
-
-        .fase-row {
-            color: #2563EB;
-            font-weight: 600;
-        }
-
-        .proyecto-row {
-            color: #334155;
-            padding-left: 32px;
-        }
-
-        .col-lider {
-            color: #64748B;
-            width: 160px;
-        }
-
-        /* CONTENEDORES DE LAS BARRAS DEL TIMELINE */
-        .timeline-cell {
-            padding: 0 16px;
-            vertical-align: middle;
-            width: 65%;
-        }
-
-        .barra-base {
-            height: 12px;
-            border-radius: 6px;
-            width: 100%;
-        }
-
-        /* NUEVAS BARRAS (Marcado amarillo): Tono de azul diferente */
-        .barra-programa {
-            background-color: #1D4ED8;
-        }
-
-        /* BARRAS ESTÁNDAR: El azul original de tus proyectos */
-        .barra-proyecto {
-            background-color: #3B82F6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roadmap Banca Mayorista</title>
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1B355D;
+      --blue-brand: #2980B9;
+      --blue-light: #4A90E2;
+      --bg-main: #F7F8FA;
+      --white: #ffffff;
+      --border: #E1E4E8;
+      --text-dark: #24292F;
+      --text-muted: #6B7280;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); padding-bottom: 60px; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+    header.masthead {
+      background: linear-gradient(90deg, var(--navy) 0%, #1B4E5A 100%);
+      color: var(--white);
+      padding: 20px 0;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 14px rgba(27,42,74,.15);
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
+    .brand h1 { font-family: 'Merriweather', serif; font-size: 24px; font-weight: 900; }
+    .btn-back {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      background: rgba(255,255,255,0.15);
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .btn-back:hover { background: rgba(255,255,255,0.25); }
+    .roadmap-container {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 16px rgba(27, 42, 74, 0.05);
+      border: 1px solid var(--border);
+      overflow-x: auto;
+    }
+    .gantt-grid {
+      display: grid;
+      grid-template-columns: 280px 160px repeat(12, minmax(65px, 1fr));
+      min-width: 1200px;
+    }
+    .gantt-header-cell {
+      background: #FAFBFC;
+      padding: 14px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
+      border-bottom: 2px solid var(--border);
+      border-right: 1px solid #EAECEF;
+    }
+    .gantt-header-cell.title-side { text-align: left; font-size: 12px; color: var(--navy); background: #FAFBFC; }
+    .gantt-row { display: contents; }
+    .gantt-cell {
+      padding: 12px 16px;
+      border-bottom: 1px solid #EAECEF;
+      border-right: 1px solid #F0F2F5;
+      display: flex;
+      align-items: center;
+      background: var(--white);
+      position: relative;
+    }
+    .gantt-timeline-cell {
+      padding: 0;
+      border-bottom: 1px solid #EAECEF;
+      border-right: 1px solid #F0F2F5;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      position: relative;
+      min-height: 43px;
+    }
+    .row-program .gantt-cell { background: #F4F7FA; font-weight: 700; font-size: 15px; color: var(--navy); border-bottom: 2px solid var(--border); }
+    .row-program .gantt-timeline-cell { background: #F4F7FA; border-bottom: 2px solid var(--border); }
+    .row-subprogram .gantt-cell { background: #EBF3F9; font-weight: 700; font-size: 14px; color: #1F618D; }
+    .row-subprogram .gantt-cell.leader-header { font-size: 12px; font-weight: 700; color: #1F618D; }
+    .row-subprogram .gantt-timeline-cell { background: #EBF3F9; }
+    .row-category .gantt-cell { background: #FAFBFC; font-weight: 600; font-size: 13px; color: var(--blue-brand); padding-left: 28px; }
+    .row-category .gantt-cell.leader-header { font-size: 12px; font-weight: 600; color: var(--blue-brand); }
+    .row-category .gantt-timeline-cell { background: #FAFBFC; }
+    .row-project .gantt-cell { font-size: 12.5px; color: var(--text-dark); padding-left: 42px; }
+    .proj-title { font-weight: 500; }
+    .proj-owner { font-weight: 400; color: var(--text-dark); }
+    .bar { height: 12px; border-radius: 20px; position: absolute; left: 8px; right: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .bar-program { background: var(--navy); height: 16px; }
+    .bar-category { background: var(--blue-brand); height: 14px; }
+    .bar-project { background: var(--blue-light); }
+    .today-line { position: absolute; top: 0; bottom: 0; left: 15px; width: 2px; background: #E85301; border-dashed: 1px #E85301; z-index: 20; }
+  </style>
 </head>
 <body>
+  <header class="masthead">
+    <div class="wrap header-inner">
+      <div class="brand"><h1>Banca Mayorista</h1></div>
+      <div><a href="index.html" class="btn-back">← Volver al Portafolio</a></div>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="roadmap-container">
+      <div class="gantt-grid">
+        <div class="gantt-header-cell title-side"></div>
+        <div class="gantt-header-cell title-side"></div>
+        <div class="gantt-header-cell">Ene 27</div>
+        <div class="gantt-header-cell">Feb 27</div>
+        <div class="gantt-header-cell">Mar 27</div>
+        <div class="gantt-header-cell">Abr 27</div>
+        <div class="gantt-header-cell">May 27</div>
+        <div class="gantt-header-cell">Jun 27</div>
+        <div class="gantt-header-cell">Jul 27</div>
+        <div class="gantt-header-cell">Ago 27</div>
+        <div class="gantt-header-cell">Sep 27</div>
+        <div class="gantt-header-cell">Oct 27</div>
+        <div class="gantt-header-cell">Nov 27</div>
+        <div class="gantt-header-cell">Dic 27</div>
 
-    <table class="roadmap-container">
-        <thead>
-            <!-- ENCABEZADO SUPERIOR INTACTO -->
-            <tr class="encabezado-global">
-                <td colspan="2"><span class="indicador-naranja">◆</span> Banca Mayorista</td>
-                <td colspan="12"></td>
-            </tr>
-            <!-- FILA DE MESES -->
-            <tr class="fila-meses">
-                <th style="text-align: left;"></th>
-                <th style="text-align: left;"></th>
-                <th>Ene 27</th>
-                <th>Feb 27</th>
-                <th>Mar 27</th>
-                <th>Abr 27</th>
-                <th>May 27</th>
-                <th>Jun 27</th>
-                <th>Jul 27</th>
-                <th>Ago 27</th>
-                <th>Sep 27</th>
-                <th>Oct 27</th>
-                <th>Nov 27</th>
-                <th>Dic 27</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- 1. BANCA DE EMPRESAS (Con nueva barra añadida) -->
-            <tr class="programa-row">
-                <td>Banca de Empresas · Programa</td>
-                <td class="col-lider">Líder de Proyecto</td>
-                <td colspan="12" class="timeline-cell">
-                    <div class="barra-base barra-programa"></div>
-                </td>
-            </tr>
-            <tr class="fase-row">
-                <td>Plataforma Banca Empresarial Fase 1</td>
-                <td class="col-lider">R. Galindo / B. Flores</td>
-                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
-            </tr>
-            <tr class="proyecto-row">
-                <td>• Proyectos Crédito</td>
-                <td class="col-lider">TBD</td>
-                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
-            </tr>
-            <tr class="proyecto-row">
-                <td>• Proyectos Captación</td>
-                <td class="col-lider">TBD</td>
-                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
-            </tr>
-            <tr class="proyecto-row">
-                <td>• Proyectos Servicios</td>
-                <td class="col-lider">TBD</td>
-                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
-            </tr>
+        <!-- NIVEL 1 -->
+        <div class="gantt-row row-program">
+          <div class="gantt-cell">🔶 Banca Mayorista</div>
+          <div class="gantt-cell"></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;">
+            <div class="bar bar-program"></div>
+            <div class="today-line"></div>
+          </div>
+        </div>
 
-            <!-- 2. BANCA DE GOBIERNO (Con nueva barra añadida) -->
-            <tr class="programa-row">
-                <td>Banca de Gobierno · Programa</td>
-                <td class="col-lider">Líder de Proyecto</td>
-                <td colspan="12" class="timeline-cell">
-                    <div class="barra-base barra-programa"></div>
-                </td>
-            </tr>
-            <tr class="fase-row">
-                <td>Plataforma Banca Gobierno Fase 1</td>
-                <td class="col-lider">R. Vázquez</td>
-                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
-            </tr>
-            <tr class="proyecto-row">
-                <td>• Proyectos Crédito</td>
-                <td class="col-lider">TBD</td>
-                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
-            </tr>
-            <tr class="proyecto-row">
-                <td>• Proyectos Captación</td>
-                <td class="col-lider">TBD</td>
-                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
-            </tr>
-            <tr class="proyecto-row">
-                <td>• Proyectos Servicios</td>
-                <td class="col-lider">TBD</td>
-                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
-            </tr>
+        <!-- BANCA DE EMPRESAS (4 NIVELES) -->
+        <div class="gantt-row row-subprogram">
+          <div class="gantt-cell">Banca de Empresas · Programa</div>
+          <div class="gantt-cell leader-header">Líder de Proyecto</div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"></div>
+        </div>
+        <div class="gantt-row row-category">
+          <div class="gantt-cell">Plataforma Banca Empresarial Fase 1</div>
+          <div class="gantt-cell leader-header">R. Galindo / B. Flores</div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-category"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">• Proyectos Crédito</span></div>
+          <div class="gantt-cell"><span class="proj-owner">TBD</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">• Proyectos Captación</span></div>
+          <div class="gantt-cell"><span class="proj-owner">TBD</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">• Proyectos Servicios</span></div>
+          <div class="gantt-cell"><span class="proj-owner">TBD</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <!-- BANCA DE GOBIERNO (4 NIVELES) -->
+        <div class="gantt-row row-subprogram">
+          <div class="gantt-cell">Banca de Gobierno · Programa</div>
+          <div class="gantt-cell leader-header">Líder de Proyecto</div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"></div>
+        </div>
+        <div class="gantt-row row-category">
+          <div class="gantt-cell">Plataforma Banca Gobierno Fase 1</div>
+          <div class="gantt-cell leader-header">R. Vázquez</div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-category"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">• Proyectos Crédito</span></div>
+          <div class="gantt-cell"><span class="proj-owner">TBD</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">• Proyectos Captación</span></div>
+          <div class="gantt-cell"><span class="proj-owner">TBD</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project">
+          <div class="gantt-cell"><span class="proj-title">• Proyectos Servicios</span></div>
+          <div class="gantt-cell"><span class="proj-owner">TBD</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
 
-            <!-- TRANSVERSALES -->
-            <tr class="programa-row">
-                <td>Transversales · 4</td>
-                <td class="col-lider">Líder de Proyecto</td>
-                <td colspan="12" class="timeline-cell"></td>
-            </tr>
-            <tr class="proyecto-row">
-                <td>Banca Electrónica y Móvil</td>
-                <td class="col-lider">--</td>
-                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
-            </tr>
-            <tr class="proyecto-row">
-                <td>Hub de pagos</td>
-                <td class="col-lider">--</td>
-                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
-            </tr>
-            <tr class="proyecto-row">
-                <td>Dispersión de Nóminas</td>
-                <td class="col-lider">--</td>
-                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
-            </tr>
-            <tr class="proyecto-row">
-                <td>Banco Recaudador</td>
-                <td class="col-lider">R. Vázquez</td>
-                <td colspan="12" class="timeline-cell"><div class="barra-base barra-proyecto"></div></td>
-            </tr>
-        </tbody>
-    </table>
+        <!-- TRANSVERSALES (3 NIVELES) -->
+        <div class="gantt-row row-category" style="padding-left: 12px; background: #FAFBFC;">
+          <div class="gantt-cell" style="padding-left: 16px; font-weight: 700;">Transversales · 4</div>
+          <div class="gantt-cell leader-header">Líder de Proyecto</div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-category"></div></div>
+        </div>
+        <div class="gantt-row row-project" style="padding-left: 0;">
+          <div class="gantt-cell" style="padding-left: 32px;"><span class="proj-title">Banca Electrónica y Móvil</span></div>
+          <div class="gantt-cell"><span class="proj-owner">--</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project" style="padding-left: 0;">
+          <div class="gantt-cell" style="padding-left: 32px;"><span class="proj-title">Hub de pagos</span></div>
+          <div class="gantt-cell"><span class="proj-owner">--</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project" style="padding-left: 0;">
+          <div class="gantt-cell" style="padding-left: 32px;"><span class="proj-title">Dispersión de Nóminas</span></div>
+          <div class="gantt-cell"><span class="proj-owner">--</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
+        <div class="gantt-row row-project" style="padding-left: 0;">
+          <div class="gantt-cell" style="padding-left: 32px;"><span class="proj-title">Banco Recaudador</span></div>
+          <div class="gantt-cell"><span class="proj-owner">R. Vázquez</span></div>
+          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
+        </div>
 
+      </div>
+    </div>
+  </main>
 </body>
 </html>
