@@ -132,7 +132,7 @@ function render() {
             <a href="roadmap-mayorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">
               ${roadmapBadgeHtml}
             </a> 
-            <span class="badge">8</span>
+            <span class="badge">9</span>
           </div>
         </div>
         <div class="section-area">
