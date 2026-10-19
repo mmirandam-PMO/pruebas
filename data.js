@@ -24,7 +24,7 @@ const pmoData = {
       total_proyectos: 7,
       categorias: [
         {
-          tipo: "Carryover 2026 · 4",
+          tipo: "Carry-over 2026 · 4",
           proyectos: [
             { nombre: "PCI DSS", responsable: "C. Carreón" },
             { nombre: "Segundo factor de autenticación (Trxs no presenciales)", responsable: "C. Carreón" },
