@@ -4,258 +4,208 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roadmap Habilitadores</title>
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
   <link href="https://googleapis.com" rel="stylesheet">
   <style>
     :root {
       --navy: #1B355D;
-      --blue-brand: #2980B9;
-      --blue-light: #4A90E2;
       --bg-main: #F7F8FA;
       --white: #ffffff;
       --border: #E1E4E8;
       --text-dark: #24292F;
       --text-muted: #6B7280;
-      --radius: 12px;
+      --shadow: 0 4px 16px rgba(27, 42, 74, 0.08);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); padding-bottom: 60px; }
-    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-dark); min-height: 100vh; padding-bottom: 40px; }
+    
     header.masthead {
       background: linear-gradient(90deg, var(--navy) 0%, #1B4E5A 100%);
       color: var(--white);
-      padding: 20px 0;
-      margin-bottom: 24px;
-      box-shadow: 0 2px 14px rgba(27,42,74,.15);
+      padding: 16px 34px;
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 14px rgba(27,42,74,.28);
     }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; }
-    .brand h1 { font-family: 'Merriweather', serif; font-size: 24px; font-weight: 900; }
+    header h1 { font-family: 'Merriweather', serif; font-size: 22px; font-weight: 900; }
+    
     .btn-back {
+      background: rgba(255, 255, 255, 0.15);
       color: var(--white);
       text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
-      background: rgba(255,255,255,0.15);
       padding: 8px 16px;
       border-radius: 8px;
-      transition: background 0.2s;
-    }
-    .btn-back:hover { background: rgba(255,255,255,0.25); }
-    .roadmap-container {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: 0 4px 16px rgba(27, 42, 74, 0.05);
-      border: 1px solid var(--border);
-      overflow-x: auto;
-    }
-    .gantt-grid {
-      display: grid;
-      grid-template-columns: 280px 160px repeat(12, minmax(65px, 1fr));
-      min-width: 1200px;
-    }
-    .gantt-header-cell {
-      background: #FAFBFC;
-      padding: 14px 12px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-align: center;
-      border-bottom: 2px solid var(--border);
-      border-right: 1px solid #EAECEF;
-    }
-    .gantt-header-cell.title-side { text-align: left; font-size: 12px; color: var(--navy); background: #FAFBFC; }
-    .gantt-row { display: contents; }
-    .gantt-cell {
-      padding: 12px 16px;
-      border-bottom: 1px solid #EAECEF;
-      border-right: 1px solid #F0F2F5;
-      display: flex;
-      align-items: center;
-      background: var(--white);
-      position: relative;
-    }
-    .gantt-timeline-cell {
-      padding: 0;
-      border-bottom: 1px solid #EAECEF;
-      border-right: 1px solid #F0F2F5;
-      background: var(--white);
-      display: flex;
-      align-items: center;
-      position: relative;
-      min-height: 43px;
-    }
-    .row-program .gantt-cell {
-      background: #F4F7FA;
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--navy);
-      border-bottom: 2px solid var(--border);
-    }
-    .row-program .gantt-timeline-cell { background: #F4F7FA; border-bottom: 2px solid var(--border); }
-    .row-category .gantt-cell {
-      background: #FAFBFC;
-      font-weight: 600;
-      font-size: 13.5px;
-      color: var(--blue-brand);
-    }
-    .row-category .gantt-cell.leader-header {
       font-size: 13px;
-      font-weight: 700;
-      color: var(--navy);
-      letter-spacing: 0.3px;
+      font-weight: 500;
     }
-    .row-category .gantt-timeline-cell { background: #FAFBFC; }
-    .row-project .gantt-cell { font-size: 13px; color: var(--text-dark); }
-    .proj-title { font-weight: 500; }
-    .proj-owner { font-weight: 400; color: var(--text-dark); }
-    .bar {
-      height: 12px;
-      border-radius: 20px;
-      position: absolute;
-      left: 8px;
-      right: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-    .bar-program { background: var(--navy); height: 16px; }
-    .bar-category { background: var(--blue-brand); height: 14px; }
-    .bar-project { background: var(--blue-light); }
-    .today-line {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 15px;
-      width: 2px;
-      background: #E85301;
-      border-dashed: 1px #E85301;
-      z-index: 20;
+    
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 34px; }
+    .gantt-card { background: var(--white); border-radius: 14px; box-shadow: var(--shadow); overflow: hidden; border-top: 5px solid #1F3A60; }
+    
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+    th, td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    th { background: #FAFBFC; color: var(--navy); font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+    
+    .month-col { text-align: center; width: 5%; color: var(--text-muted); font-weight: 500; border-left: 1px solid #E1E4E8; }
+    .month-header { text-align: center; font-size: 11px; border-left: 1px solid #E1E4E8; }
+    .section-row { background: #FAFBFD; font-weight: 700; color: var(--navy); }
+    .section-row td { padding: 14px 16px; font-size: 14px; }
+    
+    .proj-name { font-weight: 500; color: var(--text-dark); }
+    .proj-owner { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+    
+    .bar-container { position: relative; padding: 0; border-left: 1px solid #E1E4E8; }
+    .gantt-bar { height: 12px; background: #4A90E2; border-radius: 6px; margin: 4px 0; }
+    .gantt-bar.full { width: calc(100% * 12); position: absolute; left: 0; top: 50%; transform: translateY(-50%); z-index: 5; }
+    .gantt-bar.short { width: 40%; }
+    
+    .link-verde {
+      color: #27AE60 !important;
+      text-decoration: none !important;
+      cursor: pointer !important;
+      font-weight: 500;
     }
   </style>
 </head>
 <body>
+
   <header class="masthead">
-    <div class="wrap header-inner">
-      <div class="brand"><h1> Habilitadores</h1></div>
-      <div><a href="index.html" class="btn-back">← Volver al Portafolio</a></div>
-    </div>
+    <h1>📂 Roadmap Habilitadores</h1>
+    <a href="index.html" class="btn-back">← Volver al Portafolio</a>
   </header>
-  <main class="wrap">
-    <div class="roadmap-container">
-      <div class="gantt-grid">
-        <div class="gantt-header-cell title-side"></div>
-        <div class="gantt-header-cell title-side"></div>
-        <div class="gantt-header-cell">Ene 27</div>
-        <div class="gantt-header-cell">Feb 27</div>
-        <div class="gantt-header-cell">Mar 27</div>
-        <div class="gantt-header-cell">Abr 27</div>
-        <div class="gantt-header-cell">May 27</div>
-        <div class="gantt-header-cell">Jun 27</div>
-        <div class="gantt-header-cell">Jul 27</div>
-        <div class="gantt-header-cell">Ago 27</div>
-        <div class="gantt-header-cell">Sep 27</div>
-        <div class="gantt-header-cell">Oct 27</div>
-        <div class="gantt-header-cell">Nov 27</div>
-        <div class="gantt-header-cell">Dic 27</div>
 
-        <div class="gantt-row row-program">
-          <div class="gantt-cell">📂 Habilitadores</div>
-          <div class="gantt-cell"></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;">
-            <div class="bar bar-program"></div>
-            <div class="today-line"></div>
-          </div>
-        </div>
-
-        <!-- SUBCLASIFICACIÓN 1: ENFOQUE AL CLIENTE -->
-        <div class="gantt-row row-category">
-          <div class="gantt-cell">Enfoque al Cliente · 3</div>
-          <div class="gantt-cell leader-header">Líder de Proyecto</div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-category"></div></div>
-        </div>
-        <div class="gantt-row row-project">
-          <div class="gantt-cell"><span class="proj-title">Programa Lazos</span></div>
-          <div class="gantt-cell"><span class="proj-owner">A. Nava</span></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
-        </div>
-        <div class="gantt-row row-project">
-          <div class="gantt-cell"><span class="proj-title">Reingeniería IVR</span></div>
-          <div class="gantt-cell"><span class="proj-owner">A. Nava</span></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
-        </div>
-        <div class="gantt-row row-project">
-          <div class="gantt-cell"><span class="proj-title">Automatización de procesos ATC (3 SOWs)</span></div>
-          <div class="gantt-cell"><span class="proj-owner">A. Nava</span></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
-        </div>
-
-        <!-- SUBCLASIFICACIÓN 2: OPERACIONES -->
-        <div class="gantt-row row-category">
-          <div class="gantt-cell">Operaciones · 4</div>
-          <div class="gantt-cell leader-header">Líder de Proyecto</div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-category"></div></div>
-        </div>
-        <div class="gantt-row row-project">
-          <div class="gantt-cell"><span class="proj-title">Automatización proceso trxs POS</span></div>
-          <div class="gantt-cell"><span class="proj-owner">A. Nava</span></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
-        </div>
-        <div class="gantt-row row-project">
-          <div class="gantt-cell"><span class="proj-title">Implementación de TEF</span></div>
-          <div class="gantt-cell"><span class="proj-owner">A. Nava</span></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
-        </div>
-        <div class="gantt-row row-project">
-          <div class="gantt-cell"><span class="proj-title">Tokenización</span></div>
-          <div class="gantt-cell"><span class="proj-owner">A. Nava</span></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
-        </div>
-        <div class="gantt-row row-project">
-          <div class="gantt-cell"><span class="proj-title">Migración Campo c53 al c57</span></div>
-          <div class="gantt-cell"><span class="proj-owner">A. Nava</span></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
-        </div>
-
-        <!-- SUBCLASIFICACIÓN 3: MODERNIZACIÓN TECNOLÓGICA -->
-        <div class="gantt-row row-category">
-          <div class="gantt-cell">Modernización Tecnológica · 6</div>
-          <div class="gantt-cell leader-header">Líder de Proyecto</div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-category"></div></div>
-        </div>
-        <div class="gantt-row row-project">
-          <div class="gantt-cell"><span class="proj-title">CRM Objetivo</span></div>
-          <div class="gantt-cell"><span class="proj-owner">M. Matus</span></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
-        </div>
-        <div class="gantt-row row-project">
-          <div class="gantt-cell"><span class="proj-title">Content Manager Objetivo (Filenet)</span></div>
-          <div class="gantt-cell"><span class="proj-owner">M. Matus</span></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 1;"><div class="bar bar-project"></div></div>
-          <div class="gantt-timeline-cell" style="grid-column: 4 / span 11;"></div>
-        </div>
-        <div class="gantt-row row-project">
-          <div class="gantt-cell"><span class="proj-title">Upgrade S4 HANNA (E R P)</span></div>
-          <div class="gantt-cell"><span class="proj-owner">C. Budar</span></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
-        </div>
-        <div class="gantt-row row-project">
-          <div class="gantt-cell"><span class="proj-title">Herramientas IA</span></div>
-          <div class="gantt-cell"><span class="proj-owner">M. Matus</span></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
-        </div>
-        <div class="gantt-row row-project">
-          <div class="gantt-cell"><span class="proj-title">Implementación Middleware (Greenfield)</span></div>
-          <div class="gantt-cell"><span class="proj-owner">M. Matus</span></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 1;"><div class="bar bar-project"></div></div>
-          <div class="gantt-timeline-cell" style="grid-column: 4 / span 11;"></div>
-        </div>
-        <div class="gantt-row row-project">
-          <div class="gantt-cell"><span class="proj-title">Nuevo Core Bancario & Bca Empresarial</span></div>
-          <div class="gantt-cell"><span class="proj-owner">M. Matus</span></div>
-          <div class="gantt-timeline-cell" style="grid-column: 3 / span 12;"><div class="bar bar-project"></div></div>
-        </div>
-
-      </div>
+  <div class="container">
+    <div class="gantt-card">
+      <table>
+        <thead>
+          <tr>
+            <th>📂 Habilitadores</th>
+            <th>Líder de Proyecto</th>
+            <th class="month-header">Ene 27</th>
+            <th class="month-header">Feb 27</th>
+            <th class="month-header">Mar 27</th>
+            <th class="month-header">Abr 27</th>
+            <th class="month-header">May 27</th>
+            <th class="month-header">Jun 27</th>
+            <th class="month-header">Jul 27</th>
+            <th class="month-header">Ago 27</th>
+            <th class="month-header">Sep 27</th>
+            <th class="month-header">Oct 27</th>
+            <th class="month-header">Nov 27</th>
+            <th class="month-header">Dic 27</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="section-row">
+            <td>Enfoque al Cliente · 3</td>
+            <td colspan="13">Líder de Proyecto</td>
+          </tr>
+          <tr>
+            <td class="proj-name">Programa Lazos</td>
+            <td class="proj-owner">A. Nava</td>
+            <td class="bar-container"><div class="gantt-bar full"></div></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+          </tr>
+          <tr>
+            <td class="proj-name">Reingeniería IVR</td>
+            <td class="proj-owner">A. Nava</td>
+            <td class="bar-container"><div class="gantt-bar full"></div></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+          </tr>
+          <tr>
+            <td class="proj-name">Automatización de procesos ATC (3 SOWs)</td>
+            <td class="proj-owner">A. Nava</td>
+            <td class="bar-container"><div class="gantt-bar full"></div></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+          </tr>
+<tr class="section-row">
+            <td>Operaciones · 4</td>
+            <td colspan="13">Líder de Proyecto</td>
+          </tr>
+          <tr>
+            <td class="proj-name">Automatización proceso trxs POS</td>
+            <td class="proj-owner">A. Nava</td>
+            <td class="bar-container"><div class="gantt-bar full"></div></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+          </tr>
+          <tr>
+            <td class="proj-name">Implementación de TEF</td>
+            <td class="proj-owner">A. Nava</td>
+            <td class="bar-container"><div class="gantt-bar full"></div></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+          </tr>
+          <tr>
+            <td class="proj-name">Tokenización</td>
+            <td class="proj-owner">A. Nava</td>
+            <td class="bar-container"><div class="gantt-bar full"></div></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+          </tr>
+          <tr>
+            <td class="proj-name">Migración Campo c53 al c57</td>
+            <td class="proj-owner">A. Nava</td>
+            <td class="bar-container"><div class="gantt-bar full"></div></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+          </tr>
+<tr class="section-row">
+            <td>Modernización Tecnológica · 6</td>
+            <td colspan="13">Líder de Proyecto</td>
+          </tr>
+          <tr>
+            <td class="proj-name">CRM Objetivo</td>
+            <td class="proj-owner">M. Matus</td>
+            <td class="bar-container"><div class="gantt-bar full"></div></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+          </tr>
+          <tr>
+            <td class="proj-name">Content Manager Objetivo (Filenet)</td>
+            <td class="proj-owner">M. Matus</td>
+            <td class="bar-container"><div class="gantt-bar short"></div></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+          </tr>
+          <tr>
+            <td class="proj-name">Upgrade S4 HANNA (E R P)</td>
+            <td class="proj-owner">C. Budar</td>
+            <td class="bar-container"><div class="gantt-bar full"></div></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+          </tr>
+          <tr>
+            <td class="proj-name">Herramientas IA</td>
+            <td class="proj-owner">M. Matus</td>
+            <td class="bar-container"><div class="gantt-bar full"></div></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+          </tr>
+          <tr>
+            <td class="proj-name">Implementación Middleware (Greenfield)</td>
+            <td class="proj-owner">M. Matus</td>
+            <td class="bar-container"><div class="gantt-bar short"></div></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+          </tr>
+          <tr>
+            <!-- PROYECTO SELECCIONADO EN AMARILLO: CON LINK CORRECTO EN MISMA HOJA Y SIN SUBRAYADOS -->
+            <td class="proj-name">
+              <a href="estatus-nuevo-core-bancario-bca-empresarial.html" class="link-verde">Nuevo Core Bancario & Bca Empresarial</a>
+            </td>
+            <td class="proj-owner">M. Matus</td>
+            <td class="bar-container" style="position: relative;"><div class="gantt-bar full" style="background: #27AE60;"></div></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+            <td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td><td class="month-col"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </main>
+  </div>
 </body>
 </html>
