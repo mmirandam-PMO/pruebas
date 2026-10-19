@@ -2,10 +2,10 @@ const pmoData = {
   programas: [
     {
       nombre: "Banca Minorista",
-      total_proyectos: 8,
+      total_proyectos: 7,
       categorias: [
         {
-          tipo: "Nuevos proyectos · 8",
+          tipo: "Nuevos proyectos · 7",
           proyectos: [
             { nombre: "App de Inversiones MVP 2", responsable: "S. Olivero" },
             { nombre: "Rediseño Proceso de Originación MVP 2", responsable: "S. Olivero" },
@@ -44,7 +44,7 @@ const pmoData = {
     },
     {
       nombre: "Banca Mayorista",
-      total_proyectos: 8,
+      total_proyectos: 7,
       subprogramas: [
         { 
           nombre: "Banca de Empresas · Programa", 
@@ -69,7 +69,7 @@ const pmoData = {
       ],
       transversales: [
         {
-          tipo: "Transversales · 4",
+          tipo: "Transversales · 3",
           proyectos: [
             { nombre: "Banca Electrónica y Móvil", responsable: "--" },
            // { nombre: "Hub de pagos", responsable: "--" },
@@ -81,10 +81,10 @@ const pmoData = {
     },
     {
       nombre: "Hub de Innovación",
-      total_proyectos: 5,
+      total_proyectos: 4,
       categorias: [
         {
-          tipo: "Por autorizar · 5",
+          tipo: "Por autorizar · 4",
           proyectos: [
             { nombre: "Comunidad Lazos", responsable: "R. Flores" },
             { nombre: "MVNO", responsable: "--" },
