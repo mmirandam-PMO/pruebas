@@ -37,7 +37,7 @@ const pmoData = {
           proyectos: [
             { nombre: "Nueva Plataforma PLD", responsable: "C. Carreón" },
             { nombre: "Plataforma Reportes Regulatorios", responsable: "C. Budar", destacado: "blue" },
-            { nombre: "Herramientas Ciberseguridad", responsable: "C. Carreón" }
+            { nombre: "Herramientas de Ciberseguridad", responsable: "C. Carreón" }
           ]
         }
       ]
