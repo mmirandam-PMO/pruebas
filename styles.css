@@ -77,21 +77,8 @@ input { border: 1px solid var(--border); border-radius: 10px; padding: 8px 14px;
 .subprogram-title { font-size: 13px; font-weight: 700; color: var(--navy); border-bottom: 1px dashed var(--border); padding-bottom: 4px; margin-bottom: 8px; }
 
 .proj-list { display: flex; flex-direction: column; gap: 6px; }
-
-/* INTEGRACIÓN CORRECTA: .proj-row heredando propiedades nativas para etiquetas <a> si actúan como contenedor */
-.proj-row { 
-  background: #F5F7FA; 
-  padding: 10px 12px; 
-  border-radius: 6px; 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  font-size: 13px; 
-  transition: .15s; 
-  text-decoration: none;  /* Evita el subrayado si es un enlace */
-  color: inherit;         /* Conserva el color de texto por defecto */
-}
-.proj-row:hover { transform: translateX(3px); background: #EDF1F5; cursor: pointer; }
+.proj-row { background: #F5F7FA; padding: 10px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; transition: .15s; }
+.proj-row:hover { transform: translateX(3px); background: #EDF1F5; }
 .proj-name { font-weight: 500; line-height: 1.4; padding-right: 8px; }
 .proj-owner { font-size: 11px; font-weight: 700; background: #E2E8F0; color: #4A5568; padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
 .proj-owner.tbd { background: rgba(232,83,1,0.1); color: #E85301; }
