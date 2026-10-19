@@ -13,7 +13,7 @@ const pmoData = {
             { nombre: "Seguros RANMA", responsable: "S. Olivero" },
             { nombre: "Créditos Asociados a Nómina (CAN)", responsable: "S. Olivero" },
             { nombre: "Cash Loans", responsable: "S. Olivero" },
-            { nombre: "Personalización de Ofertas", responsable: "S. Olivero" },
+           // { nombre: "Personalización de Ofertas", responsable: "S. Olivero" },
             { nombre: "Cuenta Rocket", responsable: "S. Olivero" }
           ]
         }
@@ -72,7 +72,7 @@ const pmoData = {
           tipo: "Transversales · 4",
           proyectos: [
             { nombre: "Banca Electrónica y Móvil", responsable: "--" },
-            { nombre: "Hub de pagos", responsable: "--" },
+           // { nombre: "Hub de pagos", responsable: "--" },
             { nombre: "Dispersión de Nóminas", responsable: "--" },
             { nombre: "Banco Recaudador", responsable: "R. Vázquez" }
           ]
