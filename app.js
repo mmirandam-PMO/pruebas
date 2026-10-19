@@ -45,22 +45,12 @@ function buildProjectRows(proyectos, term) {
     if (nameMatch || ownerMatch) {
       matches++;
       const isTbd = !q.responsable || q.responsable === 'TBD' || q.responsable === '--';
-      
-      if (q.nombre === 'Nuevo Core Bancario & Bca Empresarial') {
-        html += `
-          <a href="descriptiva-nuevo-core-bancario-bca-empresarial.html" class="proj-row text-link-card" style="text-decoration: none; color: inherit;">
-            <span class="proj-name" style="color: ${getProjectColor(q)}">${q.nombre}</span>
-            <span class="proj-owner ${isTbd ? 'tbd' : ''}">${q.responsable}</span>
-          </a>
-        `;
-      } else {
-        html += `
-          <div class="proj-row">
-            <span class="proj-name" style="color: ${getProjectColor(q)}">${q.nombre}</span>
-            <span class="proj-owner ${isTbd ? 'tbd' : ''}">${q.responsable}</span>
-          </div>
-        `;
-      }
+      html += `
+        <div class="proj-row">
+          <span class="proj-name" style="color: ${getProjectColor(q)}">${q.nombre}</span>
+          <span class="proj-owner ${isTbd ? 'tbd' : ''}">${q.responsable}</span>
+        </div>
+      `;
     }
   });
 

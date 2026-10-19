@@ -89,10 +89,3 @@ input { border: 1px solid var(--border); border-radius: 10px; padding: 8px 14px;
 .header-mayorista {
   margin-top: 22px !important;
 }
-
-/* ==========================================================================
-   AGREGADO EXCLUSIVO: Manejo de cursor para el recuadro interactivo del Core
-   ========================================================================== */
-.text-link-card:hover {
-  cursor: pointer !important;
-}
