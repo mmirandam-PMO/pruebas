@@ -44,7 +44,7 @@ const pmoData = {
     },
     {
       nombre: "Banca Mayorista",
-      total_proyectos: 0,
+      total_proyectos: 9,
       subprogramas: [
         { 
           nombre: "Banca de Empresas · Programa", 
