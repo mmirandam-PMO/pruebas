@@ -13,7 +13,6 @@ const pmoData = {
             { nombre: "Seguros RANMA", responsable: "S. Olivero" },
             { nombre: "Créditos Asociados a Nómina (CAN)", responsable: "S. Olivero" },
             { nombre: "Cash Loans", responsable: "S. Olivero" },
-            // Ocultado por si se necesita en el futuro:
             // { nombre: "Personalización de Ofertas", responsable: "S. Olivero" },
             { nombre: "Cuenta Rocket", responsable: "S. Olivero" }
           ]
@@ -29,7 +28,7 @@ const pmoData = {
           proyectos: [
             { nombre: "PCI DSS", responsable: "C. Carreón" },
             { nombre: "Segundo factor de autenticación (Trxs no presenciales)", responsable: "C. Carreón" },
-            { fontname: "sans-serif", nombre: "Formulario FATCA / CRS", responsable: "C. Budar" },
+            { nombre: "Formulario FATCA / CRS", responsable: "C. Budar" },
             { nombre: "Identificador Cliente Derechos ARCO", responsable: "C. Carreón" }
           ]
         },
@@ -54,7 +53,7 @@ const pmoData = {
             { nombre: "Plataforma Banca Empresarial Fase 1 (PyME, Empresa Mediana y Gpos Corporativos)", responsable: "R. Galindo / B. Flores", destacado: "blue" }, 
             { nombre: "• Proyectos Crédito", responsable: "TBD", destacado: "muted" },
             { nombre: "• Proyectos Captación", responsable: "TBD", destacado: "muted" },
-            { fontname: "sans-serif", nombre: "• Proyectos Servicios", responsable: "TBD", destacado: "muted" }
+            { nombre: "• Proyectos Servicios", responsable: "TBD", destacado: "muted" }
           ] 
         },
         { 
@@ -73,7 +72,6 @@ const pmoData = {
           tipo: "Transversales · 3",
           proyectos: [
             { nombre: "Banca Electrónica y Móvil", responsable: "--" },
-            // Ocultado por si se necesita en el futuro:
             // { nombre: "Hub de pagos", responsable: "--" },
             { nombre: "Dispersión de Nóminas", responsable: "--" },
             { nombre: "Banco Recaudador", responsable: "R. Vázquez" }
@@ -91,37 +89,37 @@ const pmoData = {
             { nombre: "Comunidad Lazos", responsable: "R. Flores" },
             { nombre: "MVNO", responsable: "--" },
             { nombre: "Productos de crédito (3) ...", responsable: "--" },
-            { fontname: "sans-serif", nombre: "Producto de crédito", responsable: "--" }
+            { nombre: "Producto de crédito", responsable: "--" }
           ]
         }
       ]
     },
     {
       nombre: "Habilitadores",
-      total_proyectos: 13,
+      total_proyectos: 11,
       categorias: [
         {
           tipo: "Enfoque al Cliente · 3",
           proyectos: [
             { nombre: "Programa Lazos", responsable: "A. Nava" },
             { nombre: "Reingeniería IVR", responsable: "A. Nava" },
-            { nombre: "Automatización de procesos ATC (3 SOWs)", responsable: "A. Nava" }
+            { fontname: "sans-serif", nombre: "Automatización de procesos ATC (3 SOWs)", responsable: "A. Nava" }
           ]
         },
         {
-          tipo: "Operaciones · 4",
+          tipo: "Operaciones · 2",
           proyectos: [
             { nombre: "Automatización proceso trxs POS", responsable: "A. Nava" },
             { nombre: "Implementación de TEF", responsable: "A. Nava" },
-            { fontname: "sans-serif", nombre: "Tokenización", responsable: "A. Nava" },
-            { nombre: "Migración Campo c53 al c57", responsable: "A. Nava" }
+            { nombre: "Tokenización", responsable: "A. Nava" }
+            // { nombre: "Migración Campo c53 al c57", responsable: "A. Nava" }
           ]
         },
         {
           tipo: "Modernización Tecnológica · 6",
           proyectos: [
             { nombre: "CRM Objetivo", responsable: "M. Matus" },
-            { fontname: "sans-serif", nombre: "Content Manager Objetivo (Filenet)", responsable: "M. Matus" },
+            { nombre: "Content Manager Objetivo (Filenet)", responsable: "M. Matus" },
             { nombre: "Upgrade S4 HANNA (E R P)", responsable: "C. Budar" },
             { nombre: "Herramientas IA", responsable: "M. Matus" },
             { nombre: "Implementación Middleware (Greenfield)", responsable: "M. Matus" },
