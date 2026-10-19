@@ -2,10 +2,10 @@ const pmoData = {
   programas: [
     {
       nombre: "Banca Minorista",
-      total_proyectos: 8,
+      total_proyectos: 7,
       categorias: [
         {
-          tipo: "Nuevos proyectos · 8",
+          tipo: "Nuevos proyectos · 7",
           proyectos: [
             { nombre: "App de Inversiones MVP 2", responsable: "S. Olivero" },
             { nombre: "Rediseño Proceso de Originación MVP 2", responsable: "S. Olivero" },
@@ -13,7 +13,8 @@ const pmoData = {
             { nombre: "Seguros RANMA", responsable: "S. Olivero" },
             { nombre: "Créditos Asociados a Nómina (CAN)", responsable: "S. Olivero" },
             { nombre: "Cash Loans", responsable: "S. Olivero" },
-            { nombre: "Personalización de Ofertas", responsable: "S. Olivero" },
+            // Ocultado por si se necesita en el futuro:
+            // { nombre: "Personalización de Ofertas", responsable: "S. Olivero" },
             { nombre: "Cuenta Rocket", responsable: "S. Olivero" }
           ]
         }
@@ -28,7 +29,7 @@ const pmoData = {
           proyectos: [
             { nombre: "PCI DSS", responsable: "C. Carreón" },
             { nombre: "Segundo factor de autenticación (Trxs no presenciales)", responsable: "C. Carreón" },
-            { nombre: "Formulario FATCA / CRS", responsable: "C. Budar" },
+            { fontname: "sans-serif", nombre: "Formulario FATCA / CRS", responsable: "C. Budar" },
             { nombre: "Identificador Cliente Derechos ARCO", responsable: "C. Carreón" }
           ]
         },
@@ -44,7 +45,7 @@ const pmoData = {
     },
     {
       nombre: "Banca Mayorista",
-      total_proyectos: 8,
+      total_proyectos: 7,
       subprogramas: [
         { 
           nombre: "Banca de Empresas · Programa", 
@@ -69,10 +70,11 @@ const pmoData = {
       ],
       transversales: [
         {
-          tipo: "Transversales · 4",
+          tipo: "Transversales · 3",
           proyectos: [
             { nombre: "Banca Electrónica y Móvil", responsable: "--" },
-            { nombre: "Hub de pagos", responsable: "--" },
+            // Ocultado por si se necesita en el futuro:
+            // { nombre: "Hub de pagos", responsable: "--" },
             { nombre: "Dispersión de Nóminas", responsable: "--" },
             { nombre: "Banco Recaudador", responsable: "R. Vázquez" }
           ]
@@ -89,7 +91,7 @@ const pmoData = {
             { nombre: "Comunidad Lazos", responsable: "R. Flores" },
             { nombre: "MVNO", responsable: "--" },
             { nombre: "Productos de crédito (3) ...", responsable: "--" },
-            { nombre: "Producto de crédito", responsable: "--" }
+            { fontname: "sans-serif", nombre: "Producto de crédito", responsable: "--" }
           ]
         }
       ]
@@ -111,7 +113,7 @@ const pmoData = {
           proyectos: [
             { nombre: "Automatización proceso trxs POS", responsable: "A. Nava" },
             { nombre: "Implementación de TEF", responsable: "A. Nava" },
-            { nombre: "Tokenización", responsable: "A. Nava" },
+            { fontname: "sans-serif", nombre: "Tokenización", responsable: "A. Nava" },
             { nombre: "Migración Campo c53 al c57", responsable: "A. Nava" }
           ]
         },
