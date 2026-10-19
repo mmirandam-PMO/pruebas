@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modernización Tecnológica - Nuevo Core Bancario & Bca Empresarial</title>
+    <style>
+        :root {
+            --bg-color: #dbeafe; /* Fondo general azul claro suave */
+            --card-bg: #ebf3fa;  /* Fondo de la tarjeta principal */
+            --sub-card-bg: #ffffff; /* Fondo de las tarjetas inferiores */
+            --main-blue: #133c70; /* Azul corporativo oscuro de los títulos */
+            --accent-blue: #2563eb; /* Azul secundario para enlaces/detalles */
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --accent-orange: #f97316; /* Color naranja de acento para alertas y "Hoy" */
+            --timeline-bg-line: #b4cfe8; /* Azul claro para el tramo futuro de la línea */
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            background-image: linear-gradient(180deg, #dbeafe 0%, #eff6ff 100%);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .dashboard-container {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Top Header */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 10px;
+        }
+
+        .brand-logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-group {
+            font-size: 13px;
+            color: var(--main-blue);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--main-blue);
+            margin: 5px 0 0 0;
+        }
+
+        /* Bloque derecho: texto de fechas y, debajo, los botones alineados a la derecha */
+        .header-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: right;
+            line-height: 1.5;
+        }
+
+        .header-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .btn-action {
+            display: block;
+            width: 130px;
+            text-align: center;
+            background-color: white;
+            border: 1px solid #cbd5e0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            color: var(--text-dark);
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        .btn-action:hover {
+            background-color: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        /* Main Dashboard Card */
+        .main-card {
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 45px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            overflow: hidden;
+        }
+
+        .project-info-grid {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .project-details h1 {
+            color: var(--main-blue);
+            font-size: 42px;
+            margin: 0 0 20px 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .project-description {
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--main-blue);
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .project-meta-pills {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* KPI Badge Right side */
+        .kpi-badge {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-end;
+        }
+
+        .kpi-number {
+            font-size: 110px;
+            font-weight: 800;
+            color: var(--main-blue);
+            line-height: 0.9;
+            letter-spacing: -2px;
+        }
+
+        .kpi-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--main-blue);
+            margin-top: 10px;
+            text-align: right;
+            width: 160px;
+            line-height: 1.4;
+        }
+
+        .kpi-subtext {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        /* ===== Línea de tiempo ===== */
+        /* Contenedor: la línea queda en top:200px; los bloques de texto quedan arriba de ella */
+        .timeline-container {
+            position: relative;
+            height: 250px;
+            margin: 20px 0 10px 0;
+        }
+
+        /* Línea base de fondo */
+        .timeline-line {
+            position: absolute;
+            top: 200px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--timeline-bg-line);
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        /* Línea de progreso real (su ancho se ajusta a "hoy" con el script) */
+        .timeline-progress {
+            position: absolute;
+            top: 200px;
+            left: 0;
+            width: 16%;
+            height: 4px;
+            background-color: var(--main-blue);
+            border-radius: 2px 0 0 2px;
+            z-index: 2;
+        }
+
+        /* Capa de nodos */
+        .timeline-nodes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+        }
+
+        /* Cada nodo ocupa la altura completa; su posición horizontal la define el style inline (left: X%) */
+        .timeline-node {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 0;
+        }
+
+        /* Círculo sobre la línea */
+        .node-dot {
+            position: absolute;
+            top: 195px;
+            left: -7px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #ebf3fa;
+            border: 3px solid var(--main-blue);
+            box-sizing: border-box;
+            z-index: 5;
+        }
+
+        .node-dot.filled {
+            background-color: var(--main-blue);
+        }
+
+        /* Último nodo: naranja sólido */
+        .node-dot.orange {
+            top: 192px;
+            left: -10px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-orange);
+            border-color: var(--accent-orange);
+        }
+
+        /* Línea vertical que conecta el bloque de texto con el nodo */
+        .node-stem {
+            position: absolute;
+            left: 0;
+            width: 1px;
+            bottom: 55px;
+            background-color: #7fa4cd;
+        }
+
+        .node-stem.high {
+            top: 101px;
+        }
+
+        .node-stem.low {
+            top: 156px;
+        }
+
+        /* Bloque de texto: fecha arriba, actividad debajo; siempre arriba de la línea */
+        .node-info {
+            position: absolute;
+            left: -85px;
+            width: 170px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            text-align: center;
+        }
+
+        .node-info.high {
+            bottom: 155px;
+        }
+
+        .node-info.low {
+            bottom: 100px;
+        }
+
+        /* Primer nodo: el texto empieza en el nodo para no salirse de la tarjeta */
+        .node-info.align-start {
+            left: 0;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        /* Último nodo: el texto termina en el nodo para no salirse de la tarjeta */
+        .node-info.align-end {
+            left: auto;
+            right: 0;
+            align-items: flex-end;
+            text-align: right;
+        }
+
+        .node-date-box {
+            color: var(--main-blue);
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .node-label-box {
+            color: var(--main-blue);
+            font-size: 12px;
+            line-height: 1.3;
+            font-weight: 500;
+        }
+
+        /* Marcador de fecha actual ("Hoy"), debajo de la línea; su posición la ajusta el script */
+        .timeline-marker-today {
+            position: absolute;
+            left: 16%;
+            top: 200px;
+            width: 0;
+            height: 4px;
+            z-index: 6;
+        }
+
+        .today-indicator-line {
+            position: absolute;
+            left: -1px;
+            top: -7px;
+            width: 2px;
+            height: 18px;
+            background-color: var(--accent-orange);
+        }
+
+        .today-label-box {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 12px;
+            color: var(--accent-orange);
+            font-weight: 700;
+        }
+
+        /* Bottom Row Cards */
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .bottom-card {
+            background-color: var(--sub-card-bg);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .bottom-card h2 {
+            font-size: 20px;
+            color: var(--main-blue);
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .bottom-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0 0 12px 0;
+            color: var(--text-dark);
+        }
+
+        .text-empty {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .alert-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .badge-alert {
+            background-color: #D9F2D0;
+            color: #4EA72E;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+
+        <header class="top-header">
+            <div class="brand-logo">
+                <span class="brand-group">Grupo Consupago</span>
+                <h2 class="brand-title">Modernización Tecnológica</h2>
+            </div>
+            <div class="header-meta">
+                <div>
+                    Información al <strong>17 Oct 2026</strong><br>
+                    Consulta del 20 oct 2026
+                </div>
+                <div class="header-actions">
+                    <button class="btn-action" onclick="window.print()">Imprimir vista</button>
+                    <a class="btn-action" href="index.html">Volver</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-card">
+
+            <div class="project-info-grid">
+                <div class="project-details">
+                    <h1>Nuevo Core Bancario & Bca Empresarial</h1>
+
+                    <div class="project-description">
+                        Habilitar un Sistema Core único que permita la gestión de la gama de productos del banco, permitiendo 1.Agilidad e Innovación en Productos, 2. Eficiencia Operativa y Reducción de Costos, 3.Mejora de experiencia del cliente, 4.Mejora en la gestión de datos, riesgo y cumplimiento y 5.Escalabilidad y flexibilidad tecnológica
+                    </div>
+
+                    <div class="project-meta-pills">
+                        Habilitador de la estrategia del negocio de banca de gobierno y la disminución de la dependencia y servicios profesionales de proveedor (Fiserv)
+                    </div>
+                </div>
+
+                <div class="kpi-badge">
+                    <div class="kpi-number">447</div>
+                    <div class="kpi-label">días para el inicio de operaciones</div>
+                    <div class="kpi-subtext">01 de enero de 2028</div>
+                </div>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                <div class="timeline-progress"></div>
+
+                <div class="timeline-marker-today">
+                    <div class="today-indicator-line"></div>
+                    <div class="today-label-box">Hoy</div>
+                </div>
+
+                <div class="timeline-nodes">
+
+                    <div class="timeline-node" data-fecha="2026-09-10" style="left: 0%;">
+                        <div class="node-stem high"></div>
+                        <div class="node-info high align-start">
+                            <div class="node-date-box">10 sep 2026</div>
+                            <div class="node-label-box">Productos Pensión</div>
+                        </div>
+                        <div class="node-dot filled"></div>
+                    </div>
+
+                    <div class="timeline-node" data-fecha="2026-10-10" style="left: 17%;">
+                        <div class="node-stem low"></div>
+                        <div class="node-info low">
+                            <div class="node-date-box">10 oct 2026</div>
+                            <div class="node-label-box">Consuprotección</div>
+                        </div>
+                        <div class="node-dot"></div>
+                    </div>
+
+                    <div class="timeline-node" data-fecha="2026-11-20" style="left: 34%;">
+                        <div class="node-stem high"></div>
+                        <div class="node-info high">
+                            <div class="node-date-box">20 nov 2026</div>
+                            <div class="node-label-box">Fondeo y Crédito comercial</div>
+                        </div>
+                        <div class="node-dot"></div>
+                    </div>
+
+                    <div class="timeline-node" data-fecha="2027-01-20" style="left: 51%;">
+                        <div class="node-stem low"></div>
+                        <div class="node-info low">
+                            <div class="node-date-box">20 ene 2027</div>
+                            <div class="node-label-box">Fin de construcción del sistema</div>
+                        </div>
+                        <div class="node-dot"></div>
+                    </div>
+
+                    <div class="timeline-node" data-fecha="2027-07-26" style="left: 68%;">
+                        <div class="node-stem high"></div>
+                        <div class="node-info high">
+                            <div class="node-date-box">26 jul 2027</div>
+                            <div class="node-label-box">Pruebas funcionales</div>
+                        </div>
+                        <div class="node-dot"></div>
+                    </div>
+
+                    <div class="timeline-node" data-fecha="2027-11-21" style="left: 84%;">
+                        <div class="node-stem low"></div>
+                        <div class="node-info low">
+                            <div class="node-date-box">21 nov 2027</div>
+                            <div class="node-label-box">Pruebas integrales</div>
+                        </div>
+                        <div class="node-dot"></div>
+                    </div>
+
+                    <div class="timeline-node" data-fecha="2028-01-01" style="left: 100%;">
+                        <div class="node-stem high"></div>
+                        <div class="node-info high align-end">
+                            <div class="node-date-box" style="color: var(--accent-orange);">01 ene 2028</div>
+                            <div class="node-label-box" style="color: var(--accent-orange); font-weight: 700;">Inicio de operaciones</div>
+                        </div>
+                        <div class="node-dot orange"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+
+        <div class="bottom-grid">
+            <div class="bottom-card">
+                <h2>Decisiones pendientes de Dirección</h2>
+                <p class="text-empty">No hay decisiones pendientes por el momento.</p>
+            </div>
+
+            <div class="bottom-card">
+                <h2>Alertas y riesgos</h2>
+                <div class="alert-container">
+                    <p style="font-weight: 600; margin: 0;">Pruebas de usuario</p>
+                    <span class="badge-alert">Baja</span>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+    /* "Hoy" dinámico: usa la fecha actual en zona horaria de Ciudad de México.
+       Ubica el marcador y la barra de avance entre las fechas de los nodos. */
+    (function () {
+        var MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+        var nodos = document.querySelectorAll('.timeline-node[data-fecha]');
+        var marcador = document.querySelector('.timeline-marker-today');
+        var etiqueta = document.querySelector('.today-label-box');
+        var avance = document.querySelector('.timeline-progress');
+
+        if (!nodos.length || !marcador || !etiqueta || !avance) return;
+
+        // Fecha de hoy en zona horaria de México, como { y, m, d }
+        function fechaHoy() {
+            var partes = new Intl.DateTimeFormat('en-US', {
+                timeZone: 'America/Mexico_City',
+                year: 'numeric', month: 'numeric', day: 'numeric'
+            }).formatToParts(new Date());
+            var v = {};
+            partes.forEach(function (p) { v[p.type] = parseInt(p.value, 10); });
+            return v;
+        }
+
+        // Convierte a número de días para poder comparar y restar fechas
+        function diasDesde(y, m, d) {
+            return Date.UTC(y, m - 1, d) / 86400000;
+        }
+
+        var puntos = [];
+        nodos.forEach(function (n) {
+            var p = n.getAttribute('data-fecha').split('-');
+            puntos.push({
+                dias: diasDesde(+p[0], +p[1], +p[2]),
+                pos: parseFloat(n.style.left)
+            });
+        });
+
+        var h = fechaHoy();
+        var hoy = diasDesde(h.year, h.month, h.day);
+        var posicion;
+
+        if (hoy <= puntos[0].dias) {
+            posicion = puntos[0].pos;
+        } else if (hoy >= puntos[puntos.length - 1].dias) {
+            posicion = puntos[puntos.length - 1].pos;
+        } else {
+            posicion = puntos[0].pos;
+            for (var i = 0; i < puntos.length - 1; i++) {
+                var a = puntos[i], b = puntos[i + 1];
+                if (hoy >= a.dias && hoy <= b.dias) {
+                    posicion = a.pos + ((hoy - a.dias) / (b.dias - a.dias)) * (b.pos - a.pos);
+                    break;
+                }
+            }
+        }
+
+        marcador.style.left = posicion + '%';
+        avance.style.width = posicion + '%';
+        etiqueta.textContent = 'Hoy, ' + h.day + ' ' + MESES[h.month - 1];
+    })();
+    </script>
+
+</body>
+</html>
