@@ -121,7 +121,7 @@ const pmoData = {
             { nombre: "CRM Objetivo", responsable: "M. Matus" },
             { fontname: "sans-serif", nombre: "Content Manager Objetivo (Filenet)", responsable: "M. Matus" },
             { nombre: "Upgrade S4 HANNA (E R P)", responsable: "C. Budar" },
-            { nombre: "Herramientas IA", responsable: "M. Matus" },
+            { nombre: "Robustecimiento Bkaya", responsable: "M. Matus" },
             { nombre: "Implementación Middleware (Greenfield)", responsable: "M. Matus" },
             { nombre: "Nuevo Core Bancario & Bca Empresarial", responsable: "M. Matus" }
           ]
