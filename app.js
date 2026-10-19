@@ -45,12 +45,23 @@ function buildProjectRows(proyectos, term) {
     if (nameMatch || ownerMatch) {
       matches++;
       const isTbd = !q.responsable || q.responsable === 'TBD' || q.responsable === '--';
-      html += `
-        <div class="proj-row">
-          <span class="proj-name" style="color: ${getProjectColor(q)}">${q.nombre}</span>
-          <span class="proj-owner ${isTbd ? 'tbd' : ''}">${q.responsable}</span>
-        </div>
-      `;
+      
+      // NUEVO: Validación exclusiva para transformar el recuadro entero en un vínculo activo
+      if (q.nombre === 'Nuevo Core Bancario & Bca Empresarial') {
+        html += `
+          <a href="roadmap-habilitadores.html" class="proj-row text-link-card" style="text-decoration: none; color: inherit;">
+            <span class="proj-name" style="color: ${getProjectColor(q)}">${q.nombre}</span>
+            <span class="proj-owner ${isTbd ? 'tbd' : ''}">${q.responsable}</span>
+          </a>
+        `;
+      } else {
+        html += `
+          <div class="proj-row">
+            <span class="proj-name" style="color: ${getProjectColor(q)}">${q.nombre}</span>
+            <span class="proj-owner ${isTbd ? 'tbd' : ''}">${q.responsable}</span>
+          </div>
+        `;
+      }
     }
   });
 
@@ -85,7 +96,7 @@ function render() {
     `;
     minor.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
+      if (res.matches > 0 || term === '') cardHtml += \`<div class="section-area"><div class="section-info"><span class="section-title">\${c.tipo}</span></div><div class="proj-list">\${res.html}</div></div>\`;
     });
     cardHtml += `</div>`;
     col1.appendChild(document.createRange().createContextualFragment(cardHtml));
@@ -94,10 +105,10 @@ function render() {
   // 2. Regulatorios
   const reg = findProg('Regulatorios');
   if (reg) {
-    let cardHtml = `<div class="card header-regulatorios"><div class="card-head"><h2>${getProgEmoji(reg.nombre)} ${reg.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-regulatorios.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${reg.total_proyectos}</span></div></div>`;
+    let cardHtml = `<div class="card header-regulatorios"><div class="card-head"><h2>\${getProgEmoji(reg.nombre)} \${reg.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-regulatorios.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">\${roadmapBadgeHtml}</a> <span class="badge">\${reg.total_proyectos}</span></div></div>`;
     reg.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
+      if (res.matches > 0 || term === '') cardHtml += \`<div class="section-area"><div class="section-info"><span class="section-title">\${c.tipo}</span></div><div class="proj-list">\${res.html}</div></div>\`;
     });
     cardHtml += `</div>`;
     col2.appendChild(document.createRange().createContextualFragment(cardHtml));
@@ -106,21 +117,21 @@ function render() {
   // 3. Banca Mayorista
   const may = findProg('Banca Mayorista');
   if (may) {
-    let cardHtml = `<div class="card header-mayorista"><div class="card-head"><h2>${getProgEmoji(may.nombre)} ${may.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-mayorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">8</span></div></div><div class="section-area">`;
+    let cardHtml = `<div class="card header-mayorista"><div class="card-head"><h2>\${getProgEmoji(may.nombre)} \${may.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-mayorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">\${roadmapBadgeHtml}</a> <span class="badge">8</span></div></div><div class="section-area">`;
     
     cardHtml += `<div class="subprogram-block-grid">`;
     may.subprogramas.forEach(sp => {
       const res = buildProjectRows(sp.proyectos, term);
       if (res.matches > 0 || term === '') {
-        const leads = sp.responsables ? `<div class="subprogram-leads">${sp.responsables.join(' / ')}</div>` : '';
-        cardHtml += `<div class="subprogram-card"><div class="subprogram-title">${sp.nombre}</div>${leads}<div class="proj-list">${res.html}</div></div>`;
+        const leads = sp.responsables ? \`<div class="subprogram-leads">\${sp.responsables.join(' / ')}</div>\` : '';
+        cardHtml += \`<div class="subprogram-card"><div class="subprogram-title">\${sp.nombre}</div>\${leads}<div class="proj-list">\${res.html}</div></div>\`;
       }
     });
     cardHtml += `</div>`;
 
     may.transversales.forEach(t => {
       const res = buildProjectRows(t.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div style="margin-top:14px;"><div class="section-info"><span class="section-title">${t.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
+      if (res.matches > 0 || term === '') cardHtml += \`<div style="margin-top:14px;"><div class="section-info"><span class="section-title">\${t.tipo}</span></div><div class="proj-list">\${res.html}</div></div>\`;
     });
 
     cardHtml += `</div></div>`;
@@ -130,10 +141,10 @@ function render() {
   // 4. Hub de Innovación
   const hub = findProg('Hub de Innovación');
   if (hub) {
-    let cardHtml = `<div class="card header-hub"><div class="card-head"><h2>${getProgEmoji(hub.nombre)} ${hub.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-hub.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${hub.total_proyectos}</span></div></div>`;
+    let cardHtml = `<div class="card header-hub"><div class="card-head"><h2>\${getProgEmoji(hub.nombre)} \${hub.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-hub.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">\${roadmapBadgeHtml}</a> <span class="badge">\${hub.total_proyectos}</span></div></div>`;
     hub.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
+      if (res.matches > 0 || term === '') cardHtml += \`<div class="section-area"><div class="section-info"><span class="section-title">\${c.tipo}</span></div><div class="proj-list">\${res.html}</div></div>\`;
     });
     cardHtml += `</div>`;
     col2.appendChild(document.createRange().createContextualFragment(cardHtml));
@@ -142,10 +153,10 @@ function render() {
   // 5. Habilitadores
   const co = findProg('Habilitadores');
   if (co) {
-    let cardHtml = `<div class="card header-carryover"><div class="card-head"><h2>${getProgEmoji(co.nombre)} ${co.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-habilitadores.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">${roadmapBadgeHtml}</a> <span class="badge">${co.total_proyectos}</span></div></div>`;
+    let cardHtml = `<div class="card header-carryover"><div class="card-head"><h2>\${getProgEmoji(co.nombre)} \${co.nombre}</h2><div style="display:flex; align-items:center; gap:8px;"><a href="roadmap-habilitadores.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">\${roadmapBadgeHtml}</a> <span class="badge">\${co.total_proyectos}</span></div></div>`;
     co.categorias.forEach(c => {
       const res = buildProjectRows(c.proyectos, term);
-      if (res.matches > 0 || term === '') cardHtml += `<div class="section-area"><div class="section-info"><span class="section-title">${c.tipo}</span></div><div class="proj-list">${res.html}</div></div>`;
+      if (res.matches > 0 || term === '') cardHtml += \`<div class="section-area"><div class="section-info"><span class="section-title">\${c.tipo}</span></div><div class="proj-list">\${res.html}</div></div>\`;
     });
     cardHtml += `</div>`;
     col3.appendChild(document.createRange().createContextualFragment(cardHtml));
