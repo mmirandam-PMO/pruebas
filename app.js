@@ -18,20 +18,22 @@ function getProgEmoji(name) {
 
 // Estilo de etiqueta "Roadmap" basado en el badge gris redondeado de la imagen 2
 const roadmapBadgeHtml = `
-  <span style="
-    background: rgba(27, 42, 74, 0.06); 
-    color: #1B355D; 
-    padding: 3px 10px; 
-    border-radius: 12px; 
-    font-size: 11px; 
-    font-weight: 700; 
-    letter-spacing: 0.2px;
-    display: inline-flex;
-    align-items: center;
-    transition: background 0.15s;
-  " onmouseover="this.style.background='rgba(27, 42, 74, 0.12)'" onmouseout="this.style.background='rgba(27, 42, 74, 0.06)'">
-    Roadmap
-  </span>
+  <a href="roadmap-minorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">
+    <span style="
+      background: rgba(27, 42, 74, 0.06); 
+      color: #1B355D; 
+      padding: 3px 10px; 
+      border-radius: 12px; 
+      font-size: 11px; 
+      font-weight: 700; 
+      letter-spacing: 0.2px;
+      display: inline-flex;
+      align-items: center;
+      transition: background 0.15s;
+    " onmouseover="this.style.background='rgba(27, 42, 74, 0.12)'" onmouseout="this.style.background='rgba(27, 42, 74, 0.06)'">
+      Roadmap
+    </span>
+  </a>
 `;
 
 function buildProjectRows(proyectos, term) {
@@ -46,10 +48,10 @@ function buildProjectRows(proyectos, term) {
       matches++;
       const isTbd = !q.responsable || q.responsable === 'TBD' || q.responsable === '--';
       
-      // Condicional corregido: se eliminó target y rel para forzar la apertura en la misma pestaña
+      // Ajustado exactamente igual a los roadmaps de arriba para evitar la apertura en otra pestaña y remover el subrayado
       let nameContent = q.nombre;
       if (q.nombre === "Nuevo Core Bancario & Bca Empresarial") {
-        nameContent = `<a href="descriptiva-nuevo-core-bancario-bca-empresarial.html" style="color: ${getProjectColor(q)}; text-decoration: none; font-weight: 500;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">${q.nombre}</a>`;
+        nameContent = `<a href="descriptiva-nuevo-core-bancario-bca-empresarial.html" style="color: ${getProjectColor(q)}; cursor: pointer; text-decoration: none; font-weight: 500;">${q.nombre}</a>`;
       }
 
       html += `
@@ -75,7 +77,7 @@ function render() {
   const term = document.getElementById('search-input').value.toLowerCase().trim();
   const findProg = name => pmoData.programas.find(p => p.nombre === name);
 
-  // 1. Banca Minorista -> Abre en la misma pestaña
+  // 1. Banca Minorista
   const minor = findProg('Banca Minorista');
   if (minor) {
     let cardHtml = `
