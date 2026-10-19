@@ -2,10 +2,10 @@ const pmoData = {
   programas: [
     {
       nombre: "Banca Minorista",
-      total_proyectos: 7,
+      total_proyectos: 8,
       categorias: [
         {
-          tipo: "Nuevos proyectos · 7",
+          tipo: "Nuevos proyectos · 8",
           proyectos: [
             { nombre: "App de Inversiones MVP 2", responsable: "S. Olivero" },
             { nombre: "Rediseño Proceso de Originación MVP 2", responsable: "S. Olivero" },
@@ -13,7 +13,7 @@ const pmoData = {
             { nombre: "Seguros RANMA", responsable: "S. Olivero" },
             { nombre: "Créditos Asociados a Nómina (CAN)", responsable: "S. Olivero" },
             { nombre: "Cash Loans", responsable: "S. Olivero" },
-            // { nombre: "Personalización de Ofertas", responsable: "S. Olivero" },
+            { nombre: "Personalización de Ofertas", responsable: "S. Olivero" },
             { nombre: "Cuenta Rocket", responsable: "S. Olivero" }
           ]
         }
@@ -44,7 +44,7 @@ const pmoData = {
     },
     {
       nombre: "Banca Mayorista",
-      total_proyectos: 7,
+      total_proyectos: 8,
       subprogramas: [
         { 
           nombre: "Banca de Empresas · Programa", 
@@ -53,7 +53,7 @@ const pmoData = {
             { nombre: "Plataforma Banca Empresarial Fase 1 (PyME, Empresa Mediana y Gpos Corporativos)", responsable: "R. Galindo / B. Flores", destacado: "blue" }, 
             { nombre: "• Proyectos Crédito", responsable: "TBD", destacado: "muted" },
             { nombre: "• Proyectos Captación", responsable: "TBD", destacado: "muted" },
-            { nombre: "• Proyectos Servicios", responsable: "TBD", destacado: "muted" }
+            { fontname: "sans-serif", nombre: "• Proyectos Servicios", responsable: "TBD", destacado: "muted" }
           ] 
         },
         { 
@@ -69,10 +69,10 @@ const pmoData = {
       ],
       transversales: [
         {
-          tipo: "Transversales · 3",
+          tipo: "Transversales · 4",
           proyectos: [
             { nombre: "Banca Electrónica y Móvil", responsable: "--" },
-            // { nombre: "Hub de pagos", responsable: "--" },
+            { nombre: "Hub de pagos", responsable: "--" },
             { nombre: "Dispersión de Nóminas", responsable: "--" },
             { nombre: "Banco Recaudador", responsable: "R. Vázquez" }
           ]
@@ -96,30 +96,30 @@ const pmoData = {
     },
     {
       nombre: "Habilitadores",
-      total_proyectos: 11,
+      total_proyectos: 13,
       categorias: [
         {
           tipo: "Enfoque al Cliente · 3",
           proyectos: [
             { nombre: "Programa Lazos", responsable: "A. Nava" },
             { nombre: "Reingeniería IVR", responsable: "A. Nava" },
-            { fontname: "sans-serif", nombre: "Automatización de procesos ATC (3 SOWs)", responsable: "A. Nava" }
+            { nombre: "Automatización de procesos ATC (3 SOWs)", responsable: "A. Nava" }
           ]
         },
         {
-          tipo: "Operaciones · 2",
+          tipo: "Operaciones · 4",
           proyectos: [
             { nombre: "Automatización proceso trxs POS", responsable: "A. Nava" },
             { nombre: "Implementación de TEF", responsable: "A. Nava" },
-            { nombre: "Tokenización", responsable: "A. Nava" }
-            // { nombre: "Migración Campo c53 al c57", responsable: "A. Nava" }
+            { nombre: "Tokenización", responsable: "A. Nava" },
+            { nombre: "Migración Campo c53 al c57", responsable: "A. Nava" }
           ]
         },
         {
           tipo: "Modernización Tecnológica · 6",
           proyectos: [
             { nombre: "CRM Objetivo", responsable: "M. Matus" },
-            { nombre: "Content Manager Objetivo (Filenet)", responsable: "M. Matus" },
+            { fontname: "sans-serif", nombre: "Content Manager Objetivo (Filenet)", responsable: "M. Matus" },
             { nombre: "Upgrade S4 HANNA (E R P)", responsable: "C. Budar" },
             { nombre: "Herramientas IA", responsable: "M. Matus" },
             { nombre: "Implementación Middleware (Greenfield)", responsable: "M. Matus" },

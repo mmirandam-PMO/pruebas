@@ -16,6 +16,7 @@ function getProgEmoji(name) {
   return '📂';
 }
 
+// Estilo de etiqueta "Roadmap" basado en el badge gris redondeado de la imagen 2
 const roadmapBadgeHtml = `
   <span style="
     background: rgba(27, 42, 74, 0.06); 
@@ -45,6 +46,7 @@ function buildProjectRows(proyectos, term) {
       matches++;
       const isTbd = !q.responsable || q.responsable === 'TBD' || q.responsable === '--';
       
+      // Vínculo idéntico a un Roadmap: misma pestaña y sin subrayados
       let nameContent = q.nombre;
       if (q.nombre === "Nuevo Core Bancario & Bca Empresarial") {
         nameContent = `<a href="descriptiva-nuevo-core-bancario-bca-empresarial.html" style="color: ${getProjectColor(q)}; cursor: pointer; text-decoration: none; font-weight: 500;">${q.nombre}</a>`;
@@ -130,7 +132,7 @@ function render() {
             <a href="roadmap-mayorista.html" title="Ver Roadmap" style="display:inline-flex; align-items:center; cursor: pointer; text-decoration: none;">
               ${roadmapBadgeHtml}
             </a> 
-            <span class="badge">${may.total_proyectos}</span>
+            <span class="badge">8</span>
           </div>
         </div>
         <div class="section-area">
