@@ -79,7 +79,7 @@ const pmoData = {
         }
       ]
     },
-    {
+   {
       nombre: "Hub de Innovación",
       total_proyectos: 5,
       categorias: [
@@ -88,9 +88,9 @@ const pmoData = {
           proyectos: [
             { nombre: "Comunidad Lazos", responsable: "R. Flores" },
             { nombre: "MVNO", responsable: "--" },
-            { nombre: "Productos de crédito (1)", responsable: "--" },
-            { nombre: "Producto de crédito (2)", responsable: "--" }
-                     ]
+            { nombre: "Productos de crédito (3) ...", responsable: "--" },
+            { nombre: "Producto de crédito", responsable: "--" }
+          ]
         }
       ]
     },
