@@ -100,21 +100,21 @@ const pmoData = {
       total_proyectos: 13,
       categorias: [
         {
-          tipo: "Enfoque al Cliente · 3",
+          tipo: "Enfoque al Cliente · 4",
           proyectos: [
             { nombre: "Programa Lazos", responsable: "A. Nava" },
-            { nombre: "Reingeniería IVR", responsable: "A. Nava" },
+            { nombre: "Vista Integral 360 (20%)", responsable: "A. Nava" },
+            { nombre: "Activación de crédito en Salesforce", responsable: "A. Nava" },
             { nombre: "Automatización de procesos ATC (3 SOWs)", responsable: "A. Nava" }
           ]
         },
         {
-          tipo: "Operaciones · 4",
+          tipo: "Operaciones · 3",
           proyectos: [
             { nombre: "Automatización proceso trxs POS", responsable: "A. Nava" },
             { nombre: "Implementación de TEF", responsable: "A. Nava" },
             { nombre: "Tokenización", responsable: "A. Nava" },
-            { nombre: "Migración Campo c53 al c57", responsable: "A. Nava" }
-          ]
+            ]
         },
         {
           tipo: "Modernización Tecnológica · 6",
