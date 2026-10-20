@@ -90,8 +90,7 @@ const pmoData = {
             { nombre: "MVNO", responsable: "--" },
             { nombre: "Productos de crédito (1)", responsable: "--" },
             { nombre: "Producto de crédito (2)", responsable: "--" }
-            { nombre: "Producto de crédito (3)", responsable: "--" }
-          ]
+                     ]
         }
       ]
     },
