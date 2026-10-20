@@ -89,3 +89,8 @@ input { border: 1px solid var(--border); border-radius: 10px; padding: 8px 14px;
 .header-mayorista {
   margin-top: 65px !important;
 }
+.gantt-row.row-category .gantt-cell.section-title {
+    color: #2B6CB0 !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+}
