@@ -80,20 +80,21 @@ const pmoData = {
       ]
     },
    {
-      nombre: "Hub de Innovación",
-      total_proyectos: 5,
-      categorias: [
-        {
-          tipo: "Por autorizar · 5",
-          proyectos: [
-            { nombre: "Comunidad Lazos", responsable: "R. Flores" },
-            { nombre: "MVNO", responsable: "--" },
-            { nombre: "Productos de crédito (3) ...", responsable: "--" },
-            { nombre: "Producto de crédito", responsable: "--" }
-          ]
-        }
+  nombre: "Hub de Innovación",
+  total_proyectos: 5,
+  categorias: [
+    {
+      tipo: "Por autorizar · 5",
+      proyectos: [
+        { nombre: "Comunidad Lazos", responsable: "R. Flores" },
+        { nombre: "MVNO", responsable: "--" },
+        { nombre: "Producto de crédito 1", responsable: "--" },
+        { nombre: "Producto de crédito 2", responsable: "--" }, // <-- Recuerda poner esta coma
+        { nombre: "Producto de crédito 3", responsable: "--" }
       ]
-    },
+    }
+  ]
+},
     {
       nombre: "Habilitadores",
       total_proyectos: 13,
