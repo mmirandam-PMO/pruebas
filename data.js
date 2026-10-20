@@ -97,7 +97,7 @@ const pmoData = {
 },
     {
       nombre: "Habilitadores",
-      total_proyectos: 13,
+      total_proyectos: 14,
       categorias: [
         {
           tipo: "Enfoque al Cliente · 4",
@@ -109,11 +109,12 @@ const pmoData = {
           ]
         },
         {
-          tipo: "Operaciones · 3",
+          tipo: "Operaciones · 4",
           proyectos: [
             { nombre: "Automatización proceso trxs POS", responsable: "A. Nava" },
             { nombre: "Implementación de TEF", responsable: "A. Nava" },
             { nombre: "Tokenización", responsable: "A. Nava" },
+            { nombre: "Monitoreo preventivo", responsable: "A. Nava" },
             ]
         },
         {
